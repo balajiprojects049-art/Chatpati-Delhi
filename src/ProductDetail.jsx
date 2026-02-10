@@ -147,6 +147,336 @@ const richProductData = [
         reviews: 167,
         vegetarian: true
     },
+    {
+        id: 16,
+        fullDescription: 'Our signature curly fries are seasoned with a special blend of chatpati spices! Crispy on the outside, fluffy on the inside, and spiraled for maximum fun. Served with a side of creamy dip.',
+        ingredients: ['Potatoes', 'Corn Starch', 'Rice Flour', 'Paprika', 'Garlic Powder', 'Onion Powder', 'Black Pepper', 'Salt', 'Vegetable Oil'],
+        features: ['✓ Fun spiral shape', '✓ Extra crispy coating', '✓ Chatpati spice blend', '✓ Kids favorite', '✓ Perfect side dish'],
+        prepTime: '12 mins',
+        rating: 4.6,
+        reviews: 210,
+        vegetarian: true
+    },
+    {
+        id: 17,
+        fullDescription: 'The quintessential Mumbai street snack! Flat crispy puris loaded with diced potatoes, onions, and three types of chutneys (tamarind, chili, garlic), topped strictly with mountains of nylon sev.',
+        ingredients: ['Flat Puris (Papdi)', 'Boiled Potatoes', 'Onions', 'Nylon Sev', 'Tamarind Chutney', 'Garlic Chutney', 'Green Chili Chutney', 'Raw Mango (Seasonal)', 'Coriander'],
+        features: ['✓ Authentic Mumbai recipe', '✓ Heavy on Sev', '✓ Triple chutney flavor', '✓ Crunchy & spicy', '✓ Freshly assembled'],
+        prepTime: '8 mins',
+        rating: 4.8,
+        reviews: 320,
+        vegetarian: true
+    },
+    {
+        id: 18,
+        fullDescription: 'An edible art piece! A crispy, basket-shaped katori made from grated potatoes, filled with sprouts, pomegranate, yogurt, chutneys, and spices. Looks amazing, tastes even better.',
+        ingredients: ['Grated Potatoes', 'Bean Sprouts', 'Chickpeas', 'Yogurt', 'Tamarind Chutney', 'Mint Chutney', 'Pomegranate Arils', 'Sev', 'Chaat Masala'],
+        features: ['✓ Unique basket presentation', '✓ Crunchy potato nest', '✓ Fresh & healthy fillings', '✓ Perfect appetizer', '✓ Instagram favorite'],
+        prepTime: '15 mins',
+        rating: 4.9,
+        reviews: 289,
+        vegetarian: true
+    },
+    {
+        id: 20,
+        fullDescription: 'A popular fasting snack from Maharashtra! Crispy deep-fried fritters made from soaked tapioca pearls (sabudana), mashed potatoes, and crushed peanuts. Served with sweetened curd or green chutney.',
+        ingredients: ['Sabudana (Tapioca Pearls)', 'Potatoes', 'Roasted Peanuts', 'Green Chilies', 'Cumin Seeds', 'Coriander Leaves', 'Lemon Juice', 'Sugar', 'Salt'],
+        features: ['✓ Traditional fasting food', '✓ Crispy outside, soft inside', '✓ Peanut crunch', '✓ Gluten-free option', '✓ Served with chutney'],
+        prepTime: '12 mins',
+        rating: 4.7,
+        reviews: 156,
+        vegetarian: true
+    },
+    {
+        id: 21,
+        fullDescription: 'A classic Indian street burger! A crispy samosa tucked inside a soft bun, slathered with spicy green chutney and sweet tamarind chutney. A perfect on-the-go snack.',
+        ingredients: ['Bun', 'Samosa', 'Green Chutney', 'Tamarind Chutney', 'Butter', 'Red Chili Powder'],
+        features: ['✓ Portable snack', '✓ Iconic fusion', '✓ Sweet & spicy', '✓ Freshly baked bun', '✓ Filling snack'],
+        prepTime: '5 mins',
+        rating: 4.5,
+        reviews: 89,
+        vegetarian: true
+    },
+    {
+        id: 22,
+        fullDescription: 'Famous from Karjat station! A spicy, deep-fried potato dumpling (vada) served in a pav (bread roll) with a generous amount of garlic chutney and fried green chili. The true taste of Maharashtra.',
+        ingredients: ['Pav', 'Potatoes', 'Chickpea Flour (Besan)', 'Garlic Chutney', 'Green Chilies', 'Mustard Seeds', 'Curry Leaves', 'Turmeric'],
+        features: ['✓ Authentic Karjat style', '✓ Spicy garlic chutney', '✓ Freshly fried vada', '✓ Mumbai staple', '✓ High energy food'],
+        prepTime: '8 mins',
+        rating: 4.8,
+        reviews: 210,
+        vegetarian: true
+    },
+    {
+        id: 23,
+        fullDescription: 'A cheesy twist on the classic Vada Pav! Our spicy potato vada is topped with a slice of cheese and melted butter, served in a soft pav with chutneys. A favorite among cheese lovers.',
+        ingredients: ['Pav', 'Potato Vada', 'Cheese Slice', 'Butter', 'Garlic Chutney', 'Green Chutney', 'Fried Green Chili'],
+        features: ['✓ Cheesy goodness', '✓ Fusion street food', '✓ Melted butter', '✓ Spicy & creamy', '✓ Kids favorite'],
+        prepTime: '8 mins',
+        rating: 4.7,
+        reviews: 156,
+        vegetarian: true
+    },
+    {
+        id: 24,
+        fullDescription: 'A sweet, spicy, and tangy potato burger from Kutch (Gujarat). A soft bun filled with a special dabeli masala potato mix, topped with pomegranate, roasted peanuts, and fine sev.',
+        ingredients: ['Bun', 'Boiled Potatoes', 'Dabeli Masala', 'Tamarind Chutney', 'Pomegranate', 'Roasted Peanuts', 'Nylon Sev', 'Butter'],
+        features: ['✓ Unique masala blend', '✓ Sweet & spicy', '✓ Crunchy peanuts', '✓ Authentic Kutchi taste', '✓ Soft buttery bun'],
+        prepTime: '10 mins',
+        rating: 4.6,
+        reviews: 134,
+        vegetarian: true
+    },
+    {
+        id: 25,
+        fullDescription: 'Spicy, buttery, and absolutely delicious! A thick vegetable curry (bhaji) cooked with a special blend of spices, served with butter-toasted pavs, chopped onions, and lemon wedges.',
+        ingredients: ['Potatoes', 'Cauliflower', 'Peas', 'Carrots', 'Pav Bhaji Masala', 'Butter', 'Pav', 'Onions', 'Lemon', 'Coriander'],
+        features: ['✓ Mixed vegetable goodness', '✓ Rich buttery taste', '✓ Spicy masala', '✓ Complete meal', '✓ Mumbai classic'],
+        prepTime: '15 mins',
+        rating: 4.9,
+        reviews: 345,
+        vegetarian: true
+    },
+    {
+        id: 26,
+        fullDescription: 'Our famous Pav Bhaji loaded with generous amounts of Amul cheese! The cheese melts into the hot, spicy bhaji, creating a creamy and rich flavor profile that is hard to resist.',
+        ingredients: ['Pav', 'Mixed Vegetable Bhaji', 'Amul Cheese', 'Butter', 'Onions', 'Lemon', 'Coriander'],
+        features: ['✓ Loaded with Amul Cheese', '✓ Extra creamy', '✓ Rich flavor', '✓ Kids favorite', '✓ Spicy & cheesy'],
+        prepTime: '15 mins',
+        rating: 4.9,
+        reviews: 278,
+        vegetarian: true
+    },
+    {
+        id: 27,
+        fullDescription: 'A spicy and savory delight for non-veg lovers! Minced chicken cooked with aromatic spices, onions, and tomatoes, served with buttered pav. A hearty and satisfying meal.',
+        ingredients: ['Minced Chicken (Keema)', 'Onions', 'Tomatoes', 'Ginger-Garlic Paste', 'Garam Masala', 'Pav', 'Butter', 'Coriander', 'Green Chilies'],
+        features: ['✓ Spicy chicken keema', '✓ Protein rich', '✓ Authentic spices', '✓ Soft buttered pav', '✓ Filling meal'],
+        prepTime: '18 mins',
+        rating: 4.8,
+        reviews: 198,
+        vegetarian: false
+    },
+    {
+        id: 28,
+        fullDescription: 'A vegetarian take on the classic meat dish! Soya granules or minced vegetables cooked in a spicy, flavorful gravy, served with soft pavs. You won\'t believe it\'s not meat!',
+        ingredients: ['Soya Granules/Minced Veggies', 'Onions', 'Tomatoes', 'Keema Masala', 'Pav', 'Butter', 'Peas', 'Coriander'],
+        features: ['✓ 100% Vegetarian', '✓ High protein soya', '✓ Meat-like texture', '✓ Spicy gravy', '✓ Healthy alternative'],
+        prepTime: '15 mins',
+        rating: 4.6,
+        reviews: 145,
+        vegetarian: true
+    },
+    {
+        id: 29,
+        fullDescription: 'A fiery Maharashtrian curry made from moth beans (matki), topped with farsan (crispy mix), chopped onions, and coriander. Served with pav and a slice of lemon for an extra kick.',
+        ingredients: ['Moth Beans (Matki)', 'Farsan/Sev', 'Onions', 'Tomatoes', 'Missal Masala', 'Pav', 'Lemon', 'Coriander', 'Oil', 'Mustard Seeds'],
+        features: ['✓ Authentic Kolhapuri spice', '✓ High protein beans', '✓ Crunchy topping', '✓ Spicy curry', '✓ Traditional breakfast'],
+        prepTime: '15 mins',
+        rating: 4.7,
+        reviews: 234,
+        vegetarian: true
+    },
+    {
+        id: 30,
+        fullDescription: 'A desi-style burger that hits all the right spots! A crispy vegetable patty made from potatoes, peas, and carrots, topped with a slice of cheese, fresh lettuce, tomatoes, and our special burger sauce.',
+        ingredients: ['Burger Bun', 'Potato & Veg Patty', 'Cheese Slice', 'Lettuce', 'Tomato', 'Onion', 'Mayonnaise', 'Ketchup', 'Burger Sauce'],
+        features: ['✓ Homemade veg patty', '✓ Cheesy delight', '✓ Fresh veggies', '✓ Special sauce', '✓ Kids favorite'],
+        prepTime: '12 mins',
+        rating: 4.5,
+        reviews: 112,
+        vegetarian: true
+    },
+    {
+        id: 31,
+        fullDescription: 'A traditional North Indian breakfast! Spicy potato curry (aloo subji) served with crispy, flaky khasta kachoris. The combination of the spicy curry and the crunchy kachori is heavenly.',
+        ingredients: ['Khasta Kachori', 'Potatoes', 'Tomatoes', 'Green Chilies', 'Ginger', 'Cumin Seeds', 'Asafoetida', 'Turmeric', 'Coriander'],
+        features: ['✓ Classic breakfast combo', '✓ Spicy potato curry', '✓ Flaky kachori', '✓ Authentic taste', '✓ Filling meal'],
+        prepTime: '10 mins',
+        rating: 4.7,
+        reviews: 145,
+        vegetarian: true
+    },
+    {
+        id: 32,
+        fullDescription: 'The ultimate Punjabi feast! Large, fluffy fried bread (bhature) served with spicy, tangy chickpea curry (chole), pickled onions, and green chilies. A meal that signifies celebration.',
+        ingredients: ['Refined Flour (Maida)', 'Chickpeas (Kabuli Chana)', 'Onions', 'Tomatoes', 'Ginger-Garlic Paste', 'Chole Masala', 'Tea Leaves (for color)', 'Yogurt'],
+        features: ['✓ Authentic Punjabi recipe', '✓ Large fluffy bhature', '✓ Spicy & tangy chole', '✓ Served with pickle', '✓ Heavy & satisfying'],
+        prepTime: '20 mins',
+        rating: 4.9,
+        reviews: 356,
+        vegetarian: true
+    },
+    {
+        id: 33,
+        fullDescription: 'A popular street food from Agra and Mathura! Crispy, coarse wheat flour puris stuffed with spiced lentil paste, served with a spicy potato curry. A rustic and flavorful meal.',
+        ingredients: ['Wheat Flour', 'Urad Dal Paste', 'Potatoes', 'Tomatoes', 'Fennel Seeds', 'Coriander Powder', 'Red Chili Powder', 'Amchur (Dry Mango Powder)'],
+        features: ['✓ Rustic flavors', '✓ Stuffed puris', '✓ Spicy aloo sabzi', '✓ Mathura style', '✓ Crispy texture'],
+        prepTime: '15 mins',
+        rating: 4.6,
+        reviews: 123,
+        vegetarian: true
+    },
+    {
+        id: 34,
+        fullDescription: 'A delicious vegetarian wrap! Spiced soya granules or minced vegetables cooked to perfection and wrapped in a soft, thin roomali roti with onions and mint sauce.',
+        ingredients: ['Roomali Roti', 'Soya Granules/Minced Veggies', 'Onions', 'Mint Chutney', 'Chaat Masala', 'Lemon Juice'],
+        features: ['✓ Thin & soft roti', '✓ Healthy filling', '✓ Perfect for lunch', '✓ Easy to eat', '✓ Vegetarian delight'],
+        prepTime: '12 mins',
+        rating: 4.5,
+        reviews: 98,
+        vegetarian: true
+    },
+    {
+        id: 35,
+        fullDescription: 'A winter classic from Punjab! Nutritious mustard greens (sarson ka saag) cooked with spices and served with rustic cornflour flatbread (makki ki roti) and a dollop of white butter.',
+        ingredients: ['Mustard Greens (Sarson)', 'Spinach', 'Corn Flour (Makka)', 'Ginger', 'Garlic', 'Green Chilies', 'Ghee/Butter', 'Jaggery'],
+        features: ['✓ Winter special', '✓ Highly nutritious', '✓ Authentic Punjabi taste', '✓ Gluten-free bread', '✓ Rich in iron'],
+        prepTime: '25 mins',
+        rating: 4.8,
+        reviews: 210,
+        vegetarian: true
+    },
+    {
+        id: 36,
+        fullDescription: 'A non-veg lover’s dream! Spicy minced chicken (keema) wrapped in a delicate, handkerchief-thin roomali roti with crunchy onions and tangy chutney.',
+        ingredients: ['Roomali Roti', 'Minced Chicken', 'Onions', 'Ginger-Garlic Paste', 'Green Chilies', 'Garam Masala', 'Mint Chutney', 'Egg (optional coating)'],
+        features: ['✓ Soft roomali roti', '✓ Spicy chicken filling', '✓ Juicy & flavorful', '✓ Perfect roll', '✓ High protein'],
+        prepTime: '15 mins',
+        rating: 4.7,
+        reviews: 167,
+        vegetarian: false
+    },
+    {
+        id: 37,
+        fullDescription: 'Our signature Tandoori Chicken! Marinated in yoghurt and spices for 24 hours, tied with a string (sutli) to hold its juices, and slow-cooked in a clay oven (tandoor). Juicy, smoky, and absolutely delicious.',
+        ingredients: ['Whole Chicken', 'Yoghurt', 'Ginger-Garlic Paste', 'Lemon Juice', 'Kashmiri Red Chili', 'Garam Masala', 'Mustard Oil', 'Kasuri Methi'],
+        features: ['✓ Signature dish', '✓ Slow-cooked in Tandoor', '✓ Smoky flavor', '✓ Juicy & tender', '✓ Authentic marinade'],
+        prepTime: '25 mins',
+        rating: 4.9,
+        reviews: 412,
+        vegetarian: false
+    },
+    {
+        id: 38,
+        fullDescription: 'Succulent chicken pieces marinated in a spicy mix of roasted spices and yoghurt, then grilled to perfection. The \'Barrah\' style preparation gives it a robust and smoky flavor.',
+        ingredients: ['Chicken Pieces', 'Hung Curd', 'Barrah Masala', 'Black Pepper', 'Clove', 'Cardamom', 'Lemon', 'Ghee'],
+        features: ['✓ Spicy & robust', '✓ Smoky aroma', '✓ Tender meat', '✓ Perfect appetizer', '✓ Best with mint chutney'],
+        prepTime: '20 mins',
+        rating: 4.7,
+        reviews: 231,
+        vegetarian: false
+    },
+    {
+        id: 39,
+        fullDescription: 'A milder, creamy version of the classic chicken tikka. Boneless chicken chunks marinated in cream (malai), cheese, cashew paste, and mild spices. Delicately grilled to melt in your mouth.',
+        ingredients: ['Boneless Chicken', 'Fresh Cream', 'Cheese', 'Cashew Paste', 'White Pepper', 'Cardamom Powder', 'Ghee'],
+        features: ['✓ Creamy & mild', '✓ Melt-in-mouth texture', '✓ Kid-friendly', '✓ Rich cashew marinade', '✓ Cheesy flavor'],
+        prepTime: '20 mins',
+        rating: 4.8,
+        reviews: 345,
+        vegetarian: false
+    },
+    {
+        id: 40,
+        fullDescription: 'For those who like it hot and tangy! Boneless chicken marinated in a special \'Chatpati\' spice blend including raw mango powder, chili, and lemon. Grilled to a charred perfection.',
+        ingredients: ['Boneless Chicken', 'Chatpati Masala', 'Amchur (Dry Mango)', 'Red Chili Paste', 'Lemon Juice', 'Yoghurt', 'Ginger-Garlic'],
+        features: ['✓ Spicy & tangy', '✓ Chatpati flavors', '✓ Char-grilled', '✓ Zesty kick', '✓ Perfect with drinks'],
+        prepTime: '20 mins',
+        rating: 4.7,
+        reviews: 189,
+        vegetarian: false
+    },
+    {
+        id: 41,
+        fullDescription: 'A delightful sizzler platter featuring crispy vegetable cutlets served on a bed of rice or noodles, with stir-fried vegetables and savory sauce. Served sizzling hot!',
+        ingredients: ['Veg Cutlets', 'Rice/Noodles', 'Mixed Vegetables (Carrot, Beans, Capsicum)', 'Sizzler Sauce', 'French Fries', 'Butter'],
+        features: ['✓ Served sizzling hot', '✓ Complete meal', '✓ Crispy cutlets', '✓ Fresh veggies', '✓ Dramatic presentation'],
+        prepTime: '25 mins',
+        rating: 4.6,
+        reviews: 156,
+        vegetarian: true
+    },
+    {
+        id: 42,
+        fullDescription: 'Paneer like never before! Large cubes of paneer marinated in \'Bhatti\' spices and grilled, served sizzling with onions, capsicum, and a spicy gravy.',
+        ingredients: ['Paneer (Cottage Cheese)', 'Bhatti Masala', 'Onions', 'Capsicum', 'Sizzler Gravy', 'Butter', 'Lemon'],
+        features: ['✓ Smoky grilled paneer', '✓ Spicy Bhatti masala', '✓ Sizzling platter', '✓ High protein veg', '✓ Exotic flavors'],
+        prepTime: '25 mins',
+        rating: 4.8,
+        reviews: 267,
+        vegetarian: true
+    },
+    {
+        id: 43,
+        fullDescription: 'Delicious Soya Chaap marinated in tandoori spices, grilled and served sizzling with grilled onions and mint sauce. A vegetarian delight with a meaty texture.',
+        ingredients: ['Soya Chaap', 'Tandoori Masala', 'Yoghurt', 'Butter', 'Onions', 'Capsicum', 'Lemon', 'Sizzler Sauce'],
+        features: ['✓ Meat substitute', '✓ High protein', '✓ Tandoori flavor', '✓ Juicy & chewy', '✓ Sizzling hot'],
+        prepTime: '20 mins',
+        rating: 4.7,
+        reviews: 198,
+        vegetarian: true
+    },
+    {
+        id: 44,
+        fullDescription: 'The ultimate platter for chicken lovers! An assortment of Malai Tikka, Haryali Tikka, and Classic Chicken Tikka served on a sizzling plate with dip and salad.',
+        ingredients: ['Chicken Malai Tikka', 'Chicken Haryali Tikka', 'Chicken Tikka', 'Mint Chutney', 'Salad', 'Butter'],
+        features: ['✓ Assorted tikkas', '✓ 3 flavors in 1', '✓ Shareable platter', '✓ Best seller', '✓ Sizzling presentation'],
+        prepTime: '30 mins',
+        rating: 4.9,
+        reviews: 450,
+        vegetarian: false
+    },
+    {
+        id: 45,
+        fullDescription: 'Premium lamb chops marinated in a secret spice blend and grilled to juicy perfection. Served sizzling with grilled vegetables and a mint-yogurt dip. A royal feast!',
+        ingredients: ['Lamb Chops', 'Secret Spice Blend', 'Yoghurt', 'Raw Papaya (tenderizer)', 'Ginger-Garlic', 'Ghee', 'Grilled Veggies'],
+        features: ['✓ Premium lamb cuts', '✓ Juicy & tender', '✓ Royal delicacy', '✓ Exquisite flavors', '✓ Special occasion dish'],
+        prepTime: '35 mins',
+        rating: 4.9,
+        reviews: 180,
+        vegetarian: false
+    },
+    {
+        id: 46,
+        fullDescription: 'Crispy, golden-fried fish fillets marinated in traditional Amritsari spices and chickpea flour. A light and flavorful appetizer that melts in your mouth.',
+        ingredients: ['Fish Fillets', 'Chickpea Flour (Besan)', 'Carom Seeds (Ajwain)', 'Ginger-Garlic Paste', 'Lemon Juice', 'Red Chili Powder', 'Turmeric', 'Egg'],
+        features: ['✓ Amritsari specialty', '✓ Light & crispy batter', '✓ Ajwain flavor', '✓ Fresh fish', '✓ Perfect snack'],
+        prepTime: '15 mins',
+        rating: 4.8,
+        reviews: 189,
+        vegetarian: false
+    },
+    {
+        id: 47,
+        fullDescription: 'A royal feast for vegetarians! Fragrant basmati rice layered with a rich medley of seasonal vegetables cooked in aromatic spices and saffron-infused milk. Served with raita and salan.',
+        ingredients: ['Basmati Rice', 'Cauliflower', 'Carrots', 'Beans', 'Peas', 'Potatoes', 'Saffron', 'Biryani Masala', 'Fried Onions (Barista)', 'Ghee'],
+        features: ['✓ Authentic Dum cooking', '✓ Fresh seasonal veggies', '✓ Saffron aroma', '✓ Served with Raita', '✓ Complete meal'],
+        prepTime: '20 mins',
+        rating: 4.7,
+        reviews: 210,
+        vegetarian: true
+    },
+    {
+        id: 48,
+        fullDescription: 'Orignating from the streets of Old Delhi! Tender chicken pieces marinated in yoghurt and spices, layered with long-grain basmati rice and slow-cooked in a sealed pot (dum) to lock in the flavors.',
+        ingredients: ['Basmati Rice', 'Chicken Pieces', 'Yoghurt', 'Saffron', 'Kewra Water', 'Rose Water', 'Ghee', 'Whole Spices', 'Fried Onions'],
+        features: ['✓ Purani Delhi style', '✓ Dum Pukht cooking', '✓ Rich & aromatic', '✓ Tender chicken', '✓ Classic recipe'],
+        prepTime: '25 mins',
+        rating: 4.9,
+        reviews: 450,
+        vegetarian: false
+    },
+    {
+        id: 49,
+        fullDescription: 'A delicacy for meat connoisseurs! Succulent pieces of goat meat cooked with aromatic spices and layered with premium basmati rice. Slow-cooked to perfection for an unforgettable taste experience.',
+        ingredients: ['Basmati Rice', 'Goat Meat', 'Yoghurt', 'Saffron', 'Mint Leaves', 'Coriander', 'Garam Masala', 'Ghee', 'Ginger-Garlic'],
+        features: ['✓ Premium goat meat', '✓ Traditional Dum style', '✓ Exquisite aroma', '✓ Rich flavors', '✓ Special occasion dish'],
+        prepTime: '30 mins',
+        rating: 4.8,
+        reviews: 320,
+        vegetarian: false
+    }
 ];
 
 function ProductDetail() {
@@ -167,7 +497,7 @@ function ProductDetail() {
     } : null;
 
     // State management
-    const [quantity, setQuantity] = useState(1);
+    const [selectedVariant, setSelectedVariant] = useState(0);
     const [selectedImage, setSelectedImage] = useState(0);
     const [showNotification, setShowNotification] = useState(false);
     const [spiceLevel, setSpiceLevel] = useState('medium');
@@ -323,10 +653,39 @@ function ProductDetail() {
                             {/* Dietary Badges */}
 
 
+                            {/* Variant Selector */}
+                            {product.variants && (
+                                <div className="variant-selector" style={{ marginBottom: '20px' }}>
+                                    <h3 className="desi-section-title" style={{ fontSize: '1.1rem', marginBottom: '10px' }}>Select Size:</h3>
+                                    <div className="variant-options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                                        {product.variants.map((variant, index) => (
+                                            <button
+                                                key={index}
+                                                className={`variant-btn ${selectedVariant === index ? 'active' : ''}`}
+                                                onClick={() => setSelectedVariant(index)}
+                                                style={{
+                                                    padding: '8px 16px',
+                                                    border: selectedVariant === index ? '2px solid #333' : '1px solid #ddd',
+                                                    borderRadius: '20px',
+                                                    background: selectedVariant === index ? '#fff' : '#f9f9f9',
+                                                    color: '#333',
+                                                    fontWeight: '600',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                {variant.name}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
                             {/* Quantity Selector & Price */}
                             <div className="desi-price-section">
                                 <div className="price-quantity">
-                                    <div className="desi-price">{product.price}</div>
+                                    <div className="desi-price">
+                                        {product.variants ? product.variants[selectedVariant].price : product.price}
+                                    </div>
                                 </div>
                                 <Link to="/contact" className="desi-add-btn" style={{ textAlign: 'center', textDecoration: 'none' }}>
                                     Contact to Order

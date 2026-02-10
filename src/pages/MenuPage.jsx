@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { categories, menuItems } from '../data/menuData';
 import { addToCart } from '../utils/cart';
 import '../index.css';
+import '../dietary.css';
+
 
 function MenuPage() {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [cartToast, setCartToast] = useState(false);
+    const [dietaryFilter, setDietaryFilter] = useState('all'); // 'all', 'veg', 'non-veg'
 
     const handleAddToCart = (item) => {
         addToCart(item, 1);
@@ -15,11 +18,29 @@ function MenuPage() {
         setTimeout(() => setCartToast(false), 1800);
     };
 
+    const isVeg = (item) => {
+        if (item.veg !== undefined) return item.veg;
+        // Infer from name if not explicitly defined
+        const nonVegKeywords = ['chicken', 'goat', 'lamb', 'fish', 'egg', 'keema', 'mutton', 'prawn', 'non veg', 'non-veg'];
+        const lowerName = item.name.toLowerCase();
+        const lowerDesc = item.description ? item.description.toLowerCase() : '';
+
+        return !nonVegKeywords.some(keyword => lowerName.includes(keyword) || lowerDesc.includes(keyword));
+    };
+
     const filteredItems = menuItems.filter(item => {
         const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
         const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             item.description.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCategory && matchesSearch;
+
+        let matchesDietary = true;
+        if (dietaryFilter === 'veg') {
+            matchesDietary = isVeg(item);
+        } else if (dietaryFilter === 'non-veg') {
+            matchesDietary = !isVeg(item);
+        }
+
+        return matchesCategory && matchesSearch && matchesDietary;
     });
 
     return (
@@ -50,6 +71,28 @@ function MenuPage() {
                                 <button className="clear-search" onClick={() => setSearchQuery('')}>✕</button>
                             )}
                         </div>
+                    </div>
+
+                    {/* Dietary Filters */}
+                    <div className="dietary-filters">
+                        <button
+                            className={`dietary-btn ${dietaryFilter === 'all' ? 'active' : ''}`}
+                            onClick={() => setDietaryFilter('all')}
+                        >
+                            All
+                        </button>
+                        <button
+                            className={`dietary-btn veg ${dietaryFilter === 'veg' ? 'active' : ''}`}
+                            onClick={() => setDietaryFilter('veg')}
+                        >
+                            Veg
+                        </button>
+                        <button
+                            className={`dietary-btn non-veg ${dietaryFilter === 'non-veg' ? 'active' : ''}`}
+                            onClick={() => setDietaryFilter('non-veg')}
+                        >
+                            Non-Veg
+                        </button>
                     </div>
 
                     {/* Category Filters */}

@@ -1,0 +1,38 @@
+/* Dietary Filters */
+.dietary-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.dietary-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.dietary-btn:hover {
+    background: #f5f5f5;
+}
+
+.dietary-btn.active {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+.dietary-btn.veg.active {
+    background: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.dietary-btn.non-veg.active {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
