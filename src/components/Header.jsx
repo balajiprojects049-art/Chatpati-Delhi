@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getCartCount } from '../utils/cart';
 import CartPanel from './CartPanel';
 import '../index.css';
@@ -38,32 +39,24 @@ function Header() {
                 <div className="container">
                     <nav className="nav">
                         <div className="logo-container">
-                            <img
-                                src="/images/logo.png"
-                                alt="Chatpati Delhi Logo"
-                                className="logo"
-                            />
-                            <div className="brand-text">
-                                <h1>Chatpati Delhi</h1>
-                                <p>Food Served With Love</p>
-                            </div>
+                            <Link to="/" className="logo-link">
+                                <img
+                                    src="/images/logo.png"
+                                    alt="Chatpati Delhi Logo"
+                                    className="logo"
+                                />
+                                <div className="brand-text">
+                                    <h1>Chatpati Delhi</h1>
+                                    <p>Food Served With Love</p>
+                                </div>
+                            </Link>
                         </div>
                         <ul className={`nav-links ${mobileOpen ? 'open' : ''}`} aria-hidden={!mobileOpen}>
-                            <li><a href="/#home" onClick={() => setMobileOpen(false)}>Home</a></li>
-                            <li><a href="/#menu" onClick={() => setMobileOpen(false)}>Menu</a></li>
-                            <li><a href="/#about" onClick={() => setMobileOpen(false)}>About</a></li>
-                            <li><a href="/#contact" onClick={() => setMobileOpen(false)}>Contact</a></li>
+                            <li><Link to="/" onClick={() => setMobileOpen(false)}>Home</Link></li>
+                            <li><Link to="/menu" onClick={() => setMobileOpen(false)}>Menu</Link></li>
+                            <li><Link to="/about" onClick={() => setMobileOpen(false)}>About</Link></li>
+                            <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
                         </ul>
-                        <div className="cart-container">
-                            <button className="cart-btn" aria-label="View cart" onClick={() => setCartOpen(true)}>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                                    <circle cx="10" cy="20" r="1.5" fill="currentColor" />
-                                    <circle cx="18" cy="20" r="1.5" fill="currentColor" />
-                                </svg>
-                                <span className="cart-badge">{cartCount}</span>
-                            </button>
-                        </div>
                         <button
                             className="mobile-menu-btn"
                             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -77,23 +70,8 @@ function Header() {
             </header>
 
             {/* Floating Cart Button */}
-            <button
-                className={`floating-cart-btn ${cartCount > 0 ? 'visible' : ''}`}
-                onClick={() => setCartOpen(true)}
-                aria-label="Open cart"
-            >
-                <div className="cart-icon-wrapper">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <circle cx="10" cy="20" r="1.5" fill="currentColor" />
-                        <circle cx="18" cy="20" r="1.5" fill="currentColor" />
-                    </svg>
-                    <span className="floating-cart-badge">{cartCount}</span>
-                </div>
-                <span className="cart-label">Cart</span>
-            </button>
-
-            <CartPanel open={cartOpen} onClose={() => setCartOpen(false)} />
+            {/* Cart Panel Removed */}
+            {/* <CartPanel open={cartOpen} onClose={() => setCartOpen(false)} /> */}
         </>
     );
 }

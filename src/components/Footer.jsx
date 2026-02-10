@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../index.css';
 
 function Footer() {
@@ -29,10 +30,10 @@ function Footer() {
                     </div>
                     <div className="footer-section">
                         <h3>Quick Links</h3>
-                        <a href="/#home">Home</a>
-                        <a href="/#menu">Menu</a>
-                        <a href="/#about">About Us</a>
-                        <a href="/#contact">Contact</a>
+                        <Link to="/">Home</Link>
+                        <Link to="/menu">Menu</Link>
+                        <Link to="/about">About Us</Link>
+                        <Link to="/contact">Contact</Link>
                     </div>
                     <div className="footer-section">
                         <h3>Hours</h3>

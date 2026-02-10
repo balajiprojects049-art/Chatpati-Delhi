@@ -51,6 +51,14 @@ body {
     overflow-x: hidden;
 }
 
+html,
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -95,7 +103,13 @@ h6 {
 .logo-container {
     display: flex;
     align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
     gap: 1rem;
+    text-decoration: none;
 }
 
 .logo {
@@ -151,22 +165,51 @@ h6 {
 
 /* Responsive - Mobile navigation and UI tweaks */
 @media (max-width: 900px) {
+    .container {
+        padding: 0 1rem;
+        /* Reduce padding on mobile */
+    }
+
+    .logo {
+        width: 45px;
+        /* Smaller logo on mobile */
+        height: 45px;
+    }
+
+    .cart-btn {
+        width: 40px;
+        /* Smaller cart button */
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .cart-badge {
+        width: 16px;
+        height: 16px;
+        font-size: 0.65rem;
+        top: -4px;
+        right: -4px;
+    }
+
     .mobile-menu-btn {
         display: block;
+        margin-left: 0.75rem;
     }
 
     .nav-links {
         display: none;
         position: absolute;
-        top: 68px;
-        right: 16px;
+        top: 60px;
+        /* Matched to new header height */
+        right: 0;
+        left: 0;
+        /* Full width menu */
         background: var(--primary-maroon);
-        width: 260px;
-        padding: 1rem;
+        padding: 1.5rem;
         flex-direction: column;
-        gap: 0.75rem;
-        border-radius: 12px;
+        gap: 1rem;
         box-shadow: var(--shadow-md);
+        text-align: center;
     }
 
     .nav-links.open {
@@ -175,8 +218,14 @@ h6 {
 
     .nav-links a {
         color: var(--white);
-        font-size: 1rem;
-        padding: 0.5rem 0.25rem;
+        font-size: 1.125rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: block;
+    }
+
+    .nav-links li:last-child a {
+        border-bottom: none;
     }
 
     .brand-text h1 {
@@ -187,9 +236,39 @@ h6 {
         display: none;
     }
 
+    /* Hero Mobile Adjustments */
     .hero-slider {
-        height: 420px;
-        margin-top: 72px;
+        height: 500px;
+        /* Slightly taller for content */
+        margin-top: 60px;
+    }
+
+    .hero-content {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-buttons {
+        gap: 1rem;
+    }
+
+    /* General Section Scaling */
+    .section {
+        padding: 3rem 0;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
     }
 
     .product-image {
@@ -203,6 +282,28 @@ h6 {
     .btn {
         padding: 0.8rem 1.6rem;
         font-size: 1rem;
+        width: 100%;
+        /* Full width buttons on mobile usually look better */
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-secondary {
+        margin-bottom: 0;
+    }
+
+    .hero-buttons .btn {
+        width: auto;
+        /* Except in hero where side-by-side might be better if they fit, or stack them */
+        min-width: 140px;
+    }
+
+    .stat-card,
+    .value-card,
+    .testimonial-card,
+    .about-card,
+    .contact-item,
+    .contact-form {
+        padding: 1.25rem;
     }
 }
 
@@ -275,7 +376,7 @@ h6 {
 .hero-slider {
     position: relative;
     height: 600px;
-    margin-top: 76px;
+    margin-top: 85px;
     overflow: hidden;
 }
 
@@ -601,7 +702,7 @@ h6 {
 /* Stats Section */
 .stats-section {
     background: linear-gradient(135deg, var(--primary-maroon) 0%, var(--secondary-brown) 100%);
-    padding: var(--spacing-lg) 0;
+    padding: 1rem 0;
 }
 
 .stats-grid {
@@ -613,18 +714,18 @@ h6 {
 .stat-card {
     text-align: center;
     color: var(--white);
-    padding: var(--spacing-md);
+    padding: 0.25rem;
 }
 
 .stat-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-sm);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .stat-value {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .stat-label {
@@ -796,7 +897,7 @@ h6 {
             rgba(255, 255, 255, 0.02) 20px),
         linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
     color: var(--white);
-    padding: var(--spacing-lg) 0 var(--spacing-md);
+    padding: var(--spacing-md) 0 var(--spacing-sm);
     position: relative;
 }
 
@@ -816,8 +917,8 @@ h6 {
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
 }
 
 .footer-section h3 {
@@ -881,7 +982,7 @@ h6 {
 
 .footer-bottom {
     text-align: center;
-    padding-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.6);
 }
@@ -1992,4 +2093,34 @@ body {
 .about-section {
     background-color: transparent !important;
     background: transparent !important;
+}
+
+/* Mobile Fixes for Stats Section */
+@media (max-width: 600px) {
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+
+    .stat-card {
+        padding: 1rem 0.5rem;
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        /* Reduced to fit 2 cols */
+        margin-bottom: 0.25rem;
+        word-wrap: break-word;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        line-height: 1.2;
+    }
 }
