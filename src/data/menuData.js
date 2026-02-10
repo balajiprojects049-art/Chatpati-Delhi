@@ -3,7 +3,6 @@ export const categories = [
     { id: 'chaat', name: 'Chaat', icon: '🥗' },
     { id: 'mumbai', name: 'Mumbai Local', icon: '🚂' },
     { id: 'snacks', name: 'Snacks', icon: '🍢' },
-    { id: 'tandoor', name: 'Tandoor', icon: '🔥' },
     { id: 'sizzling', name: 'Sizzling', icon: '🍳' },
     { id: 'biryani', name: 'Biryani', icon: '🍛' },
     { id: 'thali', name: 'Thalis', icon: '🍱' },
@@ -59,18 +58,18 @@ export const menuItems = [
     { id: 36, name: 'Chicken Keema Roomali Roti', price: '$16.95', category: 'snacks', image: '🫓', hot: true, description: 'Chicken keema with roti' },
 
     // The Tikkawala (Tandoor)
-    { id: 37, name: 'Sutli Chicken', price: '$16.95', category: 'tandoor', image: '🍗', hot: true, description: 'String-tied tandoori chicken' },
-    { id: 38, name: 'Barrah Chicken', price: '$16.95', category: 'tandoor', image: '🍗', hot: false, description: 'Spicy chicken pieces' },
-    { id: 39, name: 'Chicken Malai', price: '$16.95', category: 'tandoor', image: '🍗', hot: false, description: 'Creamy chicken tikka' },
-    { id: 40, name: 'Chicken Chatpati', price: '$16.95', category: 'tandoor', image: '🍗', hot: true, description: 'Spicy tandoori chicken' },
+    { id: 37, name: 'Sutli Chicken', price: '$16.95', category: 'sizzling', image: '🍗', hot: true, description: 'String-tied tandoori chicken' },
+    { id: 38, name: 'Barrah Chicken', price: '$16.95', category: 'sizzling', image: '🍗', hot: false, description: 'Spicy chicken pieces' },
+    { id: 39, name: 'Chicken Malai', price: '$16.95', category: 'sizzling', image: '🍗', hot: false, description: 'Creamy chicken tikka' },
+    { id: 40, name: 'Chicken Chatpati', price: '$16.95', category: 'sizzling', image: '🍗', hot: true, description: 'Spicy tandoori chicken' },
 
     // What's Sizzling
     { id: 41, name: 'Veg Cutlet Sizzler', price: '$11.95', category: 'sizzling', image: '🍳', hot: false, description: 'Vegetable cutlet sizzler' },
     { id: 42, name: 'Bhatti Paneer Sizzler', price: '$13.95', category: 'sizzling', image: '🔥', hot: true, description: 'Grilled paneer sizzler' },
     { id: 43, name: 'Chaap Chaap Sizzler', price: '$12.95', category: 'sizzling', image: '🔥', hot: false, description: 'Soya chaap sizzler' },
-    { id: 44, name: 'Chicken Tikka Sizzler', price: '$16.95', category: 'sizzling', image: '🍗', hot: true, description: 'Chicken tikka sizzler' },
+    { id: 44, name: 'Mix Chicken Tikka Sizzler', price: '$16.95', category: 'sizzling', image: '🍗', hot: true, description: 'Chicken tikka sizzler' },
     { id: 45, name: 'Lamb Chops', price: '$26.99', category: 'sizzling', image: '🍖', hot: true, description: 'Grilled lamb chops' },
-    { id: 46, name: 'Fish Amritsari', price: '$14.95', category: 'sizzling', image: '🐟', hot: false, description: 'Amritsari fried fish' },
+    { id: 46, name: 'Fish Amritsari', price: '$14.95', category: 'snacks', image: '🐟', hot: false, description: 'Amritsari fried fish' },
 
     // Biryani Ki Kahani
     { id: 47, name: 'Tarkari Biryani (Veg)', price: '$14.95', category: 'biryani', image: '🍛', hot: false, description: 'Vegetable biryani' },
@@ -110,9 +109,9 @@ export const menuItems = [
     { id: 73, name: 'C.P.D Non Veg Thali', price: '$22.95', category: 'thali', image: '🍱', hot: true, description: 'Non-veg complete thali' },
 
     // Bachaa Party Special
-    { id: 74, name: 'Baccha Maggi', price: '$8.95', category: 'snacks', image: '🍜', hot: false, description: 'Kids noodles' },
-    { id: 75, name: 'Fries', price: '$7.95', category: 'snacks', image: '🍟', hot: false, description: 'French fries' },
-    { id: 76, name: 'Bacha Combo', price: '$13.95', category: 'snacks', image: '🍔', hot: false, description: 'Chole Cheese Burger, Fries & Mango Lassi' },
+    //{ id: 74, name: 'Baccha Maggi', price: '$8.95', category: 'snacks', image: '🍜', hot: false, description: 'Kids noodles' },
+    //{ id: 75, name: 'Fries', price: '$7.95', category: 'snacks', image: '🍟', hot: false, description: 'French fries' },
+    //{ id: 76, name: 'Bacha Combo', price: '$13.95', category: 'snacks', image: '🍔', hot: false, description: 'Chole Cheese Burger, Fries & Mango Lassi' },
 
     // Tandoori Daawat (Bread)
     { id: 77, name: 'Butter Naan', price: '$3.95', category: 'bread', image: '🥖', hot: false, description: 'Butter naan' },
@@ -127,12 +126,13 @@ export const menuItems = [
     { id: 86, name: 'Aloo Kulcha', price: '$4.95', category: 'bread', image: '🥖', hot: false, description: 'Potato kulcha' },
     { id: 87, name: 'Mirchi Naan', price: '$4.95', category: 'bread', image: '🥖', hot: true, description: 'Chili naan' },
     { id: 88, name: 'Mithi Cheese Naan', price: '$5.95', category: 'bread', image: '🥖', hot: false, description: 'Sweet cheese naan' },
+    { id: 123, name: 'Bread Basket (4 Pcs)', price: '$20.95', category: 'bread', image: '🧺', hot: false, description: 'Includes Tandoori Roti, Garlic Naan, Butter Naan, and Onion Kulcha' },
 
     // Old School Paranthas
     { id: 89, name: 'Aloo Parantha', price: '$11.95', category: 'parantha', image: '🫓', hot: false, description: 'Potato parantha' },
     { id: 90, name: 'Gobhi Parantha', price: '$11.95', category: 'parantha', image: '🫓', hot: false, description: 'Cauliflower parantha' },
     { id: 91, name: 'Paneer Parantha', price: '$12.95', category: 'parantha', image: '🫓', hot: false, description: 'Paneer parantha' },
-    { id: 92, name: 'Mix Veg Parantha', price: '$12.95', category: 'parantha', image: '🫓', hot: false, description: 'Mixed veg parantha' },
+    //{ id: 92, name: 'Mix Veg Parantha', price: '$12.95', category: 'parantha', image: '🫓', hot: false, description: 'Mixed veg parantha' },
     { id: 93, name: 'Cheese Parantha', price: '$12.95', category: 'parantha', image: '🫓', hot: false, description: 'Cheese parantha' },
 
     // Meethe Me (Sweets)
@@ -144,6 +144,7 @@ export const menuItems = [
     { id: 99, name: 'Malai Kulfi', price: '$4.95', category: 'sweets', image: '🍦', hot: false, description: 'Creamy kulfi' },
     { id: 100, name: 'Moong Dal Halwa', price: '$6.95', category: 'sweets', image: '🍮', hot: false, description: 'Lentil halwa' },
     { id: 101, name: 'Rasgulla', price: '$4.95', category: 'sweets', image: '🍡', hot: false, description: 'Spongy rasgulla' },
+    { id: 124, name: 'Gajar ka Halwa', price: '$6.95', category: 'sweets', image: '🥕', hot: true, description: 'Carrot pudding' },
 
     // Kya Piyoge (Drinks)
     { id: 102, name: 'Aam Ki Lassi', price: '$4.95', category: 'drinks', image: '🥤', hot: false, description: 'Mango lassi' },
