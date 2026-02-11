@@ -9,10 +9,12 @@ import CateringPage from './pages/CateringPage';
 import ContactPage from './pages/ContactPage';
 import ProductDetail from './ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
+import WelcomeScreen from './components/WelcomeScreen';
 
 function AppRouter() {
     return (
         <div className="app">
+            <WelcomeScreen />
             <ScrollToTop />
             <Header />
             <main>
