@@ -58,38 +58,33 @@ export default function CartPanel({ open, onClose }) {
         // Format as #001, #002, etc.
         const orderId = nextOrderNum.toString().padStart(3, '0');
 
-        // Professional Box-Style Format for WhatsApp
-        let message = `*Order #${orderId} - CHATPATI DELHI*\n\n`;
-        message += `\`\`\`\n`;
-        message += `╔═══════════════════════════╗\n`;
-        message += `║      Customer Details     ║\n`;
-        message += `╠═══════════════════════════╣\n`;
-        message += `  ID     : ORDER-${orderId}\n`;
-        message += `  Name   : ${formData.name}\n`;
-        message += `  Mobile : ${formData.mobile}\n`;
-        message += `  Date   : ${formData.date}\n`;
-        message += `  Time   : ${formData.time}\n`;
-        message += `  Loc    : ${formData.address}\n`;
-        message += `╚═══════════════════════════╝\n\n`;
+        // Spacious Layout
+        let message = `CHATPATI DELHI\n`;
+        message += `Authentic Indian Catering\n`;
+        message += `========================\n\n`;
 
-        message += `╔═══════════════════════════╗\n`;
-        message += `║      ORDER SUMMARY        ║\n`;
-        message += `╠═══════════════════════════╣\n`;
+        message += `ORDER RECEIPT #${orderId}\n`;
+        message += `DATE : ${formData.date}\n`;
+        message += `TIME : ${formData.time}\n\n`;
+
+        message += `CUSTOMER DETAILS\n`;
+        message += `NAME : ${formData.name}\n`;
+        message += `MOB  : ${formData.mobile}\n`;
+        message += `LOC  : ${formData.address}\n\n`;
+
+        message += `ORDER SUMMARY\n`;
         items.forEach((it, index) => {
-            message += `  ${index + 1}. ${it.name}\n`;
-            message += `     ${it.quantity} x ${it.price}\n`;
-            if (it.spiceLevel) message += `     (Spice: ${it.spiceLevel})\n`;
+            message += `${index + 1}. ${it.name} : ${it.quantity} x ${it.price}\n`;
+            if (it.spiceLevel) message += `   (Spice: ${it.spiceLevel})\n`;
         });
-        message += `╠═══════════════════════════╣\n`;
-        message += `  TOTAL  : $${total.toFixed(2)}\n`;
-        message += `╚═══════════════════════════╝\n`;
-        message += `\`\`\`\n`;
+
+        message += `\nTOTAL AMOUNT : $${total.toFixed(2)}\n`;
 
         if (formData.message) {
-            message += `*Note:* ${formData.message}\n\n`;
+            message += `\nNOTE: ${formData.message}\n`;
         }
 
-        message += `_Sent via Website Cart_`;
+        message += `\nSent via Website Cart`;
 
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${adminNumber}?text=${encodedMessage}`, '_blank');
