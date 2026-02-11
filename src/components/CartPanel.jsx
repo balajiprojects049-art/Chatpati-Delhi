@@ -106,7 +106,12 @@ export default function CartPanel({ open, onClose }) {
     return (
         <aside className={`cart-panel ${open ? 'open' : ''}`} aria-hidden={!open}>
             <div className="cart-panel-header">
-                <h3>{step === 1 ? 'Your Cart' : 'Order Details'}</h3>
+                <h3>
+                    {step === 1
+                        ? 'Your Cart'
+                        : `Order Details (Order ${(parseInt(localStorage.getItem('cpd_order_id') || '0') + 1).toString().padStart(3, '0')})`
+                    }
+                </h3>
                 <button className="close-panel" onClick={onClose} aria-label="Close cart">×</button>
             </div>
 
