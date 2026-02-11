@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import MenuPage from './pages/MenuPage';
 import AboutPage from './pages/AboutPage';
+import PressPage from './pages/PressPage';
 import ContactPage from './pages/ContactPage';
 import ProductDetail from './ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
@@ -18,6 +19,7 @@ function AppRouter() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/menu" element={<MenuPage />} />
                     <Route path="/about" element={<AboutPage />} />
+                    <Route path="/articles" element={<PressPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/product/:id" element={<ProductDetail />} />
                 </Routes>

@@ -37,17 +37,17 @@ function App() {
         {
             title: "Authentic Delhi Street Food",
             subtitle: "Experience the vibrant flavors of Delhi's finest chaats and traditional dishes",
-            bg: "linear-gradient(135deg, #8B4513 0%, #D4AF37 100%)"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-1.png')"
         },
         {
             title: "Food Served With Love",
             subtitle: "Every dish prepared with care and passion by our expert chefs",
-            bg: "linear-gradient(135deg, #D4AF37 0%, #FF6B35 100%)"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-2.png')"
         },
         {
             title: "Over 50 Delicious Items",
             subtitle: "From traditional chaats to royal thalis - taste the magic of Delhi",
-            bg: "linear-gradient(135deg, #B8921F 0%, #8B4513 100%)"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-3.png')"
         }
     ];
 
@@ -233,7 +233,7 @@ function App() {
     const stats = [
         { icon: '👥', value: '5000+', label: 'Happy Customers' },
         { icon: '⭐', value: '99%', label: 'Quality Score' },
-        { icon: '📅', value: '10+ Years', label: 'Of Excellence' },
+        { icon: '📅', value: '3+ Years', label: 'Of Excellence' },
         { icon: '🍽️', value: '120+', label: 'Menu Items' },
     ];
 
@@ -277,7 +277,12 @@ function App() {
                     <div
                         key={index}
                         className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
-                        style={{ background: slide.bg }}
+                        style={{
+                            background: slide.bg,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeat'
+                        }}
                     >
                         <div className="hero-content">
                             <h1 className="hero-title">{slide.title}</h1>
@@ -466,7 +471,7 @@ function App() {
                                 <div className="contact-icon">📍</div>
                                 <div>
                                     <h4>Address</h4>
-                                    <p>Fratelli PSA, 109,823, 5th Ave, USA</p>
+                                    <p>3201 NJ-27, Franklin Park, NJ 08823</p>
                                 </div>
                             </div>
                         </div>
@@ -509,7 +514,7 @@ function App() {
                         </div>
                         <div className="footer-section">
                             <h3>Contact</h3>
-                            <p>📍 Fratelli PSA, 109,823<br />5th Ave, USA</p>
+                            <p>📍 3201 NJ-27, Franklin Park,<br />NJ 08823</p>
                             <p>📞 +1 (732) 499-9387</p>
                             <p>📧 info@chatpatidelhi.com</p>
                         </div>

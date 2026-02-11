@@ -37,17 +37,17 @@ function Home() {
         {
             title: "Authentic Delhi Street Food",
             subtitle: "Experience the vibrant flavors of Delhi's finest chaats and traditional dishes",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-1.png')"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-1.png')"
         },
         {
             title: "Food Served With Love",
             subtitle: "Every dish prepared with care and passion by our expert chefs",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-2.png')"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-2.png')"
         },
         {
             title: "Over 50 Delicious Items",
             subtitle: "From traditional chaats to royal thalis - taste the magic of Delhi",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-3.png')"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-3.png')"
         }
     ];
 
@@ -238,7 +238,7 @@ function Home() {
     const stats = [
         { icon: '👥', value: '5000+', label: 'Happy Customers' },
         { icon: '⭐', value: '99%', label: 'Quality Score' },
-        { icon: '📅', value: '10+ Years', label: 'Of Excellence' },
+        { icon: '📅', value: '3+ Years', label: 'Of Excellence' },
         { icon: '🍽️', value: '120+', label: 'Menu Items' },
     ];
 
@@ -259,7 +259,12 @@ function Home() {
                     <div
                         key={index}
                         className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
-                        style={{ background: slide.bg }}
+                        style={{
+                            background: slide.bg,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeat'
+                        }}
                     >
                         <div className="hero-content">
                             <h1 className="hero-title">{slide.title}</h1>
@@ -361,16 +366,16 @@ function Home() {
 
                     <div className="about-cards">
                         <div className="about-card">
-                            <h3>Our Story</h3>
-                            <p>
-                                Chatpati Delhi was born from a simple idea — bringing the true taste of Delhi street food to your table.
-                                We started with a passion for authentic flavors and the desire to keep our cultural roots alive through
-                                food made the right way.
-                            </p>
-                            <p>
-                                At Chatpati Delhi, we celebrate the taste of our heritage and deliver it fresh to your table,
-                                just the way it was meant to be.
-                            </p>
+                        <h3>Our Story</h3>
+                        <p>
+                            Chatpati Delhi was born from a simple idea bringing the true taste of Delhi street food to your table.
+                            We started with a passion for authentic flavors and the desire to keep our cultural roots alive through
+                            food made the right way.
+                        </p>
+                        <p>
+                            At Chatpati Delhi, we celebrate the taste of our heritage and deliver it fresh to your table,
+                            just the way it was meant to be.
+                        </p>
                         </div>
                         <div className="about-card">
                             <h3>Our Mission</h3>
@@ -469,7 +474,7 @@ function Home() {
                                 <div className="contact-icon">📍</div>
                                 <div>
                                     <h4>Address</h4>
-                                    <p>Fratelli PSA, 109,823, 5th Ave, USA</p>
+                                    <p>3201 NJ-27, Franklin Park, NJ 08823</p>
                                 </div>
                             </div>
                         </div>

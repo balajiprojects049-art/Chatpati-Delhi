@@ -55,6 +55,7 @@ function Header() {
                             <li><Link to="/" onClick={() => setMobileOpen(false)}>Home</Link></li>
                             <li><Link to="/menu" onClick={() => setMobileOpen(false)}>Menu</Link></li>
                             <li><Link to="/about" onClick={() => setMobileOpen(false)}>About</Link></li>
+                            <li><Link to="/articles" onClick={() => setMobileOpen(false)}>Articles</Link></li>
                             <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
                         </ul>
                         <button

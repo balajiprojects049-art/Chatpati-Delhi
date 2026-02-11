@@ -37,14 +37,16 @@ function Footer() {
                     </div>
                     <div className="footer-section">
                         <h3>Hours</h3>
-                        <p>Monday - Friday<br />11:00 AM - 10:00 PM</p>
-                        <p>Saturday - Sunday<br />10:00 AM - 11:00 PM</p>
+                        <p>Monday: Closed</p>
+                        <p>Tuesday- Thursday: 11:00 AM - 9:30 PM</p>
+                        <p>Friday-Saturday: 11:00 AM - 10:00 PM</p>
+                        <p>Sunday: 11:00 AM - 9:30 PM</p>
                     </div>
                     <div className="footer-section">
                         <h3>Contact</h3>
-                        <p>📍 Fratelli PSA, 109,823<br />5th Ave, USA</p>
-                        <p>📞 +1 (732) 499-9387</p>
-                        <p>📧 info@chatpatidelhi.com</p>
+                        <p>📍 3201 NJ-27, Franklin Park,<br />NJ 08823</p>
+                        <p>📞 +1 (732) 960 1887</p>
+                        <p></p>
                     </div>
                 </div>
                 <div className="footer-bottom">
