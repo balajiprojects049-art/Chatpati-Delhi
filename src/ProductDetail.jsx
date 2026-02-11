@@ -812,6 +812,216 @@ const richProductData = [
         vegetarian: true
     },
     {
+        id: 102,
+        fullDescription: 'A cooling, refreshing, and delicious yogurt drink made with ripe Alphonso mango pulp and churned yoghurt. A perfect summer drink.',
+        ingredients: ['Yoghurt', 'Mango Pulp', 'Sugar', 'Cardamom', 'Ice'],
+        features: ['✓ Made with Alphonso mango', '✓ Rich & creamy', '✓ Chilled & refreshing', '✓ No preservatives', '✓ Summer special'],
+        prepTime: '5 mins',
+        rating: 4.8,
+        reviews: 320,
+        vegetarian: true
+    },
+    {
+        id: 103,
+        fullDescription: 'Spiced buttermilk, traditionally known as Masala Chaas. A light and refreshing drink made with diluted yoghurt and flavored with roasted cumin and mint.',
+        ingredients: ['Yoghurt', 'Water', 'Roasted Cumin Powder', 'Black Salt', 'Mint Leaves', 'Coriander'],
+        features: ['✓ Disgestive aid', '✓ Light & refreshing', '✓ Cooling effect', '✓ Low calorie', '✓ Traditional recipe'],
+        prepTime: '3 mins',
+        rating: 4.7,
+        reviews: 210,
+        vegetarian: true
+    },
+    {
+        id: 104,
+        fullDescription: 'Thick, creamy, and sweet Punjabi Lassi served in a traditional style with a dollop of fresh cream (malai) on top.',
+        ingredients: ['Yoghurt', 'Sugar', 'Malai (Cream)', 'Cardamom', 'Rose Water'],
+        features: ['✓ Thick & creamy', '✓ Topped with Malai', '✓ Traditional Punjabi style', '✓ Sweet & filling', '✓ Served chilled'],
+        prepTime: '5 mins',
+        rating: 4.9,
+        reviews: 350,
+        vegetarian: true
+    },
+    {
+        id: 105,
+        fullDescription: 'A tangy and spicy summer cooler made from raw green mangoes. It is known for its heat-resistant properties and delicious chatpata taste.',
+        ingredients: ['Raw Mango', 'Mint', 'Cumin Powder', 'Black Salt', 'Sugar/Jaggery', 'Water'],
+        features: ['✓ Made from raw mangoes', '✓ Tangy & spicy', '✓ Heat buster', '✓ Digestive', '✓ Street food classic'],
+        prepTime: '5 mins',
+        rating: 4.8,
+        reviews: 180,
+        vegetarian: true
+    },
+    {
+        id: 106,
+        fullDescription: 'A fizzy and spicy soda drink flavored with Jal Jeera masala. A perfect digestive drink to have after a heavy meal.',
+        ingredients: ['Soda Water', 'Jal Jeera Masala', 'Lemon Juice', 'Mint', 'Boondi (optional)'],
+        features: ['✓ Fizzy & spicy', '✓ Digestive', '✓ Refreshing', '✓ Masala flavor', '✓ Instant energy'],
+        prepTime: '2 mins',
+        rating: 4.6,
+        reviews: 150,
+        vegetarian: true
+    },
+    {
+        id: 107,
+        fullDescription: 'A rich and colorful dessert drink made with rose syrup, vermicelli, sweet basil seeds, and chilled milk. Topped with a scoop of ice cream.',
+        ingredients: ['Milk', 'Rose Syrup', 'Falooda Sev', 'Basil Seeds', 'Ice Cream', 'Nuts'],
+        features: ['✓ Rich dessert drink', '✓ Rose flavored', '✓ Chewy texture', '✓ Cooling properties', '✓ Contains ice cream'],
+        prepTime: '8 mins',
+        rating: 4.9,
+        reviews: 280,
+        vegetarian: true
+    },
+    {
+        id: 108,
+        fullDescription: 'Thick and creamy Mango Shake made with fresh mangoes and full-cream milk. A seasonal favorite loved by all ages.',
+        ingredients: ['Fresh Mangoes', 'Milk', 'Sugar', 'Ice Cream (optional)', 'Nuts'],
+        features: ['✓ Fresh mangoes used', '✓ Thick & tasty', '✓ No artificial flavors', '✓ Vitamin rich', '✓ Breakfast or snack'],
+        prepTime: '5 mins',
+        rating: 4.8,
+        reviews: 310,
+        vegetarian: true
+    },
+    {
+        id: 109,
+        fullDescription: 'Classic Vanilla Shake made with premium vanilla ice cream and milk. Smooth, creamy, and simply delicious.',
+        ingredients: ['Vanilla Ice Cream', 'Milk', 'Sugar', 'Whipped Cream (optional)'],
+        features: ['✓ Classic flavor', '✓ Smooth texture', '✓ Kids favorite', '✓ Made with ice cream', '✓ Served chilled'],
+        prepTime: '5 mins',
+        rating: 4.7,
+        reviews: 200,
+        vegetarian: true
+    },
+    {
+        id: 110,
+        fullDescription: 'Indulgent Chocolate Shake made with rich cocoa and chocolate ice cream. A treat for all chocolate lovers.',
+        ingredients: ['Chocolate Ice Cream', 'Milk', 'Cocoa Powder', 'Chocolate Syrup', 'Choco Chips'],
+        features: ['✓ Rich chocolate taste', '✓ Thick consistency', '✓ Topped with syrup', '✓ Indulgent treat', '✓ Mood lifter'],
+        prepTime: '5 mins',
+        rating: 4.8,
+        reviews: 340,
+        vegetarian: true
+    },
+    {
+        id: 111,
+        fullDescription: 'Refreshing Rose Shake with the soothing aroma and flavor of rose. Pink, pretty, and perfect for a hot day.',
+        ingredients: ['Milk', 'Rose Syrup', 'Sugar', 'Ice Cream', 'Rose Petals'],
+        features: ['✓ Floral aroma', '✓ Cooling', '✓ Pink color', '✓ Sweet & subtle', '✓ Unique flavor'],
+        prepTime: '5 mins',
+        rating: 4.6,
+        reviews: 160,
+        vegetarian: true
+    },
+    {
+        id: 112,
+        fullDescription: 'Chilled creamy coffee blended with milk and sugar. Frothy and energizing, perfect for coffee lovers.',
+        ingredients: ['Coffee', 'Milk', 'Sugar', 'Ice', 'Chocolate Powder (garnish)'],
+        features: ['✓ Energizing', '✓ Creamy texture', '✓ Strong coffee kick', '✓ Chilled', '✓ Café style'],
+        prepTime: '5 mins',
+        rating: 4.7,
+        reviews: 250,
+        vegetarian: true
+    },
+    {
+        id: 113,
+        fullDescription: 'Royal Saffron Milk loaded with nuts and dried fruits. A warm (or chilled) healthy drink that is rich in flavor and nutrition.',
+        ingredients: ['Milk', 'Saffron (Kesar)', 'Almonds', 'Cashews', 'Pistachios', 'Cardamom', 'Sugar'],
+        features: ['✓ Royal drink', '✓ Loaded with nuts', '✓ Saffron infused', '✓ Healthy & tasty', '✓ Traditional recipe'],
+        prepTime: '10 mins',
+        rating: 4.9,
+        reviews: 190,
+        vegetarian: true
+    },
+    {
+        id: 114,
+        fullDescription: 'Authentic Indian Masala Chai infused with fresh ginger and cardamom. Strong, aromatic, and refreshing.',
+        ingredients: ['Tea Leaves', 'Milk', 'Water', 'Fresh Ginger', 'Cardamom', 'Sugar'],
+        features: ['✓ Fresh ginger used', '✓ Strong & aromatic', '✓ Indian street style', '✓ Warm & cozy', '✓ Perfect tea break'],
+        prepTime: '10 mins',
+        rating: 4.8,
+        reviews: 420,
+        vegetarian: true
+    },
+    {
+        id: 115,
+        fullDescription: 'Hot freshly brewed coffee. A simple yet perfect pick-me-up beverage.',
+        ingredients: ['Coffee Powder', 'Milk', 'Sugar', 'Water'],
+        features: ['✓ Hot & fresh', '✓ Instant energy', '✓ Classic taste', '✓ Comfort warm drink', '✓ Customizable sugar'],
+        prepTime: '5 mins',
+        rating: 4.5,
+        reviews: 150,
+        vegetarian: true
+    },
+    {
+        id: 116,
+        fullDescription: 'Chilled can/bottle of Coca-Cola.',
+        ingredients: ['Carbonated Water', 'Sugar', 'Caffeine', 'Flavorings'],
+        features: ['✓ Chilled', '✓ Fizzy', '✓ Classic Cola taste', '✓ Refreshing', '✓ Standard serving'],
+        prepTime: '1 min',
+        rating: 4.5,
+        reviews: 100,
+        vegetarian: true
+    },
+    {
+        id: 117,
+        fullDescription: 'Chilled can/bottle of Sprite.',
+        ingredients: ['Carbonated Water', 'Sugar', 'Lemon-Lime Flavorings'],
+        features: ['✓ Chilled', '✓ Lemon-Lime flavor', '✓ Fizzy & clear', '✓ Refreshing', '✓ Standard serving'],
+        prepTime: '1 min',
+        rating: 4.5,
+        reviews: 90,
+        vegetarian: true
+    },
+    {
+        id: 118,
+        fullDescription: 'Chilled Limca, a lemon-lime flavored carbonated soft drink popular in India.',
+        ingredients: ['Carbonated Water', 'Sugar', 'Lemon Flavorings'],
+        features: ['✓ Lemony zing', '✓ Sharp fizz', '✓ Thirst quencher', '✓ Popular in India', '✓ Chilled'],
+        prepTime: '1 min',
+        rating: 4.6,
+        reviews: 110,
+        vegetarian: true
+    },
+    {
+        id: 119,
+        fullDescription: 'Chilled Thums Up, a strong and fizzy cola drink known for its spicy kick. The taste of bold India.',
+        ingredients: ['Carbonated Water', 'Sugar', 'Caffeine', 'Spices/Flavorings'],
+        features: ['✓ Strong Cola', '✓ Spicy kick', '✓ Extra fizzy', '✓ "Taste the Thunder"', '✓ Cult favorite'],
+        prepTime: '1 min',
+        rating: 4.8,
+        reviews: 180,
+        vegetarian: true
+    },
+    {
+        id: 120,
+        fullDescription: 'Chilled Fanta, an orange-flavored carbonated soft drink.',
+        ingredients: ['Carbonated Water', 'Sugar', 'Orange Flavorings'],
+        features: ['✓ Orange flavor', '✓ Sweet & fruity', '✓ Bright color', '✓ Kids favorite', '✓ Chilled'],
+        prepTime: '1 min',
+        rating: 4.5,
+        reviews: 95,
+        vegetarian: true
+    },
+    {
+        id: 121,
+        fullDescription: 'Packaged drinking water bottle.',
+        ingredients: ['Treated Water', 'Minerals'],
+        features: ['✓ Pure & safe', '✓ Hydrating', '✓ Sealed bottle', '✓ Essential', '✓ Chilled option'],
+        prepTime: '0 mins',
+        rating: 5.0,
+        reviews: 50,
+        vegetarian: true
+    },
+    {
+        id: 122,
+        fullDescription: 'A spicy twist to regular soda! Carbonated water mixed with special masala, lemon, and black salt. A zesty refresher.',
+        ingredients: ['Soda Water', 'Chat Masala', 'Black Salt', 'Lemon', 'Ice'],
+        features: ['✓ Fizzy & spicy', '✓ Digestive', '✓ Zesty flavor', '✓ Street style', '✓ Refreshing'],
+        prepTime: '2 mins',
+        rating: 4.7,
+        reviews: 130,
+        vegetarian: true
+    },
+    {
         id: 57,
         fullDescription: 'Melt-in-the-mouth vegetable and paneer dumplings (koftas) simmered in a rich, creamy, and mildly sweet white cashew-based gravy.',
         ingredients: ['Paneer', 'Potatoes', 'Cashews', 'Fresh Cream', 'Raisins', 'Cardamom', 'White Pepper', 'Khoya'],

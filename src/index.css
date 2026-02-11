@@ -1293,13 +1293,14 @@ h6 {
 }
 
 .desi-main-image {
-    background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
+    background: transparent;
     border-radius: 12px;
-    padding: 3rem;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 400px;
+    overflow: hidden;
 }
 
 .desi-product-emoji {
