@@ -36,3 +36,45 @@
     background: #e74c3c;
     border-color: #e74c3c;
 }
+
+/* Veg/Non-Veg Symbols */
+.veg-symbol,
+.non-veg-symbol {
+    width: 16px;
+    height: 16px;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.veg-symbol {
+    border-color: #2ecc71;
+}
+
+.veg-symbol::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+}
+
+.non-veg-symbol {
+    border-color: #e74c3c;
+}
+
+.non-veg-symbol::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+}

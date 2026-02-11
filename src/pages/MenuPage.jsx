@@ -114,6 +114,7 @@ function MenuPage() {
                         {filteredItems.map((item) => (
                             <div key={item.id} className="product-card">
                                 {item.hot && <span className="badge-hot">Hot</span>}
+                                <div className={isVeg(item) ? "veg-symbol" : "non-veg-symbol"}></div>
                                 <div className="product-image">
                                     {item.image.startsWith('/') || item.image.startsWith('http') ? (
                                         <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

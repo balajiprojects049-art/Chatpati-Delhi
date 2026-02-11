@@ -476,6 +476,590 @@ const richProductData = [
         rating: 4.8,
         reviews: 320,
         vegetarian: false
+    },
+    {
+        id: 71,
+        fullDescription: 'A delightful vegetarian platter featuring stuffed Amritsari Kulcha served with two delicious vegetable curries, rice, and sides. A perfect meal for one!',
+        ingredients: ['Amritsari Kulcha', '2 Veg Curries', 'Rice', 'Salad', 'Papad', 'Raita', 'Sweet of the Day'],
+        rawIngredients: ['Refined Flour', 'Fresh Vegetables', 'Yoghurt', 'Spices', 'Basmati Rice', 'Ghee'],
+        features: ['✓ Includes Stuffed Kulcha', '✓ 2 Different Curries', '✓ Complete Thali', '✓ Freshly Prepared', '✓ Sizzling Hot'],
+        prepTime: '20 mins',
+        rating: 4.6,
+        reviews: 95,
+        vegetarian: true
+    },
+    {
+        id: 72,
+        fullDescription: 'The ultimate vegetarian feast! Indulge in a grand spread of FOUR different vegetable curries, served with fluffy pooris, aromatic rice, and all the traditional accompaniments.',
+        ingredients: ['4 Veg Curries', 'Pooris', 'Rice', 'Salad', 'Papad', 'Raita', 'Sweet of the Day'],
+        rawIngredients: ['Fresh Vegetables', 'Wheat Flour', 'Basmati Rice', 'Yoghurt', 'Exotic Spices', 'Oil', 'Ghee'],
+        features: ['✓ 4 Veg Curries Variety', '✓ Includes Pooris', '✓ Grand Thali Experience', '✓ Perfect for Big Appetites', '✓ Authentic Flavors'],
+        prepTime: '25 mins',
+        rating: 4.8,
+        reviews: 112,
+        vegetarian: true
+    },
+    {
+        id: 125,
+        fullDescription: 'The ultimate royal feast! A grand platter featuring your choice of tender Goat Curry or rich Paneer Curry, accompanied by a delicious Chicken Appetizer. A complete meal experience.',
+        ingredients: ['Goat Curry/Paneer Curry', 'Chicken Appetizer', 'Bread (Naan/Roti)', 'Rice', 'Salad', 'Papad', 'Raita', 'Sweet of the Day'],
+        rawIngredients: ['Fresh Goat Meat', 'Paneer (Cottage Cheese)', 'Basmati Rice', 'Whole Wheat Flour', 'Yoghurt', 'Exotic Spices', 'Ghee', 'Fresh Vegetables'],
+        features: ['✓ Choice of Curry (Goat/Paneer)', '✓ Includes Chicken Appetizer', '✓ Complete Thali', '✓ Includes Rice & Breads', '✓ Sweet Dish Included'],
+        prepTime: '25 mins',
+        rating: 4.9,
+        reviews: 50,
+        vegetarian: false
+    },
+    {
+        id: 126,
+        fullDescription: 'A wholesome non-veg thali with all the fixings! Enjoy your choice of Chicken Curry or Paneer Curry, served with a Chicken Appetizer, Bread, Rice, Salad, Papad, Raita, and a Sweet.',
+        ingredients: ['Chicken Curry/Paneer Curry', 'Chicken Appetizer', 'Bread (Naan/Roti)', 'Rice', 'Salad', 'Papad', 'Raita', 'Sweet of the Day'],
+        rawIngredients: ['Tender Chicken', 'Paneer (Cottage Cheese)', 'Basmati Rice', 'Whole Wheat Flour', 'Yoghurt', 'Aromatic Spices', 'Butter', 'Fresh Vegetables'],
+        features: ['✓ Choice of Curry (Chicken/Paneer)', '✓ Includes Chicken Appetizer', '✓ Complete Thali', '✓ Includes Rice & Breads', '✓ Sweet Dish Included'],
+        prepTime: '25 mins',
+        rating: 4.8,
+        reviews: 45,
+        vegetarian: false
+    },
+    {
+        id: 50,
+        fullDescription: 'A classic North Indian vegetarian dish made with potatoes (aloo) and cauliflower (gobhi), stir-fried with onions, tomatoes, and aromatic spices. Simple, comforting, and delicious.',
+        ingredients: ['Potatoes', 'Cauliflower', 'Onions', 'Tomatoes', 'Ginger', 'Turmeric', 'Cumin', 'Coriander'],
+        features: ['✓ Homestyle cooking', '✓ Comfort food', '✓ Fresh vegetables', '✓ Mildly spiced', '✓ Vegan friendly'],
+        prepTime: '15 mins',
+        rating: 4.5,
+        reviews: 120,
+        vegetarian: true
+    },
+    {
+        id: 51,
+        fullDescription: 'A spicy and tangy chickpea curry from the Punjab region. Cooked with a special blend of roasted spices (Pindi masala) and tea leaves to give it a dark, rich color and unique flavor.',
+        ingredients: ['Chickpeas (Chole)', 'Pindi Chole Masala', 'Tea Leaves', 'Ginger', 'Green Chilies', 'Amchur (Mango Powder)', 'Pomegranate Seeds'],
+        features: ['✓ Authentic Punjabi taste', '✓ Rich dark gravy', '✓ Spicy & tangy', '✓ High protein', '✓ Best with Bhature/Kulcha'],
+        prepTime: '20 mins',
+        rating: 4.7,
+        reviews: 180,
+        vegetarian: true
+    },
+    {
+        id: 52,
+        fullDescription: 'A creamy and buttery black lentil dish, slow-cooked overnight on a low flame to achieve a velvety texture. Flavored with fresh cream, butter, and mild spices.',
+        ingredients: ['Black Lentils (Urad Dal)', 'Kidney Beans (Rajma)', 'Butter', 'Fresh Cream', 'Tomato Puree', 'Ginger-Garlic Paste', 'Kasuri Methi'],
+        features: ['✓ Slow-cooked (Dal Makhani)', '✓ Rich & creamy', '✓ Buttery texture', '✓ Signature dish', '✓ Mildly spiced'],
+        prepTime: '25 mins',
+        rating: 4.9,
+        reviews: 350,
+        vegetarian: true
+    },
+    {
+        id: 53,
+        fullDescription: 'Comforting yellow lentil curry (Arhar/Moong dal) tempered with ghee, cumin seeds, garlic, and dried red chilies. A light and healthy staple.',
+        ingredients: ['Yellow Lentils (Arhar/Moong)', 'Ghee', 'Cumin Seeds', 'Garlic', 'Dried Red Chilies', 'Tomatoes', 'Turmeric', 'Coriander'],
+        features: ['✓ Light & healthy', '✓ Home-style Tadka', '✓ Comfort food', '✓ Gluten-free', '✓ Best with Rice'],
+        prepTime: '15 mins',
+        rating: 4.6,
+        reviews: 140,
+        vegetarian: true
+    },
+    {
+        id: 54,
+        fullDescription: 'Soft paneer cubes simmered in a rich, creamy, and mildly sweet tomato-cashew gravy finished with butter and cream. A crowd favorite!',
+        ingredients: ['Paneer', 'Butter', 'Fresh Cream', 'Tomatoes', 'Cashews', 'Honey/Sugar', 'Kasuri Methi', 'Cardamom'],
+        features: ['✓ Rich buttery gravy', '✓ Mild & sweet', '✓ Creamy texture', '✓ Kid-friendly', '✓ Vegetarian favorite'],
+        prepTime: '20 mins',
+        rating: 4.8,
+        reviews: 410,
+        vegetarian: true
+    },
+    {
+        id: 55,
+        fullDescription: 'A healthy and delicious dish consisting of paneer cubes cooked in a smooth, spicy spinach gravy. Enriched with cream and aromatic spices.',
+        ingredients: ['Paneer', 'Spinach (Palak)', 'Onions', 'Tomatoes', 'Ginger-Garlic', 'Green Chilies', 'Fresh Cream', 'Garam Masala'],
+        features: ['✓ Healthy spinach base', '✓ High protein', '✓ Smooth gravy', '✓ Rich in iron', '✓ Classic combination'],
+        prepTime: '20 mins',
+        rating: 4.7,
+        reviews: 290,
+        vegetarian: true
+    },
+    {
+        id: 56,
+        fullDescription: 'Spicy and flavorful paneer dish cooked with bell peppers, onions, and tomatoes in a thick masala gravy, flavored with freshly ground coriander and red chilies (Kadai Masala).',
+        ingredients: ['Paneer', 'Capsicum (Bell Peppers)', 'Onions', 'Tomatoes', 'Kadai Masala', 'Whole Coriander Seeds', 'Dried Red Chilies'],
+        features: ['✓ Spicy & flavorful', '✓ Crunchy veggies', '✓ Freshly ground spices', '✓ Semi-dry gravy', '✓ Restaurant style'],
+        prepTime: '20 mins',
+        rating: 4.7,
+        reviews: 260,
+        vegetarian: true
+    },
+    {
+        id: 94,
+        fullDescription: 'A rich and creamy traditional Indian dessert made by reducing milk over a low flame for hours until it thickens and turns into a caramel-brown color. Garnished with nuts.',
+        ingredients: ['Full Cream Milk', 'Sugar', 'Cardamom', 'Almonds', 'Pistachios', 'Saffron'],
+        features: ['✓ Slow-cooked richness', '✓ Caramelized milk flavor', '✓ Thick & creamy', '✓ Authentic recipe', '✓ Served chilled'],
+        prepTime: '10 mins',
+        rating: 4.8,
+        reviews: 150,
+        vegetarian: true
+    },
+    {
+        id: 95,
+        fullDescription: 'Soft, melt-in-the-mouth deep-fried dumplings made of milk solids (khoya) and dipped in aromatic rose and saffron-flavored sugar syrup. Served warm.',
+        ingredients: ['Khoya (Milk Solids)', 'Paneer', 'Sugar', 'Rose Water', 'Cardamom', 'Saffron', 'Ghee'],
+        features: ['✓ Soft & spongy', '✓ Warm & comforting', '✓ Rose flavor syrup', '✓ Classic Indian sweet', '✓ Perfect dessert'],
+        prepTime: '5 mins',
+        rating: 4.9,
+        reviews: 320,
+        vegetarian: true
+    },
+    {
+        id: 96,
+        fullDescription: 'Delicate cottage cheese dumplings soaked in sweetened, thickened milk flavored with saffron and cardamom. A cool and refreshing royal dessert.',
+        ingredients: ['Paneer (Chenna)', 'Milk', 'Sugar', 'Saffron', 'Pistachios', 'Almonds', 'Cardamom'],
+        features: ['✓ Royal Bengali sweet', '✓ Saffron milk base', '✓ Soft dumplings', '✓ Served chilled', '✓ Light & refreshing'],
+        prepTime: '5 mins',
+        rating: 4.9,
+        reviews: 280,
+        vegetarian: true
+    },
+    {
+        id: 97,
+        fullDescription: 'Traditional Indian pancakes made from flour and milk, deep-fried in ghee and soaked in sugar syrup. Crispy on the edges and soft in the center.',
+        ingredients: ['Flour (Maida)', 'Milk', 'Sugar', 'Fennel Seeds', 'Cardamom', 'Ghee', 'Rabdi (optional)'],
+        features: ['✓ Traditional pancake', '✓ Fried in Ghee', '✓ Crispy edges', '✓ Soaked in syrup', '✓ Festive special'],
+        prepTime: '10 mins',
+        rating: 4.6,
+        reviews: 120,
+        vegetarian: true
+    },
+    {
+        id: 98,
+        fullDescription: 'A decadent layered dessert featuring dense kulfi ice cream, vermicelli noodles (falooda), sweet basil seeds (sabja), and rose syrup.',
+        ingredients: ['Kulfi', 'Falooda Sev', 'Basil Seeds (Sabja)', 'Rose Syrup', 'Dry Fruits', 'Milk'],
+        features: ['✓ Multi-layered dessert', '✓ Rich Kulfi base', '✓ Chewy falooda', '✓ Cooling basil seeds', '✓ Summer favorite'],
+        prepTime: '8 mins',
+        rating: 4.8,
+        reviews: 210,
+        vegetarian: true
+    },
+    {
+        id: 99,
+        fullDescription: 'Creamy, dense Indian ice cream made with thickened milk, cream, and cardamom. Unchurned and frozen on a stick for that authentic texture.',
+        ingredients: ['Full Cream Milk', 'Sugar', 'Cardamom', 'Cream', 'Nuts (Almonds/Pistachios)'],
+        features: ['✓ Authentic Indian Ice Cream', '✓ Dense & creamy', '✓ Cardamom flavor', '✓ Kids favorite', '✓ Stick ice cream'],
+        prepTime: '5 mins',
+        rating: 4.7,
+        reviews: 190,
+        vegetarian: true
+    },
+    {
+        id: 100,
+        fullDescription: 'A rich and warm dessert made from yellow lentils (moong dal) slow-cooked in ghee with sugar and nuts. A labor of love and a true indulgence.',
+        ingredients: ['Moong Dal', 'Ghee', 'Sugar', 'Milk/Khoya', 'Almonds', 'Cashews', 'Cardamom'],
+        features: ['✓ Rich & heavy', '✓ Loaded with Ghee', '✓ Winter special', '✓ Grainy texture', '✓ Warm dessert'],
+        prepTime: '10 mins',
+        rating: 4.8,
+        reviews: 160,
+        vegetarian: true
+    },
+    {
+        id: 101,
+        fullDescription: 'Spongy and light cottage cheese balls cooked in a light sugar syrup. A Bengali delicacy that is loved all over India for its simplicity and taste.',
+        ingredients: ['Paneer (Chenna)', 'Sugar', 'Water', 'Rose Water', 'Cardamom'],
+        features: ['✓ Soft & Spongy', '✓ Light dessert', '✓ Not too sweet', '✓ Bengali classic', '✓ Squeezable'],
+        prepTime: '5 mins',
+        rating: 4.6,
+        reviews: 140,
+        vegetarian: true
+    },
+    {
+        id: 124,
+        fullDescription: 'A classic winter dessert made with fresh red carrots, milk, ghee, and nuts. Slow-cooked to perfection to bring out the natural sweetness of carrots.',
+        ingredients: ['Red Carrots', 'Milk', 'Ghee', 'Sugar', 'Khoya', 'Cashews', 'Almonds', 'Raisins'],
+        features: ['✓ Winter special', '✓ Fresh red carrots', '✓ Rich in Ghee', '✓ Loaded with nuts', '✓ Traditional recipe'],
+        prepTime: '10 mins',
+        rating: 4.9,
+        reviews: 350,
+        vegetarian: true
+    },
+    {
+        id: 77,
+        fullDescription: 'Soft and fluffy Indian flatbread made from refined flour, baked in a traditional clay oven (tandoor), and brushed generously with butter. The perfect accompaniment to any curry.',
+        ingredients: ['Refined Flour (Maida)', 'Butter', 'Yoghurt', 'Milk', 'Salt', 'Sugar', 'Ghee'],
+        features: ['✓ Baked in clay tandoor', '✓ Soft & fluffy', '✓ Brushed with Butter', '✓ Classic Indian bread', '✓ Best with Butter Chicken'],
+        prepTime: '5 mins',
+        rating: 4.8,
+        reviews: 450,
+        vegetarian: true
+    },
+    {
+        id: 78,
+        fullDescription: 'Flavorful naan bread topped with minced garlic and fresh coriander, baked in a tandoor until golden and crispy. Brushed with butter for an extra kick of flavor.',
+        ingredients: ['Refined Flour', 'Minced Garlic', 'Fresh Coriander', 'Butter', 'Yoghurt', 'Salt'],
+        features: ['✓ Strong garlic flavor', '✓ Crispy & soft', '✓ Freshly baked', '✓ Aromatic', '✓ Spicy curry companion'],
+        prepTime: '6 mins',
+        rating: 4.9,
+        reviews: 512,
+        vegetarian: true
+    },
+    {
+        id: 79,
+        fullDescription: 'Rustic and healthy flatbread made from whole wheat flour, baked in a tandoor. It has a slightly crispy texture and a smoky flavor from the clay oven.',
+        ingredients: ['Whole Wheat Flour (Atta)', 'Water', 'Salt'],
+        features: ['✓ Whole wheat goodness', '✓ Tandoori smoky flavor', '✓ Healthy choice', '✓ Vegan friendly', '✓ Daily staple'],
+        prepTime: '4 mins',
+        rating: 4.6,
+        reviews: 320,
+        vegetarian: true
+    },
+    {
+        id: 80,
+        fullDescription: 'An ultra-thin, soft flatbread that is folded like a handkerchief (roomal). It is light, airy, and perfect for scooping up rich gravies and kebabs.',
+        ingredients: ['Refined Flour', 'Wheat Flour', 'Milk', 'Salt', 'Oil'],
+        features: ['✓ Paper thin', '✓ Soft like silk', '✓ Handkerchief bread', '✓ Light to eat', '✓ Best with Kebabs'],
+        prepTime: '5 mins',
+        rating: 4.7,
+        reviews: 280,
+        vegetarian: true
+    },
+    {
+        id: 81,
+        fullDescription: 'A crispy, flaky, and layered naan that is crushed (chur-chur) before serving to enhance its texture. Stuffed with spices and topped with butter.',
+        ingredients: ['Refined Flour', 'Spices', 'Ghee/Butter', 'Coriander', 'Potatoes/Paneer (optional filling)'],
+        features: ['✓ Extra crispy & flaky', '✓ Crushed texture', '✓ Rich & heavy', '✓ Amritsari specialty', '✓ Served with Chole'],
+        prepTime: '8 mins',
+        rating: 4.8,
+        reviews: 190,
+        vegetarian: true
+    },
+    {
+        id: 82,
+        fullDescription: 'A multi-layered whole wheat flatbread prepared in a tandoor. Each layer is brushed with ghee to ensure it is crispy on the outside and soft on the inside.',
+        ingredients: ['Whole Wheat Flour', 'Ghee', 'Carom Seeds (Ajwain)', 'Salt'],
+        features: ['✓ Multi-layered (Lachha)', '✓ Crispy & flaky', '✓ Whole wheat', '✓ Tandoori baked', '✓ Rich taste'],
+        prepTime: '6 mins',
+        rating: 4.7,
+        reviews: 240,
+        vegetarian: true
+    },
+    {
+        id: 83,
+        fullDescription: 'Soft leavened bread stuffed with a spiced mixture of crumbly paneer, herbs, and onions. Baked in a tandoor and finished with butter.',
+        ingredients: ['Refined Flour', 'Paneer (Cottage Cheese)', 'Onions', 'Green Chilies', 'Coriander', 'Spices', 'Butter'],
+        features: ['✓ Stuffed with Paneer', '✓ Soft & delicious', '✓ High protein', '✓ Mildly spiced', '✓ Kids favorite'],
+        prepTime: '8 mins',
+        rating: 4.9,
+        reviews: 310,
+        vegetarian: true
+    },
+    {
+        id: 84,
+        fullDescription: 'Delicious kulcha stuffed with a spicy mixture of grated cauliflower (gobhi) and herbs. A crunchy and flavorful bread that pairs well with raita.',
+        ingredients: ['Refined Flour', 'Cauliflower', 'Ginger', 'Green Chilies', 'Spices', 'Butter', 'Coriander'],
+        features: ['✓ Stuffed with Gobhi', '✓ Crunchy texture', '✓ Flavorful stuffing', '✓ Tandoori baked', '✓ Perfect breakfast'],
+        prepTime: '8 mins',
+        rating: 4.7,
+        reviews: 180,
+        vegetarian: true
+    },
+    {
+        id: 85,
+        fullDescription: 'Flavorful kulcha stuffed with chopped onions and spices. The sweetness of the onions combined with the spices makes for a savory delight.',
+        ingredients: ['Refined Flour', 'Onions', 'Carom Seeds', 'Green Chilies', 'Coriander', 'Spices', 'Butter'],
+        features: ['✓ Stuffed with Onions', '✓ Sweet & savory', '✓ Crunch of onions', '✓ Golden brown', '✓ Best with Chole'],
+        prepTime: '8 mins',
+        rating: 4.8,
+        reviews: 220,
+        vegetarian: true
+    },
+    {
+        id: 86,
+        fullDescription: 'A classic Amritsari specialty! Kulcha stuffed with a spicy mashed potato filling. Crisp on the outside, soft and spicy on the inside.',
+        ingredients: ['Refined Flour', 'Potatoes', 'Pomegranate Seeds (Anardana)', 'Green Chilies', 'Ginger', 'Coriander', 'Butter'],
+        features: ['✓ Stuffed with Aloo', '✓ Authentic Amritsari', '✓ Spicy potato filling', '✓ Filling bread', '✓ Comfort food'],
+        prepTime: '8 mins',
+        rating: 4.9,
+        reviews: 350,
+        vegetarian: true
+    },
+    {
+        id: 87,
+        fullDescription: 'Spicy naan topped with chopped green chilies and coriander. For those who love an extra kick of heat with their meal.',
+        ingredients: ['Refined Flour', 'Green Chilies', 'Coriander', 'Garlic (optional)', 'Butter'],
+        features: ['✓ Spicy kick', '✓ Topped with Chilies', '✓ Fiery flavor', '✓ Not for faint hearted', '✓ Tandoori baked'],
+        prepTime: '6 mins',
+        rating: 4.6,
+        reviews: 150,
+        vegetarian: true
+    },
+    {
+        id: 88,
+        fullDescription: 'A unique sweet and savory naan stuffed with nuts, raisins, and a sweetened cheese or khoya mixture. A perfect way to balance a spicy meal.',
+        ingredients: ['Refined Flour', 'Cheese/Khoya', 'Almonds', 'Cashews', 'Raisins', 'Coconut', 'Provisions', 'Sugar/Honey'],
+        features: ['✓ Sweet & Savory', '✓ Stuffed with dry fruits', '✓ Kashmiri style', '✓ Rich & nutty', '✓ Unique taste'],
+        prepTime: '8 mins',
+        rating: 4.8,
+        reviews: 130,
+        vegetarian: true
+    },
+    {
+        id: 123,
+        fullDescription: 'The ultimate bread platter for sharing! Includes a basket of our finest Tandoori Roti, Garlic Naan, Butter Naan, and Onion Kulcha. Perfect for family dining.',
+        ingredients: ['Assorted Breads', 'Butter', 'Garlic', 'Onions', 'Wheat Flour', 'Refined Flour'],
+        features: ['✓ Assortment of 4 breads', '✓ Shareable basket', '✓ Variety of tastes', '✓ Value for money', '✓ Freshly baked'],
+        prepTime: '12 mins',
+        rating: 4.9,
+        reviews: 400,
+        vegetarian: true
+    },
+    {
+        id: 57,
+        fullDescription: 'Melt-in-the-mouth vegetable and paneer dumplings (koftas) simmered in a rich, creamy, and mildly sweet white cashew-based gravy.',
+        ingredients: ['Paneer', 'Potatoes', 'Cashews', 'Fresh Cream', 'Raisins', 'Cardamom', 'White Pepper', 'Khoya'],
+        features: ['✓ Rich white gravy', '✓ Melt-in-mouth koftas', '✓ Mild & sweet', '✓ Royal delicacy', '✓ Special occasion dish'],
+        prepTime: '25 mins',
+        rating: 4.8,
+        reviews: 220,
+        vegetarian: true
+    },
+    {
+        id: 58,
+        fullDescription: 'Smoky grilled paneer tikka pieces tossed in a spicy, rich tomato-onion gravy. Combines the flavor of tandoori paneer with a delicious curry.',
+        ingredients: ['Grilled Paneer Tikka', 'Onions', 'Tomatoes', 'Yoghurt', 'Tandoori Masala', 'Ginger-Garlic', 'Capsicum'],
+        features: ['✓ Smoky tandoori flavor', '✓ Spicy masala gravy', '✓ Grilled paneer', '✓ Robust taste', '✓ Unique fusion'],
+        prepTime: '25 mins',
+        rating: 4.8,
+        reviews: 195,
+        vegetarian: true
+    },
+    {
+        id: 127,
+        fullDescription: 'A rustic and earthy dish made with fresh mustard greens (sarson) and spinach, cooked with spices and served with cubes of paneer.',
+        ingredients: ['Mustard Greens (Sarson)', 'Spinach', 'Paneer', 'Ginger', 'Garlic', 'Green Chilies', 'Corn Flour (Makki Atta)', 'Ghee'],
+        features: ['✓ Authentic Punjabi', '✓ Winter special', '✓ Nutrient rich', '✓ Earthy flavors', '✓ Best with Makki Roti'],
+        prepTime: '25 mins',
+        rating: 4.6,
+        reviews: 110,
+        vegetarian: true
+    },
+    {
+        id: 128,
+        fullDescription: 'Traditional Sarson Ka Saag, a winter staple in North India. A lush green curry made from mustard greens and spices, topped with a dollop of white butter.',
+        ingredients: ['Mustard Greens (Sarson)', 'Spinach', 'Bathua', 'Ginger', 'Garlic', 'Green Chilies', 'Butter (White Makkhan)'],
+        features: ['✓ Traditional recipe', '✓ Superfood ingredients', '✓ Rich in iron', '✓ Topped with butter', '✓ Pure harvest taste'],
+        prepTime: '25 mins',
+        rating: 4.7,
+        reviews: 150,
+        vegetarian: true
+    },
+    {
+        id: 129,
+        fullDescription: 'Protein-rich Soya Chaap chunks cooked in a spicy and rich North Indian style onion-tomato gravy. A perfect vegetarian alternative to meat curries.',
+        ingredients: ['Soya Chaap', 'Onions', 'Tomatoes', 'Yoghurt', 'Ginger-Garlic', 'Kashmiri Red Chili', 'Garam Masala', 'Coriander'],
+        features: ['✓ High protein veg', '✓ Meat-like texture', '✓ Rich gravy', '✓ Spicy & Masaledar', '✓ Satisfying meal'],
+        prepTime: '20 mins',
+        rating: 4.6,
+        reviews: 130,
+        vegetarian: true
+    },
+    {
+        id: 89,
+        fullDescription: 'Classic Aloo Parantha stuffed with a spicy mixture of mashed potatoes, onions, and herbs. Served with cooling raita, tangy pickle, and a side of flavorful aloo baji.',
+        ingredients: ['Whole Wheat Flour', 'Potatoes', 'Onions', 'Green Chilies', 'Coriander', 'Spices', 'Ghee'],
+        features: ['✓ Stuffed with spiced potatoes', '✓ Served with Raita, Pickle, Aloo Baji', '✓ Home-style taste', '✓ Filling breakfast', '✓ Freshly made'],
+        prepTime: '15 mins',
+        rating: 4.8,
+        reviews: 210,
+        vegetarian: true
+    },
+    {
+        id: 90,
+        fullDescription: 'Crispy Gobhi Parantha stuffed with grated cauliflower seasoned with aromatic spices. Served with cooling raita, tangy pickle, and a side of flavorful aloo baji.',
+        ingredients: ['Whole Wheat Flour', 'Cauliflower (Gobhi)', 'Ginger', 'Green Chilies', 'Spices', 'Ghee'],
+        features: ['✓ Stuffed with grated cauliflower', '✓ Served with Raita, Pickle, Aloo Baji', '✓ Crispy texture', '✓ Winter special', '✓ Healthy & tasty'],
+        prepTime: '15 mins',
+        rating: 4.7,
+        reviews: 180,
+        vegetarian: true
+    },
+    {
+        id: 91,
+        fullDescription: 'Rich and protein-packed Paneer Parantha stuffed with crumbled cottage cheese and spices. Served with cooling raita, tangy pickle, and a side of flavorful aloo baji.',
+        ingredients: ['Whole Wheat Flour', 'Paneer (Cottage Cheese)', 'Onions', 'Green Chilies', 'Coriander', 'Spices', 'Ghee'],
+        features: ['✓ Stuffed with fresh Paneer', '✓ Served with Raita, Pickle, Aloo Baji', '✓ Protein rich', '✓ Soft & delicious', '✓ Kids favorite'],
+        prepTime: '15 mins',
+        rating: 4.9,
+        reviews: 250,
+        vegetarian: true
+    },
+    {
+        id: 93,
+        fullDescription: 'A cheesy delight! Whole wheat parantha stuffed with a generous amount of melted cheese and herbs. Served with cooling raita, tangy pickle, and a side of flavorful aloo baji.',
+        ingredients: ['Whole Wheat Flour', 'Mozzarella/Cheddar Cheese', 'Herbs', 'Chili Flakes', 'Butter'],
+        features: ['✓ Oozing with Cheese', '✓ Served with Raita, Pickle, Aloo Baji', '✓ Fusion flavor', '✓ Kids favorite', '✓ Cheesy goodness'],
+        prepTime: '15 mins',
+        rating: 4.8,
+        reviews: 300,
+        vegetarian: true
+    },
+    {
+        id: 65,
+        fullDescription: 'Flavorful soya chaap marinated in authentic Amritsari spices, grilled to perfection and wrapped in a soft roomali roti with crunchy onions and mint chutney.',
+        ingredients: ['Soya Chaap', 'Amritsari Masala', 'Onions', 'Mint Chutney', 'Yoghurt', 'Roomali Roti'],
+        features: ['✓ Authentic Amritsari taste', '✓ High protein vegetarian', '✓ Grilled texture', '✓ Freshly made', '✓ Tangy & Spicy'],
+        prepTime: '15 mins',
+        rating: 4.5,
+        reviews: 110,
+        vegetarian: true
+    },
+    {
+        id: 66,
+        fullDescription: 'Spicy and tangy mashed potato filling seasoned with chat masala, wrapped in a crispy paratha with onions and chutneys. A classic Indian street food favorite.',
+        ingredients: ['Potatoes', 'Onions', 'Chat Masala', 'Tamarind Chutney', 'Green Chutney', 'Paratha', 'Spices'],
+        features: ['✓ Spicy & Tangy', '✓ Comfort food', '✓ Crispy paratha', '✓ Kid-friendly', '✓ quick bite'],
+        prepTime: '12 mins',
+        rating: 4.4,
+        reviews: 95,
+        vegetarian: true
+    },
+    {
+        id: 67,
+        fullDescription: 'Juicy paneer cubes cooked on a tawa (griddle) with aromatic spices, bell peppers, and onions, wrapped in a warm soft roll. A delicious vegetarian option.',
+        ingredients: ['Paneer', 'Capsicum', 'Onions', 'Tomatoes', 'Tawa Masala', 'Roti/Paratha', 'Butter'],
+        features: ['✓ Paneer lover\'s choice', '✓ Fresh veggies', '✓ Tawa style cooking', '✓ Soft & juicy', '✓ Balanced meal'],
+        prepTime: '15 mins',
+        rating: 4.7,
+        reviews: 140,
+        vegetarian: true
+    },
+    {
+        id: 68,
+        fullDescription: 'Double the eggs, double the taste! Two egg omelets layered inside a flaky paratha, rolled with crunchy onions, green chilies, and tangy sauces.',
+        ingredients: ['2 Eggs', 'Onions', 'Green Chilies', 'Tomato Ketchup', 'Chili Sauce', 'Paratha', 'Oil'],
+        features: ['✓ Double Egg power', '✓ High protein', '✓ Filling snack', '✓ Street style flavor', '✓ Crispy & soft'],
+        prepTime: '10 mins',
+        rating: 4.6,
+        reviews: 180,
+        vegetarian: false
+    },
+    {
+        id: 69,
+        fullDescription: 'Succulent chicken pieces marinated in a refreshing fresh mint (pudina) and coriander chutney, grilled and wrapped in a soft roll. A burst of fresh flavors.',
+        ingredients: ['Chicken', 'Mint (Pudina)', 'Coriander', 'Yoghurt', 'Onions', 'Roti/Paratha', 'Spices'],
+        features: ['✓ Refreshing mint flavor', '✓ Grilled chicken', '✓ Healthy twist', '✓ Aromatic', '✓ Light & tasty'],
+        prepTime: '15 mins',
+        rating: 4.7,
+        reviews: 160,
+        vegetarian: false
+    },
+    {
+        id: 70,
+        fullDescription: 'Spicy minced chicken (keema) cooked with aromatic spices and green peas, stuffed in a roll with crunchy onions and chutneys. A hearty and flavorful treat.',
+        ingredients: ['Chicken Keema', 'Green Peas', 'Onions', 'Spices', 'Green Chutney', 'Paratha', 'Lemon Juice'],
+        features: ['✓ Flavorful keema', '✓ Spicy kick', '✓ Meat lover\'s favorite', '✓ Hearty filling', '✓ Rich taste'],
+        prepTime: '15 mins',
+        rating: 4.8,
+        reviews: 200,
+        vegetarian: false
+    },
+    {
+        id: 59,
+        fullDescription: 'Traditional home-style Chicken Curry cooked with bone-in chicken pieces in a thin, spicy onion-tomato gravy. Flavored with whole spices and garnished with fresh coriander.',
+        ingredients: ['Chicken (Bone-in)', 'Onions', 'Tomatoes', 'Ginger-Garlic', 'Turmeric', 'Red Chili Powder', 'Garam Masala', 'Coriander'],
+        features: ['✓ Traditional recipe', '✓ Home-style taste', '✓ Bone-in flavor', '✓ Spicy gravy', '✓ Comfort food'],
+        prepTime: '25 mins',
+        rating: 4.6,
+        reviews: 210,
+        vegetarian: false
+    },
+    {
+        id: 60,
+        fullDescription: 'The world-famous Butter Chicken! Tender boneless tandoori chicken pieces simmered in a rich, creamy, and buttery tomato gravy. Mildly spiced and slightly sweet.',
+        ingredients: ['Boneless Chicken', 'Butter', 'Fresh Cream', 'Tomato Puree', 'Cashews', 'Kasuri Methi', 'Honey', 'Mild Spices'],
+        features: ['✓ World famous dish', '✓ Rich & creamy', '✓ Buttery goodness', '✓ Mild & sweet', '✓ Best with Naan'],
+        prepTime: '25 mins',
+        rating: 4.9,
+        reviews: 500,
+        vegetarian: false
+    },
+    {
+        id: 61,
+        fullDescription: 'A robust and spicy Goat Curry made with tender bone-in goat meat slow-cooked in a thick masala gravy until it falls off the bone. A true meat lover\'s delight.',
+        ingredients: ['Goat Meat (Bone-in)', 'Onions', 'Tomatoes', 'Ginger-Garlic', 'Whole Spices', 'Mustard Oil', 'Kashmiri Chili'],
+        features: ['✓ Slow-cooked', '✓ Tender meat', '✓ Rich spicy gravy', '✓ Bone-in flavor', '✓ Special occasion dish'],
+        prepTime: '35 mins',
+        rating: 4.8,
+        reviews: 320,
+        vegetarian: false
+    },
+    {
+        id: 62,
+        fullDescription: 'Dry-style Karahi Chicken (Sukha) cooked in a wok with chunky bell peppers, onions, and tomatoes. The gravy is thick and clings to the meat, packed with the flavor of roasted spices.',
+        ingredients: ['Chicken', 'Capsicum', 'Onions', 'Tomatoes', 'Karahi Masala', 'Whole Coriander', 'Dried Red Chilies', 'Ginger Juliennes'],
+        features: ['✓ Semi-dry gravy', '✓ Wok-cooked', '✓ Intense flavors', '✓ Spicy kick', '✓ Best appetizer/side'],
+        prepTime: '25 mins',
+        rating: 4.7,
+        reviews: 180,
+        vegetarian: false
+    },
+    {
+        id: 63,
+        fullDescription: 'Classic Chicken Tikka Masala featuring grilled marinated chicken chunks (tikka) in a spiced curry sauce. The sauce is creamy and orange-colored, offering a perfect balance of spice and creaminess.',
+        ingredients: ['Chicken Tikka', 'Yoghurt', 'Cream', 'Tomato Puree', 'Onions', 'Garlic', 'Ginger', 'Tikka Masala Spice'],
+        features: ['✓ Grilled chicken', '✓ Creamy spicy sauce', '✓ UK favorite', '✓ Boneless meat', '✓ Rich flavor profile'],
+        prepTime: '25 mins',
+        rating: 4.8,
+        reviews: 400,
+        vegetarian: false
+    },
+    {
+        id: 64,
+        fullDescription: 'Minced chicken (Keema) cooked with green peas (Matar) in a dry, spiced masala. A versatile dish that pairs perfectly with pav (bread) or roti.',
+        ingredients: ['Minced Chicken (Keema)', 'Green Peas', 'Onions', 'Tomatoes', 'Ginger-Garlic', 'Green Chilies', 'Garam Masala', 'Coriander'],
+        features: ['✓ Minced meat', '✓ Quick & tasty', '✓ High protein', '✓ Street food vibe', '✓ Versatile dish'],
+        prepTime: '20 mins',
+        rating: 4.6,
+        reviews: 250,
+        vegetarian: false
+    },
+    {
+        id: 130,
+        fullDescription: 'Tender chicken pieces cooked in a nutritious and flavorful spinach (palak) gravy. A healthy twist on the classic chicken curry.',
+        ingredients: ['Chicken', 'Spinach (Palak)', 'Onions', 'Tomatoes', 'Ginger-Garlic', 'Cream', 'Whole Spices'],
+        features: ['✓ Healthy spinach base', '✓ High protein', '✓ Unique flavor', '✓ Iron rich', '✓ Colorful dish'],
+        prepTime: '25 mins',
+        rating: 4.7,
+        reviews: 160,
+        vegetarian: false
+    },
+    {
+        id: 131,
+        fullDescription: 'Spicy Kadai Chicken cooked with fresh ground spices, bell peppers, and onions in a traditional iron wok (kadai). Known for its robust and spicy flavor profile.',
+        ingredients: ['Chicken', 'Capsicum', 'Onions', 'Tomatoes', 'Kadai Masala', 'Coriander Seeds', 'Red Chilies', 'Ginger'],
+        features: ['✓ Spicy & robust', '✓ Fresh ground spices', '✓ Crunchy veggies', '✓ Wok flavor', '✓ North Indian classic'],
+        prepTime: '25 mins',
+        rating: 4.7,
+        reviews: 210,
+        vegetarian: false
+    },
+    {
+        id: 132,
+        fullDescription: 'Juicy chicken pieces marinated in fresh mint (pudina) and coriander chutney, grilled to perfection and rolled in a flaky paratha lined with a freshly cooked egg.',
+        ingredients: ['Chicken Tikka', 'Egg', 'Paratha', 'Mint Chutney', 'Onions', 'Lemon Juice', 'Chaat Masala', 'Green Chilies'],
+        features: ['✓ Minty fresh flavor', '✓ Includes Egg', '✓ Grilled chicken', '✓ Flaky paratha', '✓ Perfect meal-on-the-go'],
+        prepTime: '15 mins',
+        rating: 4.8,
+        reviews: 95,
+        vegetarian: false
+    },
+    {
+        id: 133,
+        fullDescription: 'A hearty roll stuffed with spicy minced chicken (keema) and a layer of egg inside a crisp paratha. Loaded with crunchy onions and tangy sauces for a burst of flavor.',
+        ingredients: ['Chicken Keema', 'Egg', 'Paratha', 'Onions', 'Capsicum', 'Tomato Ketchup', 'Green Chutney', 'Spice Mix'],
+        features: ['✓ Spicy Keema filling', '✓ Includes Egg', '✓ High protein', '✓ Rich flavors', '✓ Filling snack'],
+        prepTime: '15 mins',
+        rating: 4.7,
+        reviews: 110,
+        vegetarian: false
     }
 ];
 
@@ -611,9 +1195,25 @@ function ProductDetail() {
                             {/* Ingredients Section */}
                             {product.ingredients && product.ingredients.length > 0 && (
                                 <div className="desi-section ingredients-section">
-                                    <h3 className="desi-section-title">🥘 Ingredients</h3>
+                                    <h3 className="desi-section-title">
+                                        {product.category === 'thali' ? '📦 What\'s Inside' : '🥘 Ingredients'}
+                                    </h3>
                                     <div className="ingredients-grid">
                                         {product.ingredients.map((ingredient, index) => (
+                                            <span key={index} className="ingredient-tag">
+                                                {ingredient}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Raw Ingredients Section (for Thalis) */}
+                            {product.rawIngredients && product.rawIngredients.length > 0 && (
+                                <div className="desi-section raw-ingredients-section">
+                                    <h3 className="desi-section-title">🥘 Ingredients</h3>
+                                    <div className="ingredients-grid">
+                                        {product.rawIngredients.map((ingredient, index) => (
                                             <span key={index} className="ingredient-tag">
                                                 {ingredient}
                                             </span>
