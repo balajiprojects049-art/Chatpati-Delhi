@@ -3087,3 +3087,154 @@ body {
         height: 250px;
     }
 }
+
+/* Catering Page Detailed Styles */
+.catering-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/Hero-2.png');
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    background-size: cover;
+    background-position: center;
+    margin-top: 80px;
+}
+
+.catering-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.catering-hero p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.catering-services-detailed {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-top: 4rem;
+}
+
+.catering-service-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.catering-service-item.inverse {
+    direction: rtl;
+}
+
+.catering-service-item.inverse .service-info {
+    direction: ltr;
+}
+
+.service-image {
+    height: 450px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-info h3 {
+    font-size: 2.5rem;
+    color: var(--primary-maroon);
+    margin-bottom: 1.5rem;
+}
+
+.service-info p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--gray);
+    margin-bottom: 2rem;
+}
+
+.service-features {
+    list-style: none;
+    margin-bottom: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.service-features li {
+    font-weight: 600;
+    color: var(--primary-maroon);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.enquiry-section {
+    background: var(--cream);
+    padding: 6rem 0;
+}
+
+.enquiry-card {
+    background: var(--white);
+    padding: 4rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--accent-gold);
+}
+
+.enquiry-card h2 {
+    color: var(--primary-maroon);
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.enquiry-card p {
+    font-size: 1.25rem;
+    color: var(--gray);
+    margin-bottom: 2.5rem;
+}
+
+.enquiry-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .catering-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .catering-service-item {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .catering-service-item.inverse {
+        direction: ltr;
+    }
+
+    .service-image {
+        height: 300px;
+    }
+
+    .service-features {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .enquiry-actions {
+        flex-direction: column;
+    }
+}

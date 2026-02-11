@@ -208,12 +208,21 @@ function MenuPage() {
                                                         <p className="product-description" dangerouslySetInnerHTML={{ __html: item.description }}></p>
                                                         <div className="product-footer">
                                                             <span className="product-price">{item.price}</span>
-                                                            <div className="product-actions">
-                                                                <span className="btn-view" style={{ width: '100%', textAlign: 'center' }}>View Details</span>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </Link>
+                                                <div className="product-actions" style={{ padding: '0 1rem 1rem' }}>
+                                                    <button
+                                                        className="btn btn-primary"
+                                                        style={{ width: '100%', padding: '0.6rem' }}
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            handleAddToCart(item);
+                                                        }}
+                                                    >
+                                                        Add to Cart
+                                                    </button>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>

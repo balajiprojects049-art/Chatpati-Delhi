@@ -284,11 +284,56 @@
     background: transparent;
 }
 
-/* Mobile Responsiveness */
+/* Order Form Styles */
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0.5rem 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-maroon);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.whatsapp-btn:hover {
+    background: #128C7E !important;
+    transform: translateY(-2px);
+}
+
 @media (max-width: 480px) {
     .cart-panel {
-        width: 85%;
-        /* Slightly less than full width to show backdrop */
+        width: 100%;
         right: -100%;
     }
 

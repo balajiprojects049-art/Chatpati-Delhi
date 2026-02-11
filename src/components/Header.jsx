@@ -56,23 +56,57 @@ function Header() {
                             <li><Link to="/menu" onClick={() => setMobileOpen(false)}>Menu</Link></li>
                             <li><Link to="/about" onClick={() => setMobileOpen(false)}>About</Link></li>
                             <li><Link to="/articles" onClick={() => setMobileOpen(false)}>Articles</Link></li>
+                            <li><Link to="/catering" onClick={() => setMobileOpen(false)}>Caterings</Link></li>
                             <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
                         </ul>
-                        <button
-                            className="mobile-menu-btn"
-                            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-                            aria-expanded={mobileOpen}
-                            onClick={() => setMobileOpen((v) => !v)}
-                        >
-                            {mobileOpen ? '✕' : '☰'}
-                        </button>
+                        <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                            <button
+                                className="cart-btn"
+                                onClick={() => setCartOpen(true)}
+                                style={{
+                                    background: 'none',
+                                    border: 'none',
+                                    fontSize: '1.5rem',
+                                    cursor: 'pointer',
+                                    position: 'relative',
+                                    padding: '5px'
+                                }}
+                            >
+                                🛒
+                                {cartCount > 0 && (
+                                    <span style={{
+                                        position: 'absolute',
+                                        top: '-5px',
+                                        right: '-5px',
+                                        background: 'var(--accent-gold)',
+                                        color: 'var(--primary-maroon)',
+                                        borderRadius: '50%',
+                                        width: '20px',
+                                        height: '20px',
+                                        fontSize: '0.75rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontWeight: 'bold'
+                                    }}>
+                                        {cartCount}
+                                    </span>
+                                )}
+                            </button>
+                            <button
+                                className="mobile-menu-btn"
+                                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                                aria-expanded={mobileOpen}
+                                onClick={() => setMobileOpen((v) => !v)}
+                            >
+                                {mobileOpen ? '✕' : '☰'}
+                            </button>
+                        </div>
                     </nav>
                 </div>
             </header>
 
-            {/* Floating Cart Button */}
-            {/* Cart Panel Removed */}
-            {/* <CartPanel open={cartOpen} onClose={() => setCartOpen(false)} /> */}
+            <CartPanel open={cartOpen} onClose={() => setCartOpen(false)} />
         </>
     );
 }
