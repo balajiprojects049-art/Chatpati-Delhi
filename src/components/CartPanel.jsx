@@ -68,9 +68,9 @@ export default function CartPanel({ open, onClose }) {
         message += `TIME : ${formData.time}\n\n`;
 
         message += `CUSTOMER DETAILS\n`;
-        message += `NAME : ${formData.name}\n`;
-        message += `MOB  : ${formData.mobile}\n`;
-        message += `LOC  : ${formData.address}\n\n`;
+        message += `*NAME :* ${formData.name}\n`;
+        message += `*MOB  :* ${formData.mobile}\n`;
+        message += `*LOC  :* ${formData.address}\n\n`;
 
         message += `ORDER SUMMARY\n`;
         items.forEach((it, index) => {
