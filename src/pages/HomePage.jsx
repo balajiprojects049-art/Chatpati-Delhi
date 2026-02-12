@@ -46,17 +46,17 @@ function HomePage() {
         {
             title: "Authentic Delhi Street Food",
             subtitle: "Experience the vibrant flavors of Delhi's finest chaats and traditional dishes",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-1.png')"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-1.png')"
         },
         {
             title: "Food Served With Love",
             subtitle: "Every dish prepared with care and passion by our expert chefs",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-2.png')"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-2.png')"
         },
         {
             title: "Over 50 Delicious Items",
             subtitle: "From traditional chaats to royal thalis - taste the magic of Delhi",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/Hero-3.png')"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-3.png')"
         }
     ];
 

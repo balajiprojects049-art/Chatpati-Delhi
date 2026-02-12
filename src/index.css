@@ -2365,7 +2365,7 @@ body {
 }
 
 .about-hero {
-    background-image: url('/images/Hero-1.png');
+    background-image: url('/images/hero-1.png');
 }
 
 @keyframes fadeInUp {
@@ -3101,7 +3101,7 @@ body {
 
 /* Catering Page Detailed Styles */
 .catering-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/Hero-2.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/hero-2.png');
     height: 400px;
     display: flex;
     align-items: center;
