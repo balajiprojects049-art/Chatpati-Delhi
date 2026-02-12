@@ -56,7 +56,14 @@ function Header() {
                             <li><Link to="/menu" onClick={() => setMobileOpen(false)}>Menu</Link></li>
                             <li><Link to="/about" onClick={() => setMobileOpen(false)}>About</Link></li>
                             <li><Link to="/articles" onClick={() => setMobileOpen(false)}>Articles</Link></li>
-                            <li><Link to="/catering" onClick={() => setMobileOpen(false)}>Caterings</Link></li>
+                            <li className="dropdown-container">
+                                <Link to="/catering" onClick={() => setMobileOpen(false)}>
+                                    Caterings <span className="arrow-icon">▼</span>
+                                </Link>
+                                <ul className="dropdown-menu">
+                                    <li><Link to="/sweet-box" onClick={() => setMobileOpen(false)}>Sweet Box</Link></li>
+                                </ul>
+                            </li>
                             <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
                         </ul>
                         <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>

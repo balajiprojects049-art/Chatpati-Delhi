@@ -6,7 +6,9 @@ import MenuPage from './pages/MenuPage';
 import AboutPage from './pages/AboutPage';
 import PressPage from './pages/PressPage';
 import CateringPage from './pages/CateringPage';
+
 import ContactPage from './pages/ContactPage';
+import SweetBoxPage from './pages/SweetBoxPage';
 import ProductDetail from './ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
 import WelcomeScreen from './components/WelcomeScreen';
@@ -24,6 +26,8 @@ function AppRouter() {
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/articles" element={<PressPage />} />
                     <Route path="/catering" element={<CateringPage />} />
+
+                    <Route path="/sweet-box" element={<SweetBoxPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/product/:id" element={<ProductDetail />} />
                 </Routes>

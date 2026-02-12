@@ -1,5 +1,6 @@
 /* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import './dropdown.css';
 
 /* Reset and Base Styles */
 * {
@@ -2365,7 +2366,14 @@ body {
 }
 
 .about-hero {
-    background-image: url('/images/hero-1.png');
+    background-image: url('/images/hero-about.avif');
+    background-position: center 10%;
+}
+
+.articles-hero {
+    background-image: url('/images/hero-articles.png');
+    background-position: center 20%;
+    /* Move image down */
 }
 
 @keyframes fadeInUp {
