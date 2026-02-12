@@ -34,10 +34,10 @@ const CateringPage = () => {
         <div className="catering-page">
             {cartToast && <div className="cart-toast" style={{ background: '#2ecc71', color: 'white', position: 'fixed', top: '100px', right: '20px', padding: '15px 30px', borderRadius: '10px', zIndex: 9999, fontWeight: 'bold', boxShadow: '0 5px 15px rgba(0,0,0,0.2)' }}>✅ Added to Catering Cart</div>}
 
-            <section className="hero-section catering-hero">
+            <section className="page-hero" style={{ backgroundImage: "url('/images/hero-2.png')" }}>
                 <div className="container">
-                    <h1>Premium Catering Menu</h1>
-                    <p>Select your favorite dishes for your special event. Add them directly to your cart for booking.</p>
+                    <h1 className="page-hero-title">Premium Catering Menu</h1>
+                    <p className="page-hero-subtitle">Select your favorite dishes for your special event. Add them directly to your cart for booking.</p>
                 </div>
             </section>
 

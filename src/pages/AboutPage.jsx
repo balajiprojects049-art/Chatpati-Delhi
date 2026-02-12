@@ -81,7 +81,7 @@ function AboutPage() {
                         <div className="founder-content">
                             <div className="founder-header">
                                 <h3> Abhijith Pingle</h3>
-                                <p className="founder-title">Catering Director – Nationwide Operations</p>
+                                <p className="founder-title">Co-Founder & Catering Director Nationwide Operations</p>
                             </div>
                             <div className="founder-text">
                                 <p>Abhijith Pingle leads the catering division of Chatpati Delhi across the United States. With over 18 years in the food and service industry, including 13 years dedicated to catering and 3,000+ successfully executed events, he brings strategic planning, operational precision, and flawless execution to every occasion.</p>
