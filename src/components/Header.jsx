@@ -39,7 +39,7 @@ function Header() {
                     <nav className="nav">
                         <div className="logo-container">
                             <img
-                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%23D4AF37'/%3E%3Ccircle cx='100' cy='100' r='85' fill='white'/%3E%3Ccircle cx='100' cy='100' r='75' fill='%23D4AF37'/%3E%3Ctext x='100' y='95' text-anchor='middle' fill='white' font-size='40' font-weight='bold' font-family='Arial'%3ECPD%3C/text%3E%3Ctext x='100' y='50' text-anchor='middle' fill='%23D4AF37' font-size='16' font-family='Arial'%3ECHATPATI DELHI%3C/text%3E%3Ctext x='100' y='160' text-anchor='middle' fill='%23D4AF37' font-size='12' font-family='Arial'%3EFOOD SERVED WITH LOVE%3C/text%3E%3C/svg%3E"
+                                src="/images/logo.png"
                                 alt="Chatpati Delhi Logo"
                                 className="logo"
                             />
