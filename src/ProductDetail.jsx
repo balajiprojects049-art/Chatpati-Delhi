@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { addToCart } from './utils/cart';
 import './index.css';
 import './enhanced-styles.css';
 
@@ -272,28 +273,8 @@ function ProductDetail() {
 
     // Add to Cart Handler
     const handleAddToCart = () => {
-        const cartItem = {
-            ...product,
-            quantity,
-            spiceLevel: product.hot ? spiceLevel : null,
-            addedAt: new Date().toISOString()
-        };
-
-        // Get existing cart from localStorage
-        const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-        // Check if item already exists
-        const existingIndex = existingCart.findIndex(item =>
-            item.id === product.id && item.spiceLevel === cartItem.spiceLevel
-        );
-
-        if (existingIndex > -1) {
-            existingCart[existingIndex].quantity += quantity;
-        } else {
-            existingCart.push(cartItem);
-        }
-
-        localStorage.setItem('cart', JSON.stringify(existingCart));
+        const itemSpiceLevel = product.hot ? spiceLevel : null;
+        addToCart(product, quantity, itemSpiceLevel);
 
         // Show notification
         setShowNotification(true);

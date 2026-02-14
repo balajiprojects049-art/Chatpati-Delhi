@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import './index.css'
+import { addToCart } from './utils/cart'
 
 function Home() {
     const [scrolled, setScrolled] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [cartToast, setCartToast] = useState(false);
+
+    const handleAddToCart = (item) => {
+        addToCart(item, 1);
+        setCartToast(true);
+        setTimeout(() => setCartToast(false), 1800);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -214,9 +224,14 @@ function Home() {
         { id: 122, name: 'Masala Soda', price: '$4.95', category: 'drinks', image: '🥤', hot: false, description: 'Spiced soda' },
     ];
 
-    const filteredItems = selectedCategory === 'all'
-        ? menuItems
-        : menuItems.filter(item => item.category === selectedCategory);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const filteredItems = menuItems.filter(item => {
+        const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+        const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.description.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+    });
 
 
 
@@ -236,30 +251,7 @@ function Home() {
     return (
         <div className="app">
             {/* Header */}
-            <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-                <div className="container">
-                    <nav className="nav">
-                        <div className="logo-container">
-                            <img
-                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%23D4AF37'/%3E%3Ccircle cx='100' cy='100' r='85' fill='white'/%3E%3Ccircle cx='100' cy='100' r='75' fill='%23D4AF37'/%3E%3Ctext x='100' y='95' text-anchor='middle' fill='white' font-size='40' font-weight='bold' font-family='Arial'%3ECPD%3C/text%3E%3Ctext x='100' y='50' text-anchor='middle' fill='%23D4AF37' font-size='16' font-family='Arial'%3ECHATPATI DELHI%3C/text%3E%3Ctext x='100' y='160' text-anchor='middle' fill='%23D4AF37' font-size='12' font-family='Arial'%3EFOOD SERVED WITH LOVE%3C/text%3E%3C/svg%3E"
-                                alt="Chatpati Delhi Logo"
-                                className="logo"
-                            />
-                            <div className="brand-text">
-                                <h1>Chatpati Delhi</h1>
-                                <p>Food Served With Love</p>
-                            </div>
-                        </div>
-                        <ul className="nav-links">
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#menu">Menu</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                        <button className="mobile-menu-btn">☰</button>
-                    </nav>
-                </div>
-            </header>
+            <Header />
 
             {/* Hero Slider */}
             <section id="home" className="hero-slider">
@@ -300,6 +292,23 @@ function Home() {
                         </p>
                     </div>
 
+                    {/* Search Bar */}
+                    <div className="search-container">
+                        <div className="search-wrapper">
+                            <span className="search-icon">🔍</span>
+                            <input
+                                type="text"
+                                className="search-input"
+                                placeholder="Search for dishes (e.g. Samosa, Biryani)..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                            {searchQuery && (
+                                <button className="clear-search" onClick={() => setSearchQuery('')}>✕</button>
+                            )}
+                        </div>
+                    </div>
+
                     {/* Category Filters */}
                     <div className="category-filters">
                         {categories.map((cat) => (
@@ -329,7 +338,7 @@ function Home() {
                                         <span className="product-price">{item.price}</span>
                                         <div className="product-actions">
                                             <Link to={`/product/${item.id}`} className="btn-view">View</Link>
-                                            <button className="btn-add">Add</button>
+                                            <button className="btn-add" onClick={() => handleAddToCart(item)}>Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -472,42 +481,8 @@ function Home() {
             </section>
 
             {/* Footer */}
-            <footer className="footer">
-                <div className="container">
-                    <div className="footer-content">
-                        <div className="footer-section">
-                            <h3>Chatpati Delhi</h3>
-                            <p>Authentic Delhi street food served with love. Experience the vibrant flavors of India.</p>
-                            <div className="social-links">
-                                <a href="#" className="social-link">📘</a>
-                                <a href="#" className="social-link">📷</a>
-                                <a href="#" className="social-link">🐦</a>
-                            </div>
-                        </div>
-                        <div className="footer-section">
-                            <h3>Quick Links</h3>
-                            <a href="#home">Home</a>
-                            <a href="#menu">Menu</a>
-                            <a href="#about">About Us</a>
-                            <a href="#contact">Contact</a>
-                        </div>
-                        <div className="footer-section">
-                            <h3>Hours</h3>
-                            <p>Monday - Friday<br />11:00 AM - 10:00 PM</p>
-                            <p>Saturday - Sunday<br />10:00 AM - 11:00 PM</p>
-                        </div>
-                        <div className="footer-section">
-                            <h3>Contact</h3>
-                            <p>📍 Fratelli PSA, 109,823<br />5th Ave, USA</p>
-                            <p>📞 +1 (732) 499-9387</p>
-                            <p>📧 info@chatpatidelhi.com</p>
-                        </div>
-                    </div>
-                    <div className="footer-bottom">
-                        <p>&copy; 2026 Chatpati Delhi. All rights reserved. Food Served With Love ❤️</p>
-                    </div>
-                </div>
-            </footer>
+            {cartToast && <div className="cart-toast">✅ Added to cart</div>}
+            <Footer />
         </div>
     )
 }

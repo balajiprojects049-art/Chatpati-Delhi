@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
+import { addToCart } from './utils/cart'
 
 function App() {
     const [scrolled, setScrolled] = useState(false);
@@ -8,6 +9,13 @@ function App() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [cartToast, setCartToast] = useState(false);
+
+    const handleAddToCart = (item) => {
+        addToCart(item, 1);
+        setCartToast(true);
+        setTimeout(() => setCartToast(false), 1800);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -331,7 +339,7 @@ function App() {
                                         <span className="product-price">{item.price}</span>
                                         <div className="product-actions">
                                             <Link to={`/product/${item.id}`} className="btn-view">View</Link>
-                                            <button className="btn-add">Add</button>
+                                            <button className="btn-add" onClick={() => handleAddToCart(item)}>Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -474,6 +482,7 @@ function App() {
             </section>
 
             {/* Footer */}
+            {cartToast && <div className="cart-toast">✅ Added to cart</div>}
             <footer className="footer">
                 <div className="container">
                     <div className="footer-content">
