@@ -1,138 +1,247 @@
 import { useParams, Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './index.css';
+import './enhanced-styles.css';
 
-// Menu items data
+// Menu items data with detailed descriptions
 const menuItems = [
-    { id: 1, name: 'Bhara Samosa (2 Pcs)', price: '$4.00', category: 'chaat', image: '🥟', hot: true, description: 'Stuffed samosas' },
-    { id: 2, name: 'Khasta Kachori (2 Pcs)', price: '$6.50', category: 'chaat', image: '🥙', hot: false, description: 'Crispy kachoris' },
-    { id: 3, name: 'Jaypuri Pyaaz Kachori (2 Pcs)', price: '$6.50', category: 'chaat', image: '🥙', hot: false, description: 'Onion kachori' },
-    { id: 4, name: 'Chandni Chowk Ke Bhalle', price: '$8.95', category: 'chaat', image: '🥗', hot: false, description: 'Famous Delhi bhalla' },
-    { id: 5, name: 'Churmuri Bhel', price: '$8.95', category: 'chaat', image: '🥘', hot: false, description: 'Puffed rice mix' },
-    { id: 6, name: 'Golgappe (12 Pcs)', price: '$13.95', category: 'chaat', image: '🥙', hot: true, description: 'Water-filled puri' },
-    { id: 7, name: 'Sev Puri Dahi Puri (SPDP)', price: '$8.95', category: 'chaat', image: '🥗', hot: false, description: 'Sev and dahi puri combo' },
-    { id: 8, name: 'Papri Chaat', price: '$8.95', category: 'chaat', image: '🥘', hot: false, description: 'Crispy papri chaat' },
-    { id: 9, name: 'Dahi Aloo Tikki', price: '$8.95', category: 'chaat', image: '🍢', hot: false, description: 'Potato tikki with yogurt' },
-    { id: 10, name: 'Raj Kachori', price: '$9.95', category: 'chaat', image: '🥙', hot: true, description: 'King size kachori' },
-    { id: 11, name: 'Chola Tikki Chaat', price: '$9.95', category: 'chaat', image: '🥘', hot: false, description: 'Chickpea tikki chaat' },
-    { id: 12, name: 'Samosa Chaat', price: '$9.95', category: 'chaat', image: '🌮', hot: true, description: 'Samosa with chole' },
-    { id: 13, name: 'Veg Pakode', price: '$8.95', category: 'chaat', image: '🍢', hot: false, description: 'Vegetable fritters' },
-    { id: 14, name: 'Chutney Paneer Pakora', price: '$10.95', category: 'chaat', image: '🧀', hot: false, description: 'Paneer pakoras' },
-    { id: 15, name: 'Golgappa Basket (24 Pcs)', price: '$24.95', category: 'chaat', image: '🥙', hot: true, description: 'Large golgappa serving' },
-    { id: 16, name: 'Ghungaraale Fries', price: '$6.95', category: 'chaat', image: '🍟', hot: false, description: 'Crispy fries' },
-    { id: 17, name: 'Sev Puri', price: '$8.95', category: 'chaat', image: '🥗', hot: false, description: 'Sev puri snack' },
-    { id: 18, name: 'Kurkure Tokri', price: '$9.95', category: 'chaat', image: '🥙', hot: false, description: 'Crispy basket' },
-    { id: 19, name: 'Golgappa (8Pcs)', price: '$8.95', category: 'chaat', image: '🥙', hot: false, description: 'Regular golgappa' },
-    { id: 20, name: 'Sabudana Wada', price: '$8.95', category: 'chaat', image: '🥘', hot: false, description: 'Tapioca vada' },
-    { id: 21, name: 'Bun Samosa', price: '$9.95', category: 'mumbai', image: '🍔', hot: false, description: 'Samosa in bun' },
-    { id: 22, name: 'Karjat Vada Pav', price: '$9.95', category: 'mumbai', image: '🍔', hot: true, description: 'Potato vada in pav' },
-    { id: 23, name: 'Garlic Cheese Vada Pav', price: '$10.95', category: 'mumbai', image: '🍔', hot: false, description: 'Cheesy vada pav' },
-    { id: 24, name: 'Kacchi Dabeli', price: '$9.95', category: 'mumbai', image: '🍔', hot: false, description: 'Spicy dabeli' },
-    { id: 25, name: 'Kadak Pav Bhaji', price: '$11.95', category: 'mumbai', image: '🥙', hot: true, description: 'Spicy pav bhaji' },
-    { id: 26, name: 'Cheese Pav Bhaji (Amul)', price: '$12.95', category: 'mumbai', image: '🥙', hot: false, description: 'Cheese pav bhaji' },
-    { id: 27, name: 'Chicken Keema Pav', price: '$15.95', category: 'mumbai', image: '🍔', hot: true, description: 'Chicken keema with pav' },
-    { id: 28, name: 'Veg Keema Pav', price: '$12.95', category: 'mumbai', image: '🍔', hot: false, description: 'Veg keema with pav' },
-    { id: 29, name: 'Missal Pav', price: '$11.95', category: 'mumbai', image: '🥙', hot: true, description: 'Spicy missal pav' },
-    { id: 30, name: 'Veg Cheese Burger', price: '$10.95', category: 'snacks', image: '🍔', hot: false, description: 'Vegetable cheese burger' },
-    { id: 31, name: 'Aloo Subji W/ Khasta Kachori', price: '$10.95', category: 'snacks', image: '🥘', hot: false, description: 'Potato curry with kachori' },
-    { id: 32, name: 'Chole Bhature', price: '$12.95', category: 'snacks', image: '🥙', hot: true, description: 'Chickpeas with bhatura' },
-    { id: 33, name: 'Bedmi Aloo Puri', price: '$11.95', category: 'snacks', image: '🥘', hot: false, description: 'Bedmi with aloo' },
-    { id: 34, name: 'Veg Keema Roomali Roti', price: '$11.95', category: 'snacks', image: '🫓', hot: false, description: 'Veg keema with roti' },
-    { id: 35, name: 'Sarson Ka Saag Makka Roti', price: '$12.95', category: 'snacks', image: '🥘', hot: false, description: 'Mustard greens with cornbread' },
-    { id: 36, name: 'Chicken Keema Roomali Roti', price: '$16.95', category: 'snacks', image: '🫓', hot: true, description: 'Chicken keema with roti' },
-    { id: 37, name: 'Sutli Chicken', price: '$16.95', category: 'tandoor', image: '🍗', hot: true, description: 'String-tied tandoori chicken' },
-    { id: 38, name: 'Barrah Chicken', price: '$16.95', category: 'tandoor', image: '🍗', hot: false, description: 'Spicy chicken pieces' },
-    { id: 39, name: 'Chicken Malai', price: '$16.95', category: 'tandoor', image: '🍗', hot: false, description: 'Creamy chicken tikka' },
-    { id: 40, name: 'Chicken Chatpati', price: '$16.95', category: 'tandoor', image: '🍗', hot: true, description: 'Spicy tandoori chicken' },
-    { id: 41, name: 'Veg Cutlet Sizzler', price: '$11.95', category: 'sizzling', image: '🍳', hot: false, description: 'Vegetable cutlet sizzler' },
-    { id: 42, name: 'Bhatti Paneer Sizzler', price: '$13.95', category: 'sizzling', image: '🔥', hot: true, description: 'Grilled paneer sizzler' },
-    { id: 43, name: 'Chaap Chaap Sizzler', price: '$12.95', category: 'sizzling', image: '🔥', hot: false, description: 'Soya chaap sizzler' },
-    { id: 44, name: 'Chicken Tikka Sizzler', price: '$16.95', category: 'sizzling', image: '🍗', hot: true, description: 'Chicken tikka sizzler' },
-    { id: 45, name: 'Lamb Chops', price: '$26.99', category: 'sizzling', image: '🍖', hot: true, description: 'Grilled lamb chops' },
-    { id: 46, name: 'Fish Amritsari', price: '$14.95', category: 'sizzling', image: '🐟', hot: false, description: 'Amritsari fried fish' },
-    { id: 47, name: 'Tarkari Biryani (Veg)', price: '$14.95', category: 'biryani', image: '🍛', hot: false, description: 'Vegetable biryani' },
-    { id: 48, name: 'Purani Delhi Chicken Biryani', price: '$16.95', category: 'biryani', image: '🍛', hot: true, description: 'Old Delhi chicken biryani' },
-    { id: 49, name: 'Purani Delhi Goat Biryani', price: '$21.95', category: 'biryani', image: '🍛', hot: true, description: 'Old Delhi goat biryani' },
-    { id: 50, name: 'Aloo Gobhi', price: '$12.95', category: 'curry', image: '🥔', hot: false, description: 'Potato and cauliflower curry' },
-    { id: 51, name: 'Pindi Chole', price: '$12.95', category: 'curry', image: '🥘', hot: true, description: 'Pindi-style chickpeas' },
-    { id: 52, name: 'Daal Makhanwala', price: '$13.95', category: 'curry', image: '🍲', hot: false, description: 'Creamy black lentils' },
-    { id: 53, name: 'Peeli Daal (Yellow Daal)', price: '$12.95', category: 'curry', image: '🍲', hot: false, description: 'Yellow lentil curry' },
-    { id: 54, name: 'Paneer Makhanwala', price: '$14.95', category: 'curry', image: '🧀', hot: true, description: 'Paneer in butter gravy' },
-    { id: 55, name: 'Palak Paneer', price: '$14.95', category: 'curry', image: '🥬', hot: false, description: 'Spinach and paneer' },
-    { id: 56, name: 'Kadai Paneer', price: '$14.95', category: 'curry', image: '🥘', hot: false, description: 'Paneer kadai style' },
-    { id: 57, name: 'Malai Kofta', price: '$14.95', category: 'curry', image: '🥘', hot: false, description: 'Creamy kofta curry' },
-    { id: 58, name: 'Paneer Bhatti Masala', price: '$14.95', category: 'curry', image: '🧀', hot: true, description: 'Grilled paneer masala' },
-    { id: 59, name: 'Chicken Curry', price: '$16.95', category: 'curry', image: '🍗', hot: true, description: 'Traditional chicken curry' },
-    { id: 60, name: 'Butter Chicken', price: '$16.95', category: 'curry', image: '🍗', hot: true, description: 'Butter chicken masala' },
-    { id: 61, name: 'Goat Curry', price: '$21.95', category: 'curry', image: '🍖', hot: true, description: 'Spicy goat curry' },
-    { id: 62, name: 'Karahi Sukha', price: '$23.95', category: 'curry', image: '🍲', hot: true, description: 'Dry kadai curry' },
-    { id: 63, name: 'Chicken Tikka Masala', price: '$16.95', category: 'curry', image: '🍗', hot: true, description: 'Chicken tikka in masala' },
-    { id: 64, name: 'Chicken Keema Masala', price: '$17.95', category: 'curry', image: '🍲', hot: true, description: 'Minced chicken curry' },
-    { id: 65, name: 'Amritsar Soya Chaap Roll', price: '$11.95', category: 'rolls', image: '🌯', hot: false, description: 'Soya chaap wrap' },
-    { id: 66, name: 'Chatpata Aloo Roll', price: '$11.95', category: 'rolls', image: '🌯', hot: false, description: 'Spicy potato roll' },
-    { id: 67, name: 'Tawa Paneer Roll', price: '$12.95', category: 'rolls', image: '🌯', hot: false, description: 'Grilled paneer roll' },
-    { id: 68, name: 'Double Eggroll Roll', price: '$12.95', category: 'rolls', image: '🌯', hot: false, description: 'Double egg roll' },
-    { id: 69, name: 'Pudina Chicken Roll', price: '$13.95', category: 'rolls', image: '🌯', hot: true, description: 'Mint chicken roll' },
-    { id: 70, name: 'Chicken Keema Roll', price: '$14.95', category: 'rolls', image: '🌯', hot: true, description: 'Chicken keema wrap' },
-    { id: 71, name: 'Kulcha Thali', price: '$15.95', category: 'thali', image: '🍱', hot: false, description: 'Kulcha with sides' },
-    { id: 72, name: 'C.P.D Veg Thali', price: '$17.95', category: 'thali', image: '🍱', hot: true, description: 'Full vegetarian thali' },
-    { id: 73, name: 'C.P.D Non Veg Thali', price: '$22.95', category: 'thali', image: '🍱', hot: true, description: 'Non-veg complete thali' },
-    { id: 74, name: 'Baccha Maggi', price: '$8.95', category: 'snacks', image: '🍜', hot: false, description: 'Kids noodles' },
-    { id: 75, name: 'Fries', price: '$7.95', category: 'snacks', image: '🍟', hot: false, description: 'French fries' },
-    { id: 76, name: 'Bacha Combo', price: '$13.95', category: 'snacks', image: '🍔', hot: false, description: 'Chole Cheese Burger, Fries & Mango Lassi' },
-    { id: 77, name: 'Butter Naan', price: '$3.95', category: 'bread', image: '🥖', hot: false, description: 'Butter naan' },
-    { id: 78, name: 'Garlic Naan', price: '$4.95', category: 'bread', image: '🥖', hot: false, description: 'Garlic flavored naan' },
-    { id: 79, name: 'Tandoori Roti', price: '$3.95', category: 'bread', image: '🫓', hot: false, description: 'Tandoori roti' },
-    { id: 80, name: 'Roomali Roti', price: '$4.95', category: 'bread', image: '🫓', hot: false, description: 'Thin roomali roti' },
-    { id: 81, name: 'Chur Chur Naan', price: '$4.95', category: 'bread', image: '🥖', hot: false, description: 'Crispy layered naan' },
-    { id: 82, name: 'Lachaa Parantha', price: '$4.95', category: 'bread', image: '🫓', hot: false, description: 'Layered parantha' },
-    { id: 83, name: 'Paneer Kulcha', price: '$5.95', category: 'bread', image: '🥖', hot: false, description: 'Paneer stuffed kulcha' },
-    { id: 84, name: 'Gobhi Kulcha', price: '$4.95', category: 'bread', image: '🥖', hot: false, description: 'Cauliflower kulcha' },
-    { id: 85, name: 'Pyaaz Kulcha', price: '$4.95', category: 'bread', image: '🥖', hot: false, description: 'Onion kulcha' },
-    { id: 86, name: 'Aloo Kulcha', price: '$4.95', category: 'bread', image: '🥖', hot: false, description: 'Potato kulcha' },
-    { id: 87, name: 'Mirchi Naan', price: '$4.95', category: 'bread', image: '🥖', hot: true, description: 'Chili naan' },
-    { id: 88, name: 'Mithi Cheese Naan', price: '$5.95', category: 'bread', image: '🥖', hot: false, description: 'Sweet cheese naan' },
-    { id: 89, name: 'Aloo Parantha', price: '$11.95', category: 'parantha', image: '🫓', hot: false, description: 'Potato parantha' },
-    { id: 90, name: 'Gobhi Parantha', price: '$11.95', category: 'parantha', image: '🫓', hot: false, description: 'Cauliflower parantha' },
-    { id: 91, name: 'Paneer Parantha', price: '$12.95', category: 'parantha', image: '🫓', hot: false, description: 'Paneer parantha' },
-    { id: 92, name: 'Mix Veg Parantha', price: '$12.95', category: 'parantha', image: '🫓', hot: false, description: 'Mixed veg parantha' },
-    { id: 93, name: 'Cheese Parantha', price: '$12.95', category: 'parantha', image: '🫓', hot: false, description: 'Cheese parantha' },
-    { id: 94, name: 'Brown Rabdi', price: '$6.95', category: 'sweets', image: '🍮', hot: false, description: 'Sweet rabdi' },
-    { id: 95, name: 'Gulab Jamun', price: '$5.95', category: 'sweets', image: '🍡', hot: false, description: 'Gulab jamun balls' },
-    { id: 96, name: 'Rasmalai', price: '$6.95', category: 'sweets', image: '🍰', hot: false, description: 'Rasmalai dessert' },
-    { id: 97, name: 'Malpua', price: '$6.95', category: 'sweets', image: '🥞', hot: false, description: 'Sweet pancakes' },
-    { id: 98, name: 'Kulfi Falooda', price: '$6.95', category: 'sweets', image: '🍨', hot: false, description: 'Kulfi with falooda' },
-    { id: 99, name: 'Malai Kulfi', price: '$4.95', category: 'sweets', image: '🍦', hot: false, description: 'Creamy kulfi' },
-    { id: 100, name: 'Moong Dal Halwa', price: '$6.95', category: 'sweets', image: '🍮', hot: false, description: 'Lentil halwa' },
-    { id: 101, name: 'Rasgulla', price: '$4.95', category: 'sweets', image: '🍡', hot: false, description: 'Spongy rasgulla' },
-    { id: 102, name: 'Aam Ki Lassi', price: '$4.95', category: 'drinks', image: '🥤', hot: false, description: 'Mango lassi' },
-    { id: 103, name: 'Masal Chanch', price: '$4.95', category: 'drinks', image: '🥤', hot: false, description: 'Spiced buttermilk' },
-    { id: 104, name: 'Meethi Lassi', price: '$4.95', category: 'drinks', image: '🥤', hot: false, description: 'Sweet lassi' },
-    { id: 105, name: 'Aam Ka Panna', price: '$4.95', category: 'drinks', image: '🥤', hot: false, description: 'Raw mango drink' },
-    { id: 106, name: 'Jal Jeera Soda', price: '$4.95', category: 'drinks', image: '🥤', hot: false, description: 'Cumin soda' },
-    { id: 107, name: 'Gulab Falooda', price: '$5.95', category: 'drinks', image: '🥤', hot: false, description: 'Rose falooda' },
-    { id: 108, name: 'Mango Shake', price: '$6.95', category: 'drinks', image: '🥤', hot: false, description: 'Mango shake' },
-    { id: 109, name: 'Vanilla Shake', price: '$6.95', category: 'drinks', image: '🥤', hot: false, description: 'Vanilla shake' },
-    { id: 110, name: 'Chocolate Shake', price: '$6.95', category: 'drinks', image: '🥤', hot: false, description: 'Chocolate shake' },
-    { id: 111, name: 'Rose Shake', price: '$6.95', category: 'drinks', image: '🥤', hot: false, description: 'Rose shake' },
-    { id: 112, name: 'Cold Coffee', price: '$6.95', category: 'drinks', image: '☕', hot: false, description: 'Cold coffee' },
-    { id: 113, name: 'Kesar Dry Fruit Milk', price: '$6.95', category: 'drinks', image: '🥛', hot: false, description: 'Saffron milk' },
-    { id: 114, name: 'Adrak Ki Chai', price: '$3.00', category: 'drinks', image: '☕', hot: true, description: 'Ginger tea' },
-    { id: 115, name: 'Coffee', price: '$3.00', category: 'drinks', image: '☕', hot: true, description: 'Hot coffee' },
-    { id: 116, name: 'Coke', price: '$2.50', category: 'drinks', image: '🥤', hot: false, description: 'Coca-Cola' },
-    { id: 117, name: 'Sprite', price: '$2.50', category: 'drinks', image: '🥤', hot: false, description: 'Sprite' },
-    { id: 118, name: 'Limca', price: '$3.95', category: 'drinks', image: '🥤', hot: false, description: 'Limca' },
-    { id: 119, name: 'Thums Up', price: '$3.95', category: 'drinks', image: '🥤', hot: false, description: 'Thums Up' },
-    { id: 120, name: 'Fanta', price: '$2.50', category: 'drinks', image: '🥤', hot: false, description: 'Fanta' },
-    { id: 121, name: 'Water', price: '$2.00', category: 'drinks', image: '💧', hot: false, description: 'Bottled water' },
-    { id: 122, name: 'Masala Soda', price: '$4.95', category: 'drinks', image: '🥤', hot: false, description: 'Spiced soda' },
+    {
+        id: 1,
+        name: 'Bhara Samosa (2 Pcs)',
+        price: '$4.00',
+        category: 'chaat',
+        image: '🥟',
+        hot: true,
+        vegetarian: true,
+        description: 'Crispy golden samosas stuffed with spiced potatoes and peas',
+        fullDescription: 'Experience the authentic taste of Delhi with our handcrafted Bhara Samosas. Each samosa features a perfectly crispy, golden-brown exterior made from refined flour, encasing a flavorful filling of seasoned potatoes, green peas, and aromatic Indian spices.',
+        ingredients: ['Refined Flour (Maida)', 'Potatoes', 'Green Peas', 'Cumin Seeds', 'Coriander Powder', 'Garam Masala', 'Green Chilies', 'Ginger', 'Vegetable Oil'],
+        features: ['✓ Freshly made daily', '✓ Crispy & flaky texture', '✓ Authentic Delhi recipe', '✓ Served with mint & tamarind chutney', '✓ Perfect tea-time snack'],
+        prepTime: '15 mins',
+        rating: 4.8,
+        reviews: 142
+    },
+    {
+        id: 2,
+        name: 'Khasta Kachori (2 Pcs)',
+        price: '$6.50',
+        category: 'chaat',
+        image: '🥙',
+        hot: false,
+        vegetarian: true,
+        description: 'Crispy deep-fried pastry with spiced lentil filling',
+        fullDescription: 'Indulge in our crispy Khasta Kachoris, a beloved Delhi street food delicacy. These perfectly round, puffed pastries are filled with a savory mixture of spiced lentils and aromatic spices, creating an explosion of flavors in every bite.',
+        ingredients: ['Refined Flour', 'Moong Dal (Yellow Lentils)', 'Fennel Seeds', 'Black Pepper', 'Asafoetida (Hing)', 'Red Chili Powder', 'Salt', 'Ghee'],
+        features: ['✓ Extra crispy & flaky', '✓ Traditional Delhi recipe', '✓ Protein-rich lentil filling', '✓ Best with aloo sabzi', '✓ No artificial preservatives'],
+        prepTime: '20 mins',
+        rating: 4.6,
+        reviews: 98
+    },
+    {
+        id: 3,
+        name: 'Jaypuri Pyaaz Kachori (2 Pcs)',
+        price: '$6.50',
+        category: 'chaat',
+        image: '🥙',
+        hot: false,
+        vegetarian: true,
+        description: 'Jaipur-style kachori with spiced onion filling',
+        fullDescription: 'A royal treat from Jaipur brought to Delhi! Our Pyaaz Kachoris feature a crispy, flaky crust filled with caramelized onions seasoned with traditional Rajasthani spices. Each bite offers a perfect balance of sweet and savory flavors.',
+        ingredients: ['All-Purpose Flour', 'Onions', 'Fennel Seeds', 'Nigella Seeds (Kalonji)', 'Red Chili Powder', 'Turmeric', 'Coriander Powder', 'Ghee'],
+        features: ['✓ Jaipur authentic recipe', '✓ Sweet & savory flavor', '✓ Caramelized onions', '✓ Aromatic spice blend', '✓ Pairs well with sweet chutney'],
+        prepTime: '25 mins',
+        rating: 4.7,
+        reviews: 87
+    },
+    {
+        id: 4,
+        name: 'Chandni Chowk Ke Bhalle',
+        price: '$8.95',
+        category: 'chaat',
+        image: '🥗',
+        hot: false,
+        vegetarian: true,
+        description: 'Soft lentil dumplings in creamy yogurt',
+        fullDescription: 'Transport yourself to the streets of Old Delhi with our authentic Dahi Bhalle. Soft, melt-in-mouth lentil fritters soaked in creamy, sweetened yogurt and topped with tangy tamarind chutney, mint sauce, and aromatic spices.',
+        ingredients: ['Urad Dal (Black Gram)', 'Fresh Yogurt', 'Tamarind', 'Green Chutney', 'Cumin Powder', 'Red Chili Powder', 'Black Salt', 'Sugar', 'Fresh Coriander'],
+        features: ['✓ Famous Chandni Chowk style', '✓ Soft & fluffy bhallas', '✓ Homemade yogurt', '✓ Perfect balance of sweet & tangy', '✓ Cooling & refreshing'],
+        prepTime: '10 mins',
+        rating: 4.9,
+        reviews: 203
+    },
+    {
+        id: 5,
+        name: 'Churmuri Bhel',
+        price: '$8.95',
+        category: 'chaat',
+        image: '🥘',
+        hot: false,
+        vegetarian: true,
+        description: 'Puffed rice mixed with vegetables and tangy chutneys',
+        fullDescription: 'A light and crunchy street food favorite! Our Churmuri Bhel combines puffed rice with fresh vegetables, roasted peanuts, and a medley of tangy and spicy chutneys, creating a perfect harmony of textures and flavors.',
+        ingredients: ['Puffed Rice', 'Onions', 'Tomatoes', 'Cucumber', 'Roasted Peanuts', 'Sev', 'Tamarind Chutney', 'Green Chutney', 'Lemon Juice', 'Chaat Masala'],
+        features: ['✓ Low-calorie snack', '✓ Fresh vegetables', '✓ Crunchy texture', '✓ Tangy & spicy', '✓ Instant energy booster'],
+        prepTime: '5 mins',
+        rating: 4.5,
+        reviews: 76
+    },
+    {
+        id: 6,
+        name: 'Golgappe (12 Pcs)',
+        price: '$13.95',
+        category: 'chaat',
+        image: '🥙',
+        hot: true,
+        vegetarian: true,
+        description: 'Crispy puris filled with tangy tamarind water',
+        fullDescription: 'The most iconic Delhi street food! Our Golgappe (Pani Puri) feature ultra-crispy semolina shells filled with spiced mashed potatoes and chickpeas, then dunked in tangy-spicy tamarind water. An explosion of flavors in every bite!',
+        ingredients: ['Semolina (Suji)', 'Potatoes', 'Chickpeas', 'Tamarind', 'Black Salt', 'Cumin Powder', 'Mint Leaves', 'Green Chilies', 'Coriander', 'Chaat Masala'],
+        features: ['✓ Freshly made crispy puris', '✓ Two flavored waters (sweet & spicy)', '✓ Authentic Delhi taste', '✓ Made-to-order freshness', '✓ Most popular street food'],
+        prepTime: '8 mins',
+        rating: 4.9,
+        reviews: 312
+    },
+    {
+        id: 7,
+        name: 'Sev Puri Dahi Puri (SPDP)',
+        price: '$8.95',
+        category: 'chaat',
+        image: '🥗',
+        hot: false,
+        vegetarian: true,
+        description: 'Crispy puris topped with potatoes, chutneys & yogurt',
+        fullDescription: 'A delightful combination platter! Enjoy both Sev Puri (crispy puris topped with potatoes, onions, chutneys, and sev) and Dahi Puri (puris filled with yogurt, tamarind chutney, and spices) in one serving.',
+        ingredients: ['Wheat Flour Puris', 'Potatoes', 'Yogurt', 'Onions', 'Tomatoes', 'Sev (Crispy Chickpea Noodles)', 'Tamarind Chutney', 'Mint Chutney', 'Pomegranate'],
+        features: ['✓ Best of both worlds', '✓ Sweet, tangy & spicy', '✓ Crunchy & creamy textures', '✓ Fresh toppings', '✓ Mumbai-Delhi fusion'],
+        prepTime: '10 mins',
+        rating: 4.7,
+        reviews: 156
+    },
+    {
+        id: 8,
+        name: 'Papri Chaat',
+        price: '$8.95',
+        category: 'chaat',
+        image: '🥘',
+        hot: false,
+        vegetarian: true,
+        description: 'Crispy wafers with potatoes, chickpeas & tangy chutneys',
+        fullDescription: 'A classic Delhi chaat! Crispy wheat crackers (papri) topped with boiled potatoes, chickpeas, yogurt, and a symphony of sweet and spicy chutneys, garnished with fresh coriander and sev.',
+        ingredients: ['Wheat Crackers (Papri)', 'Potatoes', 'Chickpeas', 'Yogurt', 'Tamarind Chutney', 'Green Chutney', 'Sev', 'Chaat Masala', 'Red Chili Powder', 'Coriander'],
+        features: ['✓ Multi-layered flavors', '✓ Sweet & tangy taste', '✓ Crunchy & soft textures', '✓ Protein from chickpeas', '✓ Street food favorite'],
+        prepTime: '8 mins',
+        rating: 4.6,
+        reviews: 134
+    },
+    {
+        id: 9,
+        name: 'Dahi Aloo Tikki',
+        price: '$8.95',
+        category: 'chaat',
+        image: '🍢',
+        hot: false,
+        vegetarian: true,
+        description: 'Crispy potato patties topped with yogurt & chutneys',
+        fullDescription: 'Crispy-on-the-outside, soft-on-the-inside potato tikkis topped with cool yogurt, tangy tamarind chutney, spicy green chutney, and garnished with pomegranate seeds and fresh coriander.',
+        ingredients: ['Potatoes', 'Bread Crumbs', 'Corn Flour', 'Yogurt', 'Tamarind Chutney', 'Mint Chutney', 'Chaat Masala', 'Pomegranate Seeds', 'Coriander'],
+        features: ['✓ Crispy shallow-fried tikki', '✓ Cool & refreshing yogurt', '✓ Balance of temperatures', '✓ Healthy potato base', '✓ Perfect evening snack'],
+        prepTime: '12 mins',
+        rating: 4.8,
+        reviews: 189
+    },
+    {
+        id: 10,
+        name: 'Raj Kachori',
+        price: '$9.95',
+        category: 'chaat',
+        image: '🥙',
+        hot: true,
+        vegetarian: true,
+        description: 'King-size kachori filled with potatoes, yogurt & chutneys',
+        fullDescription: 'The king of all kachoris! A large, crispy kachori bowl filled with moong dal, potatoes, chickpeas, yogurt, and topped with an array of chutneys, sev, and spices. A complete meal in itself!',
+        ingredients: ['Refined Flour', 'Moong Dal', 'Potatoes', 'Chickpeas', 'Yogurt', 'Tamarind Chutney', 'Green Chutney', 'Sev', 'Pomegranate', 'Spices'],
+        features: ['✓ Extra large serving', '✓ Complete meal', '✓ 5 flavor profiles', '✓ Instagram-worthy presentation', '✓ Most filling chaat'],
+        prepTime: '15 mins',
+        rating: 4.9,
+        reviews: 267
+    },
+    {
+        id: 11,
+        name: 'Chola Tikki Chaat',
+        price: '$9.95',
+        category: 'chaat',
+        image: '🥘',
+        hot: false,
+        vegetarian: true,
+        description: 'Potato tikki served with spiced chickpeas',
+        fullDescription: 'A hearty combination of crispy potato tikkis served with spicy chickpea curry, topped with yogurt, chutneys, onions, and a sprinkle of aromatic spices.',
+        ingredients: ['Potatoes', 'Chickpeas', 'Onions', 'Tomatoes', 'Yogurt', 'Garam Masala', 'Coriander Powder', 'Tamarind Chutney', 'Green Chutney', 'Chaat Masala'],
+        features: ['✓ High protein content', '✓ Filling & satisfying', '✓ Spicy chickpea curry', '✓ Crispy tikki base', '✓ Complete nutrition'],
+        prepTime: '18 mins',
+        rating: 4.7,
+        reviews: 145
+    },
+    {
+        id: 12,
+        name: 'Samosa Chaat',
+        price: '$9.95',
+        category: 'chaat',
+        image: '🌮',
+        hot: true,
+        vegetarian: true,
+        description: 'Crushed samosa topped with chole, yogurt & chutneys',
+        fullDescription: 'The ultimate comfort food! Crispy samosas broken and topped with spicy chickpea curry, yogurt, tamarind and mint chutneys, creating a delicious medley of textures and flavors.',
+        ingredients: ['Samosas', 'Chickpeas', 'Yogurt', 'Tamarind Chutney', 'Green Chutney', 'Onions', 'Sev', 'Chaat Masala', 'Coriander', 'Pomegranate'],
+        features: ['✓ Two favorites in one', '✓ Extra spicy option', '✓ Generous portion', '✓ Perfect for sharing', '✓ Ultimate comfort food'],
+        prepTime: '12 mins',
+        rating: 4.8,
+        reviews: 198
+    },
+    {
+        id: 13,
+        name: 'Veg Pakode',
+        price: '$8.95',
+        category: 'chaat',
+        image: '🍢',
+        hot: false,
+        vegetarian: true,
+        description: 'Mixed vegetable fritters in chickpea batter',
+        fullDescription: 'Crispy vegetable fritters made with fresh seasonal vegetables dipped in spiced chickpea flour batter and deep-fried to golden perfection. Perfect with chai!',
+        ingredients: ['Chickpea Flour (Besan)', 'Potatoes', 'Onions', 'Spinach', 'Cauliflower', 'Green Chilies', 'Ginger', 'Carom Seeds (Ajwain)', 'Turmeric', 'Red Chili Powder'],
+        features: ['✓ Assorted vegetables', '✓ Crispy & golden', '✓ Perfect rainy day snack', '✓ Best with tea/coffee', '✓ Served hot & fresh'],
+        prepTime: '15 mins',
+        rating: 4.5,
+        reviews: 112
+    },
+    {
+        id: 14,
+        name: 'Chutney Paneer Pakora',
+        price: '$10.95',
+        category: 'chaat',
+        image: '🧀',
+        hot: false,
+        vegetarian: true,
+        description: 'Paneer slices stuffed with mint chutney & deep-fried',
+        fullDescription: 'Premium cottage cheese slices sandwiched with spicy mint chutney, coated in seasoned chickpea batter, and deep-fried until crispy. An elevated version of traditional pakoras!',
+        ingredients: ['Fresh Paneer', 'Chickpea Flour', 'Mint Chutney', 'Coriander Chutney', 'Green Chilies', 'Ginger-Garlic Paste', 'Carom Seeds', 'Red Chili Powder', 'Salt'],
+        features: ['✓ Premium paneer quality', '✓ Mint chutney stuffing', '✓ Extra protein', '✓ Crispy coating', '✓ Restaurant-style'],
+        prepTime: '20 mins',
+        rating: 4.7,
+        reviews: 167
+    },
 ];
 
 function ProductDetail() {
     const { id } = useParams();
     const product = menuItems.find(item => item.id === parseInt(id));
+
+    // State management
+    const [quantity, setQuantity] = useState(1);
+    const [selectedImage, setSelectedImage] = useState(0);
+    const [showNotification, setShowNotification] = useState(false);
+    const [spiceLevel, setSpiceLevel] = useState('medium');
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -153,70 +262,255 @@ function ProductDetail() {
         );
     }
 
+    // Related products (same category)
+    const relatedProducts = menuItems
+        .filter(item => item.category === product.category && item.id !== product.id)
+        .slice(0, 4);
+
+    // Product images (for demo, using emoji variations)
+    const productImages = [product.image, '🥘', '🍽️'];
+
+    // Add to Cart Handler
+    const handleAddToCart = () => {
+        const cartItem = {
+            ...product,
+            quantity,
+            spiceLevel: product.hot ? spiceLevel : null,
+            addedAt: new Date().toISOString()
+        };
+
+        // Get existing cart from localStorage
+        const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+        // Check if item already exists
+        const existingIndex = existingCart.findIndex(item =>
+            item.id === product.id && item.spiceLevel === cartItem.spiceLevel
+        );
+
+        if (existingIndex > -1) {
+            existingCart[existingIndex].quantity += quantity;
+        } else {
+            existingCart.push(cartItem);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(existingCart));
+
+        // Show notification
+        setShowNotification(true);
+        setTimeout(() => setShowNotification(false), 3000);
+    };
+
+    // Share handlers
+    const handleShare = (platform) => {
+        const url = window.location.href;
+        const text = `Check out ${product.name} at Chatpati Delhi!`;
+
+        const shareUrls = {
+            facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+            twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+            whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`
+        };
+
+        window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+    };
+
     return (
         <div className="desi-product-page-wrapper">
             <Header />
 
+            {/* Notification Toast */}
+            {showNotification && (
+                <div className="cart-notification">
+                    ✅ Added to cart successfully!
+                </div>
+            )}
+
             <div className="desi-product-page">
                 <div className="desi-container">
-                    <Link to="/" className="desi-back-link">
-                        ← Back to Products
+                    {/* Breadcrumb */}
+                    <nav className="breadcrumb">
+                        <Link to="/">Home</Link>
+                        <span className="breadcrumb-separator">›</span>
+                        <Link to="/#menu">Menu</Link>
+                        <span className="breadcrumb-separator">›</span>
+                        <span className="breadcrumb-category">{product.category}</span>
+                        <span className="breadcrumb-separator">›</span>
+                        <span className="breadcrumb-current">{product.name}</span>
+                    </nav>
+
+                    {/* Back to Menu Button */}
+                    <Link to="/#menu" className="back-to-menu-btn">
+                        ← Back to Menu
                     </Link>
 
                     <div className="desi-product-layout">
                         {/* Left: Product Image */}
                         <div className="desi-image-section">
                             <div className="desi-main-image">
-                                <span className="desi-product-emoji">{product.image}</span>
+                                <span className="desi-product-emoji">{productImages[selectedImage]}</span>
+                                {product.hot && <span className="spicy-badge">🌶️ Spicy</span>}
                             </div>
-                            {/* Thumbnails */}
+
+                            {/* Functional Thumbnails */}
                             <div className="desi-thumbnails">
-                                <div className="desi-thumbnail active">{product.image}</div>
-                                <div className="desi-thumbnail">🥘</div>
-                                <div className="desi-thumbnail">🍽️</div>
+                                {productImages.map((img, index) => (
+                                    <div
+                                        key={index}
+                                        className={`desi-thumbnail ${selectedImage === index ? 'active' : ''}`}
+                                        onClick={() => setSelectedImage(index)}
+                                    >
+                                        {img}
+                                    </div>
+                                ))}
                             </div>
+
                         </div>
 
                         {/* Right: Product Details */}
                         <div className="desi-details-section">
                             <h1 className="desi-product-title">{product.name}</h1>
 
+
+
                             <div className="desi-section">
                                 <h3 className="desi-section-title">Description</h3>
                                 <p className="desi-text">
-                                    Bulk pack of authentic {product.name.toLowerCase()} — perfect for families, bakeries, or meal prep lovers.
+                                    {product.fullDescription || product.description}
                                 </p>
                             </div>
 
-                            <div className="desi-section">
-                                <h3 className="desi-section-title">Details</h3>
-                                <p className="desi-text">
-                                    Our {product.name.toLowerCase()} come from authentic Delhi-style preparation. These items are made with
-                                    a wholesome diet of traditional spices and have access to the finest ingredients, resulting in dishes
-                                    with rich, golden flavors and superior nutrition. Perfect for all your cooking and dining needs.
-                                </p>
-                            </div>
-
-                            <div className="desi-info-table">
-                                <h3 className="desi-section-title" style={{ marginBottom: '1rem' }}>Product Info</h3>
-                                <div className="desi-info-row">
-                                    <span className="desi-info-label">Unit:</span>
-                                    <span className="desi-info-value">piece</span>
-                                    <span className="desi-gap" style={{ margin: '0 2rem' }}></span>
-                                    <span className="desi-info-label">Availability:</span>
-                                    <span className="desi-availability">In Stock</span>
+                            {/* Ingredients Section */}
+                            {product.ingredients && (
+                                <div className="desi-section ingredients-section">
+                                    <h3 className="desi-section-title">🥘 Ingredients</h3>
+                                    <div className="ingredients-grid">
+                                        {product.ingredients.map((ingredient, index) => (
+                                            <span key={index} className="ingredient-tag">
+                                                {ingredient}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
+                            )}
+
+                            {/* Features/Benefits Section */}
+                            {product.features && (
+                                <div className="desi-section features-section">
+                                    <h3 className="desi-section-title">✨ What Makes it Special</h3>
+                                    <ul className="features-list">
+                                        {product.features.map((feature, index) => (
+                                            <li key={index} className="feature-item">{feature}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {/* Prep Time Badge */}
+                            {product.prepTime && (
+                                <div className="prep-time-badge">
+                                    ⏱️ Preparation Time: <strong>{product.prepTime}</strong>
+                                </div>
+                            )}
+
+                            {/* Spice Level Selector (only for spicy items) */}
+                            {product.hot && (
+                                <div className="spice-selector">
+                                    <label className="spice-label">Choose Spice Level:</label>
+                                    <div className="spice-options">
+                                        <button
+                                            className={`spice-btn ${spiceLevel === 'mild' ? 'active' : ''}`}
+                                            onClick={() => setSpiceLevel('mild')}
+                                        >
+                                            🌱 Mild
+                                        </button>
+                                        <button
+                                            className={`spice-btn ${spiceLevel === 'medium' ? 'active' : ''}`}
+                                            onClick={() => setSpiceLevel('medium')}
+                                        >
+                                            🌶️ Medium
+                                        </button>
+                                        <button
+                                            className={`spice-btn ${spiceLevel === 'hot' ? 'active' : ''}`}
+                                            onClick={() => setSpiceLevel('hot')}
+                                        >
+                                            🔥 Extra Hot
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Rating & Reviews */}
+                            <div className="product-rating">
+                                <div className="stars">
+                                    {'⭐'.repeat(Math.floor(product.rating))}
+                                    {product.rating % 1 !== 0 && '⭐'}
+                                </div>
+                                <span className="rating-text">{product.rating}/5.0</span>
+                                <span className="review-count">({product.reviews} reviews)</span>
                             </div>
 
+                            {/* Dietary Badges */}
+                            <div className="dietary-badges">
+                                {product.vegetarian && <span className="badge veg">🥬 Vegetarian</span>}
+                                {product.hot && <span className="badge spicy">🌶️ Spicy</span>}
+                                <span className="badge fresh">✨ Fresh</span>
+                            </div>
+
+                            {/* Quantity Selector & Price */}
                             <div className="desi-price-section">
-                                <div className="desi-price">₹{product.price.replace('$', '')}</div>
-                                <button className="desi-add-btn">
-                                    <span className="desi-cart-icon">🛒</span>
+                                <div className="price-quantity">
+                                    <div className="desi-price">{product.price}</div>
+                                    <div className="quantity-selector">
+                                        <label>Quantity:</label>
+                                        <div className="quantity-controls">
+                                            <button
+                                                className="qty-btn"
+                                                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                            >
+                                                −
+                                            </button>
+                                            <input
+                                                type="number"
+                                                value={quantity}
+                                                onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                                                min="1"
+                                                max="99"
+                                            />
+                                            <button
+                                                className="qty-btn"
+                                                onClick={() => setQuantity(Math.min(99, quantity + 1))}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button className="desi-add-btn" onClick={handleAddToCart}>
                                     Add to Cart
                                 </button>
                             </div>
                         </div>
                     </div>
+
+                    {/* Related Products Section */}
+                    {relatedProducts.length > 0 && (
+                        <div className="related-products">
+                            <h2 className="related-title">You May Also Like</h2>
+                            <div className="related-grid">
+                                {relatedProducts.map((item) => (
+                                    <Link to={`/product/${item.id}`} key={item.id} className="related-card">
+                                        <div className="related-image">{item.image}</div>
+                                        <h3 className="related-name">{item.name}</h3>
+                                        <div className="related-rating">
+                                            {'⭐'.repeat(Math.floor(item.rating))} {item.rating}
+                                        </div>
+                                        <p className="related-price">{item.price}</p>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 
