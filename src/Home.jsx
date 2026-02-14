@@ -37,17 +37,17 @@ function Home() {
         {
             title: "Authentic Delhi Street Food",
             subtitle: "Experience the vibrant flavors of Delhi's finest chaats and traditional dishes",
-            bg: "linear-gradient(135deg, #8B4513 0%, #D4AF37 100%)"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-1.png')"
         },
         {
             title: "Food Served With Love",
             subtitle: "Every dish prepared with care and passion by our expert chefs",
-            bg: "linear-gradient(135deg, #D4AF37 0%, #FF6B35 100%)"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-2.png')"
         },
         {
             title: "Over 50 Delicious Items",
             subtitle: "From traditional chaats to royal thalis - taste the magic of Delhi",
-            bg: "linear-gradient(135deg, #B8921F 0%, #8B4513 100%)"
+            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-3.png')"
         }
     ];
 
@@ -72,7 +72,7 @@ function Home() {
     // Menu items - ALL items from menu cards with exact names and prices
     const menuItems = [
         // Chatpati Chaat
-        { id: 1, name: 'Bhara Samosa (2 Pcs)', price: '$4.00', category: 'chaat', image: '🥟', hot: true, description: 'Stuffed samosas' },
+        { id: 1, name: 'Bhara Samosa (2 Pcs)', price: '$4.00', category: 'chaat', image: '/images/bhara-samosa.png', hot: true, description: 'Stuffed samosas' },
         { id: 2, name: 'Khasta Kachori (2 Pcs)', price: '$6.50', category: 'chaat', image: '🥙', hot: false, description: 'Crispy kachoris' },
         { id: 3, name: 'Jaypuri Pyaaz Kachori (2 Pcs)', price: '$6.50', category: 'chaat', image: '🥙', hot: false, description: 'Onion kachori' },
         { id: 4, name: 'Chandni Chowk Ke Bhalle', price: '$8.95', category: 'chaat', image: '🥗', hot: false, description: 'Famous Delhi bhalla' },
@@ -329,7 +329,11 @@ function Home() {
                             <div key={item.id} className="product-card">
                                 {item.hot && <span className="badge-hot">Hot</span>}
                                 <div className="product-image">
-                                    <span className="product-emoji">{item.image}</span>
+                                    {item.image.startsWith('/') || item.image.startsWith('http') ? (
+                                        <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    ) : (
+                                        <span className="product-emoji">{item.image}</span>
+                                    )}
                                 </div>
                                 <div className="product-info">
                                     <h3 className="product-name">{item.name}</h3>

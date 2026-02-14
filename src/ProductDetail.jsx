@@ -13,7 +13,7 @@ const menuItems = [
         name: 'Bhara Samosa (2 Pcs)',
         price: '$4.00',
         category: 'chaat',
-        image: '🥟',
+        image: '/images/bhara-samosa.png',
         hot: true,
         vegetarian: true,
         description: 'Crispy golden samosas stuffed with spiced potatoes and peas',
@@ -328,7 +328,11 @@ function ProductDetail() {
                         {/* Left: Product Image */}
                         <div className="desi-image-section">
                             <div className="desi-main-image">
-                                <span className="desi-product-emoji">{productImages[selectedImage]}</span>
+                                {productImages[selectedImage].startsWith('/') || productImages[selectedImage].startsWith('http') ? (
+                                    <img src={productImages[selectedImage]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+                                ) : (
+                                    <span className="desi-product-emoji">{productImages[selectedImage]}</span>
+                                )}
                                 {product.hot && <span className="spicy-badge">🌶️ Spicy</span>}
                             </div>
 
@@ -340,7 +344,11 @@ function ProductDetail() {
                                         className={`desi-thumbnail ${selectedImage === index ? 'active' : ''}`}
                                         onClick={() => setSelectedImage(index)}
                                     >
-                                        {img}
+                                        {img.startsWith('/') || img.startsWith('http') ? (
+                                            <img src={img} alt={`${product.name} view ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
+                                        ) : (
+                                            img
+                                        )}
                                     </div>
                                 ))}
                             </div>

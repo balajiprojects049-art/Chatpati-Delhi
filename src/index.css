@@ -290,6 +290,8 @@ h6 {
     justify-content: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-slide.active {
