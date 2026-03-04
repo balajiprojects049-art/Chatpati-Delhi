@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { categories, menuItems } from '../data/menuData';
-import { addToCart } from '../utils/cart';
 import '../index.css';
 import '../dietary.css';
 
@@ -9,15 +8,8 @@ import '../dietary.css';
 function MenuPage() {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
-    const [cartToast, setCartToast] = useState(false);
     const [dietaryFilter, setDietaryFilter] = useState('all'); // 'all', 'veg', 'non-veg'
     const [sizzlingFilter, setSizzlingFilter] = useState('all'); // 'all', 'veg', 'non-veg' for sizzling section
-
-    const handleAddToCart = (item) => {
-        addToCart(item, 1);
-        setCartToast(true);
-        setTimeout(() => setCartToast(false), 1800);
-    };
 
     const isVeg = (item) => {
         if (item.veg !== undefined) return item.veg;
@@ -46,7 +38,6 @@ function MenuPage() {
 
     return (
         <div className="menu-page">
-            {cartToast && <div className="cart-toast">✅ Added to cart</div>}
 
             <section className="section menu-section">
                 <div className="container">
@@ -212,16 +203,21 @@ function MenuPage() {
                                                     </div>
                                                 </Link>
                                                 <div className="product-actions" style={{ padding: '0 1rem 1rem' }}>
-                                                    <button
+                                                    <Link
+                                                        to={`/product/${item.id}`}
                                                         className="btn btn-primary"
-                                                        style={{ width: '100%', padding: '0.6rem' }}
-                                                        onClick={(e) => {
-                                                            e.preventDefault();
-                                                            handleAddToCart(item);
+                                                        style={{
+                                                            width: '100%',
+                                                            padding: '0.6rem',
+                                                            display: 'block',
+                                                            textAlign: 'center',
+                                                            textDecoration: 'none',
+                                                            borderRadius: '8px',
+                                                            transition: 'all 0.3s ease'
                                                         }}
                                                     >
-                                                        Add to Cart
-                                                    </button>
+                                                        View Details
+                                                    </Link>
                                                 </div>
                                             </div>
                                         ))}
