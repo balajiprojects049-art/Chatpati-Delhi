@@ -169,7 +169,7 @@ function HomePage() {
 
                         <div className="sig-card">
                             <div className="sig-image">
-                                <img src="/images/chats/Raj Kachori.png" alt="Raj Kachori" />
+                                <img src="/images/Raj Kachori.png" alt="Raj Kachori" />
                                 <div className="sig-badge">House Special</div>
                             </div>
                             <div className="sig-info">

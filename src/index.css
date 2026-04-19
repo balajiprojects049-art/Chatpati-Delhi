@@ -2425,6 +2425,10 @@ body {
         padding-top: 60px;
     }
 
+    .about-hero {
+        background-position: center 60%;
+    }
+
     .page-hero-title {
         font-size: 3rem;
     }

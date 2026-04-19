@@ -13,8 +13,8 @@ const CateringPage = () => {
     };
 
     const cateringMenuItems = [
-        { id: 'cat-1', name: 'Golgappe Live Station', price: '12.95', image: '/images/chats/Golgappe.png', description: 'Interactive live station serving fresh spicy pani puri.', category: 'Live Station' },
-        { id: 'cat-2', name: 'Raj Kachori Platter', price: '9.95', image: '/images/chats/Raj Kachori.png', description: 'Royal size kachori filled with our signature flavors.', category: 'Starter' },
+        { id: 'cat-1', name: 'Golgappe Live Station', price: '12.95', image: '/images/golgappa.jpeg', description: 'Interactive live station serving fresh spicy pani puri.', category: 'Live Station' },
+        { id: 'cat-2', name: 'Raj Kachori Platter', price: '9.95', image: '/images/Raj Kachori.png', description: 'Royal size kachori filled with our signature flavors.', category: 'Starter' },
         { id: 'cat-3', name: 'Delhi Chole Bhature', price: '12.95', image: '/images/Snacks/Chole Bhature.png', description: 'Our award-winning fluffy bhaturas with spicy chana.', category: 'Main Course' },
         { id: 'cat-4', name: 'Purani Delhi Chicken Biryani', price: '16.95', image: '/images/Biriyani/Purani Delhi Chicken Biryani.png', description: 'Aromatic slow-cooked chicken biryani with Delhi spices.', category: 'Biryani' },
         { id: 'cat-5', name: 'Paneer Makhanwala', price: '14.95', image: '/images/Tadka Marke/Paneer Makhanwala.png', description: 'Paneer in a rich, creamy tomato gravy.', category: 'Main Course' },
