@@ -62,6 +62,8 @@ function Header() {
                                 </Link>
                                 <ul className="dropdown-menu">
                                     <li><Link to="/sweet-box" onClick={() => setMobileOpen(false)}>Sweet Box</Link></li>
+                                    <li><Link to="/catering" onClick={() => setMobileOpen(false)}>Live Stations</Link></li>
+                                    <li><Link to="/catering" onClick={() => setMobileOpen(false)}>Tray Orders</Link></li>
                                 </ul>
                             </li>
                             <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
