@@ -26,8 +26,8 @@ const TrayOrdersPage = () => {
         {
             category: 'Signature Thalis',
             items: [
-                { name: 'C.P.D Veg Thali', description: 'Assorted seasonal vegetables, dal, rice, and bread.', image: "/images/Thali's/C.P.D. Veg Thali.png" },
-                { name: 'Non-Veg Thali', description: 'Traditional chicken curry, seasonal veg, dal, and rice.', image: "/images/Thali's/C.P.D. Chicken Thali1.png" }
+                { name: 'C.P.D Veg Thali', description: 'Assorted seasonal vegetables, dal, rice, and bread.', image: "/images/Thali's/C.P.D Veg Thali.png" },
+                { name: 'Non-Veg Thali', description: 'Traditional chicken curry, seasonal veg, dal, and rice.', image: "/images/C.D.P Chicken Thali.png" }
             ]
         },
         {

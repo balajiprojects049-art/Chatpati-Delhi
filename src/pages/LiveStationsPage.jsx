@@ -23,7 +23,7 @@ const LiveStationsPage = () => {
             name: 'Live Chatpati Chaat',
             description: 'Customized Papri Chaat and Sev Puri made exactly to your guests\' preference.',
             features: ['Made-to-Order', 'Fresh Ingredients', 'Visual Appeal'],
-            image: '/images/chats/Chandni Chowk Ke Bhalle.png'
+            image: '/images/Chandni Chowk Ke Bhalle.png'
         }
     ];
 
