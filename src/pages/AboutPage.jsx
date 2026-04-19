@@ -64,7 +64,7 @@ function AboutPage() {
                         <div className="founder-content">
                             <div className="founder-header">
                                 <h3> Jimmy Poonamwala</h3>
-                                <p className="founder-title">Co-Founder & Operations Director</p>
+                                <p className="founder-title">Founder & Operations Director</p>
                             </div>
                             <div className="founder-text">
                                 <p>With over 18 years of experience in hospitality and restaurant management, Jimmy ensures that every guest at Chatpati Delhi feels valued and welcomed.</p>
@@ -76,17 +76,33 @@ function AboutPage() {
 
                     <div className="founder-row">
                         <div className="founder-image">
-                            <img src="/images/abhijith-pingle.jpg" alt="Abhijith Pingle" />
+                            <img src="/images/abhijith-founder.jpg" alt="Abhijith Pingle" />
                         </div>
                         <div className="founder-content">
                             <div className="founder-header">
                                 <h3> Abhijith Pingle</h3>
-                                <p className="founder-title">Co-Founder & Catering Director Nationwide Operations</p>
+                                <p className="founder-title">Founder & Catering Director Nationwide Operations</p>
                             </div>
                             <div className="founder-text">
                                 <p>Abhijith Pingle leads the catering division of Chatpati Delhi across the United States. With over 18 years in the food and service industry, including 13 years dedicated to catering and 3,000+ successfully executed events, he brings strategic planning, operational precision, and flawless execution to every occasion.</p>
                                 <p>From intimate gatherings to large-scale corporate events and grand celebrations, he ensures that every catering experience reflects the same authenticity, quality, and excellence that defines Chatpati Delhi.</p>
                                 <blockquote className="founder-quote">“Precision, passion, and presentation define every event we deliver.”</blockquote>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="founder-row reverse">
+                        <div className="founder-image">
+                            <img src="/images/pradeep-singh.jpg" alt="Pradeep Singh" />
+                        </div>
+                        <div className="founder-content">
+                            <div className="founder-header">
+                                <h3>Pradeep Singh</h3>
+                                <p className="founder-title">Founder</p>
+                            </div>
+                            <div className="founder-text">
+                                <p>Pradeep Singh, the visionary founder of Chatpati Delhi, is deeply involved in the restaurant’s daily operations, ensuring excellence in every detail. From maintaining authentic flavors to upholding the highest standards of service, he plays a pivotal role in delivering a refined dining experience.</p>
+                                <p>His dedication to quality, consistency, and customer satisfaction has shaped Chatpati Delhi into a distinguished destination for those seeking genuine Delhi-style cuisine with a modern touch.</p>
                             </div>
                         </div>
                     </div>

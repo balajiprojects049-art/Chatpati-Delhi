@@ -1136,6 +1136,40 @@ h6 {
     font-size: 2rem;
     cursor: pointer;
     display: flex;
+/* Desktop: pin hero content to avoid vertical jumps when slides change
+   and ensure hero buttons are equal width */
+@media (min-width: 768px) {
+    .hero-content {
+        position: absolute;
+        left: 50%;
+        bottom: 120px;
+        transform: translateX(-50%);
+        text-align: center;
+        max-width: 900px;
+        padding: var(--spacing-md);
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-buttons {
+        gap: 1.25rem;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+
+    .hero-buttons .btn {
+        min-width: 220px;
+        padding: 0.9rem 1.4rem;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-buttons .btn + .btn {
+        margin-left: 0.5rem;
+    }
+}
     align-items: center;
     justify-content: center;
     z-index: 10;

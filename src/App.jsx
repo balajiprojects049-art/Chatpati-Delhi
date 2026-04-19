@@ -162,7 +162,7 @@ function App() {
         // C.P.D Special Thalis
         { id: 71, name: 'Kulcha Thali', price: '$15.95', category: 'thali', image: '🍱', hot: false, description: 'Kulcha with sides' },
         { id: 72, name: 'C.P.D Veg Thali', price: '$17.95', category: 'thali', image: '🍱', hot: true, description: 'Full vegetarian thali' },
-        { id: 73, name: 'C.P.D Non Veg Thali', price: '$22.95', category: 'thali', image: '🍱', hot: true, description: 'Non-veg complete thali' },
+        { id: 73, name: 'C.P.D Non Veg Thali', price: '$22.95', category: 'thali', image: '/images/Thalis/cpd-nonveg-thali.jpg', hot: true, description: 'Non-veg complete thali' },
 
         // Bachaa Party Special
         { id: 74, name: 'Baccha Maggi', price: '$8.95', category: 'snacks', image: '🍜', hot: false, description: 'Kids noodles' },
@@ -335,7 +335,11 @@ function App() {
                             <div key={item.id} className="product-card">
                                 {item.hot && <span className="badge-hot">Hot</span>}
                                 <div className="product-image">
-                                    <span className="product-emoji">{item.image}</span>
+                                    {typeof item.image === 'string' && (item.image.startsWith('/') || item.image.startsWith('http')) ? (
+                                        <img src={item.image} alt={item.name} />
+                                    ) : (
+                                        <span className="product-emoji">{item.image}</span>
+                                    )}
                                 </div>
                                 <div className="product-info">
                                     <h3 className="product-name">{item.name}</h3>

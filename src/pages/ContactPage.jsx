@@ -21,14 +21,14 @@ function ContactPage() {
                                 <div className="contact-icon">📞</div>
                                 <div>
                                     <h4>Phone</h4>
-                                    <p>+1 (732) 499-9387</p>
+                                    <p>📞 +1 (732) 960 1887</p>
                                 </div>
                             </div>
                             <div className="contact-item">
                                 <div className="contact-icon">📍</div>
                                 <div>
                                     <h4>Address</h4>
-                                    <p>Fratelli PSA, 109,823, 5th Ave, USA</p>
+                                    <p>📍 3201 NJ-27, Franklin Park,<br />NJ 08823</p>
                                 </div>
                             </div>
                         </div>
