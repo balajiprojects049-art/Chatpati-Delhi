@@ -9,6 +9,8 @@ import CateringPage from './pages/CateringPage';
 
 import ContactPage from './pages/ContactPage';
 import SweetBoxPage from './pages/SweetBoxPage';
+import LiveStationsPage from './pages/LiveStationsPage';
+import TrayOrdersPage from './pages/TrayOrdersPage';
 import ProductDetail from './ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
 import WelcomeScreen from './components/WelcomeScreen';
@@ -28,6 +30,8 @@ function AppRouter() {
                     <Route path="/catering" element={<CateringPage />} />
 
                     <Route path="/sweet-box" element={<SweetBoxPage />} />
+                    <Route path="/live-stations" element={<LiveStationsPage />} />
+                    <Route path="/tray-orders" element={<TrayOrdersPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/product/:id" element={<ProductDetail />} />
                 </Routes>
