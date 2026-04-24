@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { getCartCount } from '../utils/cart';
 import CartPanel from './CartPanel';
 import '../index.css';
@@ -52,21 +52,21 @@ function Header() {
                             </Link>
                         </div>
                         <ul className={`nav-links ${mobileOpen ? 'open' : ''}`} aria-hidden={!mobileOpen}>
-                            <li><Link to="/" onClick={() => setMobileOpen(false)}>Home</Link></li>
-                            <li><Link to="/menu" onClick={() => setMobileOpen(false)}>Menu</Link></li>
-                            <li><Link to="/about" onClick={() => setMobileOpen(false)}>About</Link></li>
-                            <li><Link to="/articles" onClick={() => setMobileOpen(false)}>Articles</Link></li>
+                            <li><NavLink to="/" onClick={() => setMobileOpen(false)} end>Home</NavLink></li>
+                            <li><NavLink to="/menu" onClick={() => setMobileOpen(false)}>Menu</NavLink></li>
+                            <li><NavLink to="/about" onClick={() => setMobileOpen(false)}>About</NavLink></li>
+                            <li><NavLink to="/articles" onClick={() => setMobileOpen(false)}>Articles</NavLink></li>
                             <li className="dropdown-container">
-                                <Link to="/catering" onClick={() => setMobileOpen(false)}>
+                                <NavLink to="/catering" onClick={() => setMobileOpen(false)}>
                                     Caterings <span className="arrow-icon">▼</span>
-                                </Link>
+                                </NavLink>
                                 <ul className="dropdown-menu">
-                                    <li><Link to="/sweet-box" onClick={() => setMobileOpen(false)}>Sweet Box</Link></li>
-                                    <li><Link to="/live-stations" onClick={() => setMobileOpen(false)}>Live Stations</Link></li>
-                                    <li><Link to="/tray-orders" onClick={() => setMobileOpen(false)}>Tray Orders</Link></li>
+                                    <li><NavLink to="/sweet-box" onClick={() => setMobileOpen(false)}>Sweet Box</NavLink></li>
+                                    <li><NavLink to="/live-stations" onClick={() => setMobileOpen(false)}>Live Stations</NavLink></li>
+                                    <li><NavLink to="/tray-orders" onClick={() => setMobileOpen(false)}>Tray Orders</NavLink></li>
                                 </ul>
                             </li>
-                            <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
+                            <li><NavLink to="/contact" onClick={() => setMobileOpen(false)}>Contact</NavLink></li>
                         </ul>
                         <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                             <button
