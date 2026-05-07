@@ -1,96 +1,133 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { addToCart } from '../utils/cart';
-import '../index.css';
+import React, { useState, useEffect } from 'react';
+import { menuItems, categories } from '../data/menuData';
+import './Royal.css';
 
 const CateringPage = () => {
-    const [cartToast, setCartToast] = useState(false);
+    const [selectedItems, setSelectedItems] = useState([]);
+    const [activeCategory, setActiveCategory] = useState('all');
+    const [showSelectionBar, setShowSelectionBar] = useState(false);
 
-    const handleAddToCart = (item) => {
-        addToCart(item, 1);
-        setCartToast(true);
-        setTimeout(() => setCartToast(false), 2000);
-    };
-
-    const cateringMenuItems = [
-        { id: 'cat-1', name: 'Golgappe Live Station', price: '12.95', image: '/images/golgappa.jpeg', description: 'Interactive live station serving fresh spicy pani puri.', category: 'Live Station' },
-        { id: 'cat-2', name: 'Raj Kachori Platter', price: '9.95', image: '/images/Raj Kachori.png', description: 'Royal size kachori filled with our signature flavors.', category: 'Starter' },
-        { id: 'cat-3', name: 'Delhi Chole Bhature', price: '12.95', image: '/images/Snacks/Chole Bhature.png', description: 'Our award-winning fluffy bhaturas with spicy chana.', category: 'Main Course' },
-        { id: 'cat-4', name: 'Purani Delhi Chicken Biryani', price: '16.95', image: '/images/Biriyani/Purani Delhi Chicken Biryani.png', description: 'Aromatic slow-cooked chicken biryani with Delhi spices.', category: 'Biryani' },
-        { id: 'cat-5', name: 'Paneer Makhanwala', price: '14.95', image: '/images/Tadka Marke/Paneer Makhanwala.png', description: 'Paneer in a rich, creamy tomato gravy.', category: 'Main Course' },
-        { id: 'cat-6', name: 'Dal Makhanwala', price: '13.95', image: '/images/Tadka Marke/Daal Makhanwala.png', description: 'Overnight slow-cooked black lentils in creamy butter.', category: 'Main Course' },
-        { id: 'cat-7', name: 'Butter Chicken (Party Pack)', price: '16.95', image: '/images/Tadka Marke/Butter Chicken.png', description: 'Classic buttery chicken tikka in tomato cream sauce.', category: 'Main Course' },
-        { id: 'cat-8', name: 'Assorted Bread Basket', price: '20.95', image: '/images/Breads/Bread Basket (4 Pcs).jpg', description: 'Mix of Garlic Naan, Kulchas, and Tandoori Rotis.', category: 'Breads' },
-        { id: 'cat-9', name: 'Karjat Vada Pav Stall', price: '9.95', image: '/images/Mumbai Local/Karjat Vada Pav.png', description: 'Authentic Mumbai style potato vada in soft pav.', category: 'Live Station' },
-        { id: 'cat-10', name: 'Hot Gajar ka Halwa', price: '6.95', image: '/images/Sweets/Gajar ka Halwa.png', description: 'Warm carrot pudding made with clarified butter.', category: 'Sweets' },
-        { id: 'cat-11', name: 'Signature Rasmalai', price: '6.95', image: '/images/Sweets/Rasmalai.png', description: 'Soft cheese dumplings in chilled saffron milk.', category: 'Sweets' },
-        { id: 'cat-12', name: 'Premium Veg Thali', price: '17.95', image: "/images/Thali's/C.P.D Veg Thali.png", description: 'Full assorted meal with appetizers and main dishes.', category: 'Platter' },
-        { id: 'cat-13', name: 'Aam Ki Lassi Jar', price: '4.95', image: '/images/Drinks/Aam Ki Lassi.jpg', description: 'Refreshing mango yogurt drink.', category: 'Drinks' },
-        { id: 'cat-14', name: 'Papri Chaat Bowls', price: '8.95', image: "/images/chats/Papri Chaat'.png", description: 'Crunchy crackers topped with yogurt and chutney.', category: 'Appetizer' },
-        { id: 'cat-15', name: 'Mini Samosa Bucket', price: '4.00', image: '/images/bhara-samosa.png', description: 'Perfect bite-sized party appetizer.', category: 'Appetizer' }
+    // Categories specifically for catering
+    const cateringCategories = [
+        { id: 'all', name: 'All Items' },
+        { id: 'chaat', name: 'Appetizers & Chaat' },
+        { id: 'mumbai', name: 'Mumbai Specials' },
+        { id: 'curry', name: 'Main Course Curries' },
+        { id: 'biryani', name: 'Biryani Selection' },
+        { id: 'bread', name: 'Tandoori Breads' },
+        { id: 'sweets', name: 'Desserts' }
     ];
 
+    const toggleItemSelection = (item) => {
+        setSelectedItems(prev => {
+            const isSelected = prev.find(i => i.id === item.id);
+            if (isSelected) {
+                return prev.filter(i => i.id !== item.id);
+            } else {
+                return [...prev, item];
+            }
+        });
+    };
+
+    useEffect(() => {
+        setShowSelectionBar(selectedItems.length > 0);
+    }, [selectedItems]);
+
+    const clearSelection = () => {
+        setSelectedItems([]);
+    };
+
+    const handleWhatsAppInquiry = () => {
+        const itemList = selectedItems.map(item => `• ${item.name}`).join('\n');
+        const message = `Namaste! I am interested in catering services for an event.\n\nHere are the items I've selected from your menu:\n${itemList}\n\nPlease provide a quote and availability for these items. Thank you!`;
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/17329601887?text=${encodedMessage}`, '_blank');
+    };
+
+    const filteredItems = activeCategory === 'all' 
+        ? menuItems 
+        : menuItems.filter(item => item.category === activeCategory);
+
     return (
-        <div className="catering-page">
-            {cartToast && <div className="cart-toast" style={{ background: '#2ecc71', color: 'white', position: 'fixed', top: '100px', right: '20px', padding: '15px 30px', borderRadius: '10px', zIndex: 9999, fontWeight: 'bold', boxShadow: '0 5px 15px rgba(0,0,0,0.2)' }}>✅ Added to Catering Cart</div>}
-
-            <section className="page-hero" style={{ backgroundImage: "url('/images/hero-2.png')" }}>
+        <div className="royal-page">
+            <div className="royal-menu-wrapper">
                 <div className="container">
-                    <h1 className="page-hero-title">Premium Catering Menu</h1>
-                    <p className="page-hero-subtitle">Select your favorite dishes for your special event. Add them directly to your cart for booking.</p>
-                </div>
-            </section>
-
-            <section className="section catering-menu-section" style={{ padding: '6rem 0' }}>
-                <div className="container">
-                    <div className="section-title">
-                        <span className="section-subtitle">Exclusive Packages</span>
-                        <h2>Party & Event Menu</h2>
+                    
+                    {/* Header */}
+                    <div className="royal-title-container">
+                        <span className="royal-subtitle">Event Planning</span>
+                        <h1 className="royal-title">Catering Menu Builder</h1>
+                        <div className="royal-title-divider"><span>✦</span></div>
+                        <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: '700px', margin: '1.5rem auto 0', lineHeight: '1.8' }}>
+                            Design your perfect event menu. Select the items you'd like to include, 
+                            and our events team will reach out with a custom quote.
+                        </p>
                     </div>
 
-                    <div className="product-grid">
-                        {cateringMenuItems.map((item) => (
-                            <div key={item.id} className="product-card">
-                                <span className="badge-category" style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--primary-maroon)', color: 'white', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.75rem', zIndex: 10, fontWeight: 'bold' }}>
-                                    {item.category}
-                                </span>
-                                <div className="product-image">
-                                    <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                </div>
-                                <div className="product-info">
-                                    <h3 className="product-name" style={{ fontSize: '1.4rem' }}>{item.name}</h3>
-                                    <p className="product-description">{item.description}</p>
-                                    <div className="product-footer" style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <span className="product-price" style={{ color: 'var(--primary-maroon)', fontSize: '1.25rem', fontWeight: '800' }}>
-                                            ${item.price}
-                                        </span>
-                                        <button
-                                            className="btn btn-primary"
-                                            onClick={() => handleAddToCart({ ...item, price: `$${item.price}` })}
-                                            style={{ padding: '0.6rem 1.2rem', fontSize: '0.9rem' }}
-                                        >
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                    {/* Category Filter */}
+                    <div className="royal-filters-container" style={{ marginBottom: '3rem' }}>
+                        {cateringCategories.map(cat => (
+                            <button
+                                key={cat.id}
+                                className={`royal-filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
+                                onClick={() => setActiveCategory(cat.id)}
+                            >
+                                {cat.name}
+                            </button>
                         ))}
                     </div>
-                </div>
-            </section>
 
-            <section className="section enquiry-section" style={{ background: '#fdfaf5' }}>
+                    {/* Menu Selection Grid */}
+                    <div className="royal-catering-selection-grid">
+                        {filteredItems.map(item => {
+                            const isSelected = selectedItems.find(i => i.id === item.id);
+                            return (
+                                <div 
+                                    key={item.id} 
+                                    className={`royal-selection-card ${isSelected ? 'selected' : ''}`}
+                                    onClick={() => toggleItemSelection(item)}
+                                >
+                                    <div className="royal-selection-checkbox">
+                                        {isSelected && <span>✓</span>}
+                                    </div>
+                                    <div className="royal-selection-img-wrapper">
+                                        <img src={item.image} alt={item.name} onError={(e) => e.target.src = '/avatar.png'} />
+                                    </div>
+                                    <div className="royal-selection-content">
+                                        <h3>{item.name}</h3>
+                                        <p>{item.description}</p>
+                                        <span className="royal-selection-price">{item.price}</span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                </div>
+            </div>
+
+            {/* Floating Selection Bar (SA Caterers Style) */}
+            <div className={`royal-selection-float-bar ${showSelectionBar ? 'visible' : ''}`}>
                 <div className="container">
-                    <div className="enquiry-card" style={{ background: 'white', padding: '4rem', borderRadius: '15px', textAlign: 'center', border: '1px solid var(--accent-gold)' }}>
-                        <h2>Custom Event Planning?</h2>
-                        <p>Need a customized menu or specific item quantity for 100+ guests? Our team is here to help.</p>
-                        <div className="enquiry-actions" style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '2rem' }}>
-                            <Link to="/contact" className="btn btn-primary">Get Custom Quote</Link>
-                            <a href="tel:+17329601887" className="btn btn-secondary">Call Events Team</a>
+                    <div className="royal-float-bar-content">
+                        <div className="royal-float-summary">
+                            <div className="royal-float-count">{selectedItems.length}</div>
+                            <div className="royal-float-text">
+                                <h4>Items Selected</h4>
+                                <p>Ready to customize your menu?</p>
+                            </div>
+                        </div>
+                        <div className="royal-float-actions">
+                            <button className="royal-float-clear" onClick={clearSelection}>Clear All</button>
+                            <button className="royal-float-whatsapp" onClick={handleWhatsAppInquiry}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.403 0 6.556-5.332 11.89-11.891 11.89-2.015 0-3.991-.513-5.744-1.487l-6.252 1.706zm5.865-3.409l.363.214c1.452.863 3.191 1.319 4.973 1.319 5.257 0 9.535-4.278 9.535-9.535 0-2.546-1.002-4.941-2.82-6.756s-4.21-2.818-6.715-2.818c-5.257 0-9.535 4.278-9.535 9.535 0 1.907.556 3.763 1.609 5.362l.235.358-.996 3.639 3.729-.982zM16.598 13.911c-.302-.151-1.785-.881-2.062-.981-.277-.1-.478-.151-.679.151s-.779.981-.955 1.181c-.176.2-.351.226-.654.076-.302-.151-1.276-.47-2.431-1.5-.898-.801-1.503-1.791-1.68-2.091s-.019-.462.132-.612c.135-.135.302-.351.453-.527.151-.176.201-.302.302-.503.1-.2.05-.377-.025-.527s-.679-1.634-.93-2.237c-.244-.588-.492-.51-.679-.519-.176-.01-.377-.01-.578-.01s-.527.075-.804.377c-.277.302-1.056 1.031-1.056 2.514s1.081 2.916 1.232 3.117c.151.201 2.127 3.248 5.153 4.553.719.31 1.28.496 1.718.636.723.23 1.381.197 1.901.12.579-.086 1.785-.73 2.037-1.434.252-.704.252-1.307.176-1.433-.076-.126-.277-.202-.579-.352z"/></svg>
+                                Enquire via WhatsApp
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
         </div>
     );
 };

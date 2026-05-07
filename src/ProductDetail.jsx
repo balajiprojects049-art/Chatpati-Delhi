@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addToCart } from './utils/cart';
+import { menuItems } from './data/menuData';
 import './index.css';
 import './enhanced-styles.css';
 
@@ -1285,16 +1286,26 @@ function ProductDetail() {
                     const data = await response.json();
                     setAllMenuItems(data);
                 } else {
-                    console.error('Failed to fetch menu items');
+                    console.error('Failed to fetch menu items, using local data');
+                    setAllMenuItems(menuItems);
                 }
             } catch (error) {
-                console.error('Error fetching menu items:', error);
+                console.error('Error fetching menu items, using local data:', error);
+                setAllMenuItems(menuItems);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchMenuItems();
+    }, []);
+
+    // State management
+    const [selectedVariant, setSelectedVariant] = useState(0);
+    const [selectedImage, setSelectedImage] = useState(0);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
     }, []);
 
     if (loading) {
@@ -1316,13 +1327,6 @@ function ProductDetail() {
         fullDescription: richInfo?.fullDescription || basicProduct.description
     } : null;
 
-    // State management
-    const [selectedVariant, setSelectedVariant] = useState(0);
-    const [selectedImage, setSelectedImage] = useState(0);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     if (!product) {
         return (
