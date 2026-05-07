@@ -4,23 +4,26 @@ import { addToCart } from '../utils/cart';
 import '../index.css';
 
 const SweetBoxPage = () => {
-    const [cartToast, setCartToast] = useState(false);
+    const [selectedSweets, setSelectedSweets] = useState([]);
 
-    const handleAddToCart = (item) => {
-        addToCart(item, 1);
-        setCartToast(true);
-        setTimeout(() => setCartToast(false), 2000);
+    const toggleSweet = (sweetName) => {
+        setSelectedSweets(prev => 
+            prev.includes(sweetName) 
+                ? prev.filter(s => s !== sweetName) 
+                : [...prev, sweetName]
+        );
     };
 
-    const sweetBoxItems = [
-        { id: 'sb-1', name: 'Assorted Sweet Box (Small)', price: '14.95', image: '/images/Sweets/Rasmalai.png', description: 'A delightful mix of our signature sweets. 500g.', category: 'Sweets' },
-        { id: 'sb-2', name: 'Premium Gift Sweet Box (Large)', price: '24.95', image: '/images/Sweets/Gajar ka Halwa.png', description: 'Luxury sweet box perfect for gifting. 1kg.', category: 'Sweets' },
-    ];
+    const handleInquiry = () => {
+        if (selectedSweets.length === 0) return;
+        const sweetList = selectedSweets.map(s => `• ${s}`).join('\n');
+        const message = `Namaste! I want to create a custom sweet box with the following selections:\n\n${sweetList}\n\nPlease let me know the pricing and options for a custom box.`;
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/17329601887?text=${encodedMessage}`, '_blank');
+    };
 
     return (
         <div className="sweet-box-page">
-            {cartToast && <div className="cart-toast" style={{ background: '#2ecc71', color: 'white', position: 'fixed', top: '100px', right: '20px', padding: '15px 30px', borderRadius: '10px', zIndex: 9999, fontWeight: 'bold', boxShadow: '0 5px 15px rgba(0,0,0,0.2)' }}>✅ Added to Cart</div>}
-
             <section className="page-hero" style={{ backgroundImage: "url('/images/hero-sweets.png')" }}>
                 <div className="container">
                     <h1 className="page-hero-title">Custom Sweet Boxes</h1>
@@ -28,38 +31,107 @@ const SweetBoxPage = () => {
                 </div>
             </section>
 
-
-
             {/* Detailed Sweets Menu Section */}
-            <section className="section sweets-list-section" style={{ background: 'var(--cream)', padding: '6rem 0' }}>
+            <section className="section sweets-list-section" style={{ background: 'var(--cream)', padding: '6rem 0', marginBottom: selectedSweets.length > 0 ? '100px' : '0' }}>
                 <div className="container">
                     <div className="section-title">
                         <span className="section-subtitle">Explore Our Range</span>
-                        <h2>All The Sweets Varieties</h2>
+                        <h2>Select Your Favorites</h2>
                         <p style={{ maxWidth: '700px', margin: '1rem auto', color: 'var(--gray)' }}>
-                            Customize your box with any of these fresh, authentic delights.
+                            Choose the sweets you'd like to include in your custom box and enquire for a quote.
                         </p>
                     </div>
 
-                    <div className="sweets-menu-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', marginTop: '3rem' }}>
+                    <div className="sweets-menu-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
                         {Object.entries(sweetMenuData).map(([category, items]) => (
                             <div key={category} className="sweet-category-card" style={{ background: 'var(--white)', padding: '2rem', borderRadius: '12px', boxShadow: 'var(--shadow-sm)', borderTop: '4px solid var(--primary-maroon)' }}>
                                 <h3 style={{ color: 'var(--primary-maroon)', borderBottom: '1px solid var(--accent-gold)', paddingBottom: '0.75rem', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>
                                     {category}
                                 </h3>
                                 <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '0.75rem' }}>
-                                    {items.map((sweet, index) => (
-                                        <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--black)', fontSize: '1rem' }}>
-                                            <span style={{ color: 'var(--accent-gold)', fontSize: '1.2rem' }}>•</span>
-                                            {sweet}
-                                        </li>
-                                    ))}
+                                    {items.map((sweet, index) => {
+                                        const isSelected = selectedSweets.includes(sweet);
+                                        return (
+                                            <li 
+                                                key={index} 
+                                                style={{ 
+                                                    display: 'flex', 
+                                                    alignItems: 'center', 
+                                                    gap: '0.75rem', 
+                                                    color: isSelected ? 'var(--primary-maroon)' : 'var(--black)', 
+                                                    fontSize: '1rem',
+                                                    cursor: 'pointer',
+                                                    padding: '4px 0',
+                                                    transition: 'all 0.2s ease',
+                                                    fontWeight: isSelected ? '600' : '400'
+                                                }}
+                                                onClick={() => toggleSweet(sweet)}
+                                            >
+                                                <div style={{ 
+                                                    width: '22px', 
+                                                    height: '22px', 
+                                                    border: `2px solid ${isSelected ? 'var(--primary-maroon)' : 'var(--accent-gold)'}`, 
+                                                    borderRadius: '4px', 
+                                                    display: 'flex', 
+                                                    alignItems: 'center', 
+                                                    justifyContent: 'center',
+                                                    background: isSelected ? 'var(--primary-maroon)' : 'transparent',
+                                                    color: 'white',
+                                                    fontSize: '0.9rem',
+                                                    transition: 'all 0.2s ease',
+                                                    flexShrink: 0
+                                                }}>
+                                                    {isSelected ? '✓' : ''}
+                                                </div>
+                                                {sweet}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
+
+            {/* Floating Inquiry Bar */}
+            {selectedSweets.length > 0 && (
+                <div style={{ 
+                    position: 'fixed', 
+                    bottom: '20px', 
+                    left: '50%', 
+                    transform: 'translateX(-50%)', 
+                    background: 'var(--primary-maroon)', 
+                    color: 'white', 
+                    padding: '1rem 2rem', 
+                    borderRadius: '50px', 
+                    boxShadow: '0 10px 25px rgba(0,0,0,0.3)', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '2rem', 
+                    zIndex: 1000,
+                    width: 'max-content',
+                    maxWidth: '90vw'
+                }}>
+                    <div style={{ fontSize: '1.1rem', fontWeight: '600' }}>
+                        {selectedSweets.length} Sweets Selected
+                    </div>
+                    <div style={{ display: 'flex', gap: '1rem' }}>
+                        <button 
+                            onClick={() => setSelectedSweets([])} 
+                            style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: 'white', padding: '0.5rem 1rem', borderRadius: '25px', cursor: 'pointer' }}
+                        >
+                            Clear
+                        </button>
+                        <button 
+                            onClick={handleInquiry} 
+                            style={{ background: 'var(--accent-gold)', border: 'none', color: 'var(--primary-maroon)', padding: '0.5rem 1.5rem', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}
+                        >
+                            Enquire Now
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

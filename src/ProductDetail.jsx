@@ -1357,8 +1357,8 @@ function ProductDetail() {
 
             <div className="container">
                 {/* Back Button */}
-                <button 
-                    onClick={() => navigate(-1)} 
+                <button
+                    onClick={() => navigate(-1)}
                     className="royal-back-btn"
                 >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1374,7 +1374,7 @@ function ProductDetail() {
                     <span className="royal-breadcrumb-separator">›</span>
                     <Link to="/menu">Menu</Link>
                     <span className="royal-breadcrumb-separator">›</span>
-                    <span style={{textTransform: 'capitalize'}}>{product.category}</span>
+                    <span style={{ textTransform: 'capitalize' }}>{product.category}</span>
                     <span className="royal-breadcrumb-separator">›</span>
                     <span className="royal-breadcrumb-current">{product.name}</span>
                 </nav>

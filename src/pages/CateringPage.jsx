@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { menuItems, categories } from '../data/menuData';
 import './Royal.css';
 
 const CateringPage = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [activeCategory, setActiveCategory] = useState('all');
+    const [searchTerm, setSearchTerm] = useState('');
     const [showSelectionBar, setShowSelectionBar] = useState(false);
 
     // Categories specifically for catering
@@ -44,9 +46,12 @@ const CateringPage = () => {
         window.open(`https://wa.me/17329601887?text=${encodedMessage}`, '_blank');
     };
 
-    const filteredItems = activeCategory === 'all' 
-        ? menuItems 
-        : menuItems.filter(item => item.category === activeCategory);
+    const filteredItems = menuItems.filter(item => {
+        const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
+        const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                             item.description.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesCategory && matchesSearch;
+    });
 
     return (
         <div className="royal-page">
@@ -64,6 +69,26 @@ const CateringPage = () => {
                         </p>
                     </div>
 
+                    {/* Search Bar */}
+                    <div className="royal-search-wrapper">
+                        <div className="search-icon">🔍</div>
+                        <input 
+                            type="text" 
+                            placeholder="Search dishes (e.g. Samosa, Chaat, Paneer...)" 
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        {searchTerm && (
+                            <button 
+                                className="search-clear-btn" 
+                                onClick={() => setSearchTerm('')}
+                                style={{ background: 'none', border: 'none', color: '#D4AF37', cursor: 'pointer', padding: '0 15px' }}
+                            >
+                                ✕
+                            </button>
+                        )}
+                    </div>
+
                     {/* Category Filter */}
                     <div className="royal-filters-container" style={{ marginBottom: '3rem' }}>
                         {cateringCategories.map(cat => (
@@ -77,26 +102,35 @@ const CateringPage = () => {
                         ))}
                     </div>
 
-                    {/* Menu Selection Grid */}
-                    <div className="royal-catering-selection-grid">
+                    <div className="royal-catering-selection-list">
                         {filteredItems.map(item => {
                             const isSelected = selectedItems.find(i => i.id === item.id);
                             return (
                                 <div 
                                     key={item.id} 
-                                    className={`royal-selection-card ${isSelected ? 'selected' : ''}`}
+                                    className={`royal-selection-horizontal-card ${isSelected ? 'selected' : ''}`}
                                     onClick={() => toggleItemSelection(item)}
                                 >
-                                    <div className="royal-selection-checkbox">
-                                        {isSelected && <span>✓</span>}
-                                    </div>
-                                    <div className="royal-selection-img-wrapper">
-                                        <img src={item.image} alt={item.name} onError={(e) => e.target.src = '/avatar.png'} />
+                                    <div className="royal-selection-left">
+                                        <div className="royal-selection-checkbox">
+                                            {isSelected ? <span>✓</span> : null}
+                                        </div>
+                                        <div className="royal-selection-img-wrapper">
+                                            <img src={item.image} alt={item.name} onError={(e) => e.target.src = '/avatar.png'} />
+                                        </div>
                                     </div>
                                     <div className="royal-selection-content">
-                                        <h3>{item.name}</h3>
-                                        <p>{item.description}</p>
-                                        <span className="royal-selection-price">{item.price}</span>
+                                        <div className="royal-selection-text-wrap">
+                                            <h3>{item.name}</h3>
+                                            <p>{item.description}</p>
+                                        </div>
+                                        <Link 
+                                            to={`/product/${item.id}`} 
+                                            className="royal-selection-view-link"
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            View Details →
+                                        </Link>
                                     </div>
                                 </div>
                             );
