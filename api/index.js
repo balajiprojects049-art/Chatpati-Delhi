@@ -40,7 +40,7 @@ const readJsonDb = async () => {
 app.get('/api/menu', async (req, res) => {
   try {
     // Try Database first on Vercel
-    const { rows } = await pool.query('SELECT * FROM menu_items ORDER BY id DESC');
+    const { rows } = await pool.query('SELECT * FROM menu_items ORDER BY id ASC');
     if (rows.length > 0) {
       return res.json(rows);
     }
