@@ -2192,3 +2192,240 @@
     border-color: #D4AF37;
 }
 
+/* ============================================
+   ROYAL ABOUT PAGE STYLES
+============================================ */
+
+.royal-about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    margin-bottom: 8rem;
+}
+
+.royal-founder-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.royal-founder-reverse {
+    direction: rtl;
+}
+
+.royal-founder-reverse > * {
+    direction: ltr;
+}
+
+.royal-founder-image-col {
+    position: relative;
+}
+
+.royal-founder-image-frame {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.royal-founder-img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.royal-founder-row:hover .royal-founder-img {
+    transform: scale(1.05);
+}
+
+.royal-founder-accent {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    margin: 15px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.royal-founder-content-col {
+    padding: 2rem;
+}
+
+.royal-founder-pre {
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.royal-founder-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.royal-founder-divider {
+    width: 60px;
+    height: 3px;
+    background: #D4AF37;
+    margin-bottom: 2rem;
+}
+
+.royal-founder-bio {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.royal-founder-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #D4AF37;
+    border-left: 2px solid #D4AF37;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+/* Mission Section */
+.royal-mission-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 8rem;
+}
+
+.royal-mission-card {
+    background: linear-gradient(145deg, #160f0a 0%, #0b0705 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    padding: 3.5rem;
+    text-align: center;
+}
+
+.royal-mission-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.royal-mission-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #D4AF37;
+    margin-bottom: 1rem;
+}
+
+.royal-mission-card p {
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Services Highlight */
+.royal-services-highlight {
+    background: linear-gradient(145deg, #1a120b 0%, #080503 100%);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 30px;
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.royal-services-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.1), transparent 70%);
+}
+
+.royal-services-label {
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.royal-services-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 4rem;
+}
+
+.royal-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.royal-service-item {
+    display: flex;
+    gap: 1.5rem;
+    text-align: left;
+    background: rgba(255,255,255,0.03);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.royal-service-dot {
+    color: #D4AF37;
+    font-size: 1.2rem;
+}
+
+.royal-service-text h4 {
+    color: #fff;
+    margin: 0 0 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+}
+
+.royal-service-text p {
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+    .royal-founder-row {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .royal-founder-img {
+        height: 450px;
+    }
+    
+    .royal-founder-name {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .royal-mission-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .royal-services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .royal-founder-img {
+        height: 350px;
+    }
+}
+
