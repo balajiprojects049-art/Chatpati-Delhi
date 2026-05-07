@@ -191,29 +191,23 @@ const AdminPanel = () => {
             }}>
               <div className="form-group">
                 <label>Email Address</label>
-                <div className="input-wrapper">
-                  <span className="input-icon">📧</span>
-                  <input 
-                    type="text" 
-                    placeholder="admin@chatpatidelhi.com" 
-                    value={formData.username}
-                    onChange={(e) => setFormData({...formData, username: e.target.value})} 
-                    required
-                  />
-                </div>
+                <input 
+                  type="text" 
+                  placeholder="admin@chatpatidelhi.com" 
+                  value={formData.username}
+                  onChange={(e) => setFormData({...formData, username: e.target.value})} 
+                  required
+                />
               </div>
               <div className="form-group">
                 <label>Password</label>
-                <div className="input-wrapper">
-                  <span className="input-icon">🔒</span>
-                  <input 
-                    type="password" 
-                    placeholder="••••••••••••" 
-                    value={formData.password}
-                    onChange={(e) => setFormData({...formData, password: e.target.value})} 
-                    required
-                  />
-                </div>
+                <input 
+                  type="password" 
+                  placeholder="••••••••••••" 
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})} 
+                  required
+                />
               </div>
               
               <div className="form-options">

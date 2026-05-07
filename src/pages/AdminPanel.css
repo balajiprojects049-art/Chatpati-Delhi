@@ -344,8 +344,9 @@
 /* Login Page */
 .login-split-container {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
+  overflow: hidden;
 }
 
 .login-left-panel {
@@ -493,21 +494,9 @@
   margin-bottom: 0.5rem;
 }
 
-.input-wrapper {
-  position: relative;
-}
-
-.input-icon {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.5;
-}
-
 .login-form-clean input {
   width: 100%;
-  padding: 1rem 1rem 1rem 2.8rem;
+  padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 12px;
   font-size: 1rem;
