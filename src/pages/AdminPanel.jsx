@@ -143,7 +143,7 @@ const AdminPanel = () => {
           </div>
           <form className="login-form" onSubmit={(e) => {
             e.preventDefault();
-            if (formData.username === 'admin' && formData.password === 'admin123') {
+            if (formData.username === 'admin@chatpatidelhi.com' && formData.password === 'Chatpati@2026') {
               setIsAuthenticated(true);
             } else {
               alert('Invalid credentials');
