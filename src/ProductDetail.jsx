@@ -1319,8 +1319,6 @@ function ProductDetail() {
     // State management
     const [selectedVariant, setSelectedVariant] = useState(0);
     const [selectedImage, setSelectedImage] = useState(0);
-    const [showNotification, setShowNotification] = useState(false);
-    const [spiceLevel, setSpiceLevel] = useState('medium');
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -1349,212 +1347,175 @@ function ProductDetail() {
         ? [product.image, product.image, product.image]
         : [product.image, '🥘', '🍽️'];
 
-    // Add to Cart Handler
-    const handleAddToCart = () => {
-        const itemSpiceLevel = product.hot ? spiceLevel : null;
-        addToCart(product, quantity, itemSpiceLevel);
-
-        // Show notification
-        setShowNotification(true);
-        setTimeout(() => setShowNotification(false), 3000);
-    };
-
     return (
-        <div className="desi-product-page-wrapper">
-            {/* Notification Toast */}
-            {showNotification && (
-                <div className="cart-notification">
-                    ✅ Added to cart successfully!
-                </div>
-            )}
+        <div className="royal-menu-wrapper">
 
-            <div className="desi-product-page">
-                <div className="desi-container">
-                    {/* Breadcrumb */}
-                    <nav className="breadcrumb">
-                        <Link to="/">Home</Link>
-                        <span className="breadcrumb-separator">›</span>
-                        <Link to="/menu">Menu</Link>
-                        <span className="breadcrumb-separator">›</span>
-                        <span className="breadcrumb-category">{product.category}</span>
-                        <span className="breadcrumb-separator">›</span>
-                        <span className="breadcrumb-current">{product.name}</span>
-                    </nav>
+            <div className="container">
+                {/* Breadcrumb */}
+                <nav className="royal-breadcrumb">
+                    <Link to="/">Home</Link>
+                    <span className="royal-breadcrumb-separator">›</span>
+                    <Link to="/menu">Menu</Link>
+                    <span className="royal-breadcrumb-separator">›</span>
+                    <span style={{textTransform: 'capitalize'}}>{product.category}</span>
+                    <span className="royal-breadcrumb-separator">›</span>
+                    <span className="royal-breadcrumb-current">{product.name}</span>
+                </nav>
 
-                    {/* Back to Menu Button */}
-                    <Link to="/menu" className="back-to-menu-btn">
-                        ← Back to Menu
-                    </Link>
-
-                    <div className="desi-product-layout">
-                        {/* Left: Product Image */}
-                        <div className="desi-image-section">
-                            <div className="desi-main-image">
-                                {productImages[selectedImage].startsWith('/') || productImages[selectedImage].startsWith('http') ? (
-                                    <img src={productImages[selectedImage]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
-                                ) : (
-                                    <span className="desi-product-emoji">{productImages[selectedImage]}</span>
-                                )}
-                                {product.hot && <span className="spicy-badge">🌶️ Spicy</span>}
-                            </div>
-
-                            {/* Functional Thumbnails */}
-                            <div className="desi-thumbnails">
-                                {productImages.map((img, index) => (
-                                    <div
-                                        key={index}
-                                        className={`desi-thumbnail ${selectedImage === index ? 'active' : ''}`}
-                                        onClick={() => setSelectedImage(index)}
-                                    >
-                                        {img.startsWith('/') || img.startsWith('http') ? (
-                                            <img src={img} alt={`${product.name} view ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
-                                        ) : (
-                                            img
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-
+                <div className="royal-detail-layout">
+                    {/* Left: Product Image */}
+                    <div className="royal-detail-image-section">
+                        <div className="royal-detail-main-image">
+                            {productImages[selectedImage].startsWith('/') || productImages[selectedImage].startsWith('http') ? (
+                                <img src={productImages[selectedImage]} alt={product.name} />
+                            ) : (
+                                <span className="royal-detail-emoji">{productImages[selectedImage]}</span>
+                            )}
+                            {product.hot && <span className="royal-badge-hot">Spicy</span>}
                         </div>
 
-                        {/* Right: Product Details */}
-                        <div className="desi-details-section">
-                            <h1 className="desi-product-title">{product.name}</h1>
-
-                            <div className="desi-section">
-                                <h3 className="desi-section-title">Description</h3>
-                                <p className="desi-text">
-                                    {product.fullDescription || product.description}
-                                </p>
-                            </div>
-
-                            {/* Ingredients Section */}
-                            {product.ingredients && product.ingredients.length > 0 && (
-                                <div className="desi-section ingredients-section">
-                                    <h3 className="desi-section-title">
-                                        {product.category === 'thali' ? '📦 What\'s Inside' : '🥘 Ingredients'}
-                                    </h3>
-                                    <div className="ingredients-grid">
-                                        {product.ingredients.map((ingredient, index) => (
-                                            <span key={index} className="ingredient-tag">
-                                                {ingredient}
-                                            </span>
-                                        ))}
-                                    </div>
+                        {/* Functional Thumbnails */}
+                        <div className="royal-detail-thumbnails">
+                            {productImages.map((img, index) => (
+                                <div
+                                    key={index}
+                                    className={`royal-detail-thumbnail ${selectedImage === index ? 'active' : ''}`}
+                                    onClick={() => setSelectedImage(index)}
+                                >
+                                    {img.startsWith('/') || img.startsWith('http') ? (
+                                        <img src={img} alt={`${product.name} view ${index + 1}`} />
+                                    ) : (
+                                        img
+                                    )}
                                 </div>
-                            )}
-
-                            {/* Raw Ingredients Section (for Thalis) */}
-                            {product.rawIngredients && product.rawIngredients.length > 0 && (
-                                <div className="desi-section raw-ingredients-section">
-                                    <h3 className="desi-section-title">🥘 Ingredients</h3>
-                                    <div className="ingredients-grid">
-                                        {product.rawIngredients.map((ingredient, index) => (
-                                            <span key={index} className="ingredient-tag">
-                                                {ingredient}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Features/Benefits Section */}
-                            {product.features && product.features.length > 0 && (
-                                <div className="desi-section features-section">
-                                    <h3 className="desi-section-title">✨ What Makes it Special</h3>
-                                    <ul className="features-list">
-                                        {product.features.map((feature, index) => (
-                                            <li key={index} className="feature-item">{feature}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-
-                            {/* Prep Time Badge */}
-
-
-                            {/* Spice Level Selector (only for spicy items) */}
-
-
-                            {/* Rating & Reviews */}
-                            <div className="product-rating">
-                                <div className="stars">
-                                    {'⭐'.repeat(Math.floor(product.rating))}
-                                    {product.rating % 1 !== 0 && '⭐'}
-                                </div>
-                                <span className="rating-text">{product.rating}/5.0</span>
-                                <span className="review-count">({product.reviews} reviews)</span>
-                            </div>
-
-                            {/* Dietary Badges */}
-
-
-                            {/* Variant Selector */}
-                            {product.variants && (
-                                <div className="variant-selector" style={{ marginBottom: '20px' }}>
-                                    <h3 className="desi-section-title" style={{ fontSize: '1.1rem', marginBottom: '10px' }}>Select Size:</h3>
-                                    <div className="variant-options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                                        {product.variants.map((variant, index) => (
-                                            <button
-                                                key={index}
-                                                className={`variant-btn ${selectedVariant === index ? 'active' : ''}`}
-                                                onClick={() => setSelectedVariant(index)}
-                                                style={{
-                                                    padding: '8px 16px',
-                                                    border: selectedVariant === index ? '2px solid #333' : '1px solid #ddd',
-                                                    borderRadius: '20px',
-                                                    background: selectedVariant === index ? '#fff' : '#f9f9f9',
-                                                    color: '#333',
-                                                    fontWeight: '600',
-                                                    cursor: 'pointer'
-                                                }}
-                                            >
-                                                {variant.name}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Quantity Selector & Price */}
-                            <div className="desi-price-section">
-                                <div className="price-quantity">
-                                    <div className="desi-price">
-                                        {product.variants ? product.variants[selectedVariant].price : product.price}
-                                    </div>
-                                </div>
-                                <Link to="/contact" className="desi-add-btn" style={{ textAlign: 'center', textDecoration: 'none' }}>
-                                    Contact to Order
-                                </Link>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Related Products Section */}
-                    {relatedProducts.length > 0 && (
-                        <div className="related-products">
-                            <h2 className="related-title">You May Also Like</h2>
-                            <div className="related-grid">
-                                {relatedProducts.map((item) => (
-                                    <Link to={`/product/${item.id}`} key={item.id} className="related-card">
-                                        <div className="related-image">
-                                            {item.image.startsWith('/') || item.image.startsWith('http') ? (
-                                                <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                            ) : (
-                                                <span className="related-emoji">{item.image}</span>
-                                            )}
-                                        </div>
-                                        <h3 className="related-name">{item.name}</h3>
-                                        <div className="related-rating">
-                                            {'⭐'.repeat(4)} 4.5
-                                        </div>
-                                        <p className="related-price">{item.price}</p>
-                                    </Link>
-                                ))}
+                    {/* Right: Product Details */}
+                    <div className="royal-detail-info-section">
+                        <h1 className="royal-detail-title">{product.name}</h1>
+
+                        <div className="royal-detail-desc">
+                            {product.fullDescription || product.description}
+                        </div>
+
+                        {/* Rating & Reviews */}
+                        <div className="product-rating" style={{ marginBottom: '2rem' }}>
+                            <div className="stars" style={{ color: '#D4AF37' }}>
+                                {'⭐'.repeat(Math.floor(product.rating))}
+                                {product.rating % 1 !== 0 && '⭐'}
+                            </div>
+                            <span className="rating-text" style={{ color: '#fff', marginLeft: '10px' }}>{product.rating}/5.0</span>
+                            <span className="review-count" style={{ color: 'rgba(255,255,255,0.5)', marginLeft: '10px' }}>({product.reviews} reviews)</span>
+                        </div>
+
+                        {/* Ingredients Section */}
+                        {product.ingredients && product.ingredients.length > 0 && (
+                            <div className="royal-detail-section">
+                                <h3 className="royal-detail-section-title">
+                                    {product.category === 'thali' ? '📦 What\'s Inside' : '🥘 Ingredients'}
+                                </h3>
+                                <div className="royal-tag-grid">
+                                    {product.ingredients.map((ingredient, index) => (
+                                        <span key={index} className="royal-tag">
+                                            {ingredient}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Raw Ingredients Section (for Thalis) */}
+                        {product.rawIngredients && product.rawIngredients.length > 0 && (
+                            <div className="royal-detail-section">
+                                <h3 className="royal-detail-section-title">🥘 Ingredients</h3>
+                                <div className="royal-tag-grid">
+                                    {product.rawIngredients.map((ingredient, index) => (
+                                        <span key={index} className="royal-tag">
+                                            {ingredient}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Features/Benefits Section */}
+                        {product.features && product.features.length > 0 && (
+                            <div className="royal-detail-section" style={{ borderBottom: 'none' }}>
+                                <h3 className="royal-detail-section-title">✨ What Makes it Special</h3>
+                                <ul className="royal-feature-list">
+                                    {product.features.map((feature, index) => (
+                                        <li key={index}>{feature.replace('✓ ', '')}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
+                        {/* Variant Selector */}
+                        {product.variants && (
+                            <div className="variant-selector" style={{ marginBottom: '20px' }}>
+                                <h3 className="royal-detail-section-title" style={{ fontSize: '1.2rem', marginBottom: '10px' }}>Select Size:</h3>
+                                <div className="variant-options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                                    {product.variants.map((variant, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setSelectedVariant(index)}
+                                            style={{
+                                                padding: '10px 20px',
+                                                border: selectedVariant === index ? '1px solid #D4AF37' : '1px solid rgba(212, 175, 55, 0.2)',
+                                                borderRadius: '30px',
+                                                background: selectedVariant === index ? '#D4AF37' : 'transparent',
+                                                color: selectedVariant === index ? '#0b0705' : '#D4AF37',
+                                                fontWeight: 'bold',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.3s'
+                                            }}
+                                        >
+                                            {variant.name}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Quantity Selector & Price */}
+                        <div className="royal-price-box" style={{ justifyContent: 'flex-start' }}>
+                            <div className="royal-price">
+                                {product.variants ? product.variants[selectedVariant].price : product.price}
                             </div>
                         </div>
-                    )}
+                    </div>
                 </div>
+
+                {/* Related Products Section */}
+                {relatedProducts.length > 0 && (
+                    <div style={{ marginTop: '5rem', borderTop: '1px solid rgba(212, 175, 55, 0.2)', paddingTop: '3rem' }}>
+                        <h2 className="royal-category-title">You May Also Like</h2>
+                        <div className="royal-product-grid">
+                            {relatedProducts.map((item) => (
+                                <div key={item.id} className="royal-product-card">
+                                    <div className="royal-product-img-wrapper">
+                                        {item.image.startsWith('/') || item.image.startsWith('http') ? (
+                                            <img src={item.image} alt={item.name} />
+                                        ) : (
+                                            <span className="royal-product-emoji">{item.image}</span>
+                                        )}
+                                    </div>
+                                    <div className="royal-product-info">
+                                        <h3 className="royal-product-title">{item.name}</h3>
+                                        <div className="royal-product-footer" style={{ borderTop: 'none', paddingTop: 0 }}>
+                                            <span className="royal-product-price">{item.price}</span>
+                                            <Link to={`/product/${item.id}`} className="royal-product-btn">
+                                                View Details
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

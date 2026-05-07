@@ -876,3 +876,748 @@
         border-bottom: none;
     }
 }
+
+/* --- ROYAL MENU STYLES --- */
+.royal-menu-wrapper {
+    background: #080503;
+    color: white;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 4rem;
+}
+
+.royal-search-wrapper {
+    background: #160f0a;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Override global .search-icon absolute positioning inside royal wrapper */
+.royal-search-wrapper .search-icon {
+    position: static;
+    display: flex;
+    align-items: center;
+    color: rgba(212, 175, 55, 0.7);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    pointer-events: none;
+    margin-right: 0.5rem;
+}
+
+.royal-search-wrapper:focus-within {
+    border-color: #D4AF37;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+}
+
+.royal-search-wrapper input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+}
+
+.royal-search-wrapper input:focus {
+    outline: none;
+}
+
+.royal-search-wrapper input::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.royal-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.royal-filter-btn {
+    background: #140d0a;
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.royal-filter-btn.active, .royal-filter-btn:hover {
+    background: #D4AF37;
+    color: #0b0705;
+    border-color: #D4AF37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.royal-category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #D4AF37;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.royal-category-title::after {
+    content: '✦';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #D4AF37;
+    font-size: 1rem;
+}
+
+.royal-category-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #D4AF37, transparent);
+}
+
+.royal-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.royal-product-card {
+    background: linear-gradient(145deg, #160f0a 0%, #0b0705 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.royal-product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.royal-product-img-wrapper {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.royal-product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.royal-product-card:hover .royal-product-img-wrapper img {
+    transform: scale(1.08);
+}
+
+.royal-product-emoji {
+    font-size: 5rem;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+}
+
+.royal-product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.royal-product-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #D4AF37;
+    margin-bottom: 0.5rem;
+}
+
+.royal-product-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.royal-product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+.royal-product-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: white;
+    font-weight: bold;
+}
+
+.royal-product-btn {
+    background: transparent;
+    color: #D4AF37;
+    border: 1px solid #D4AF37;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.royal-product-btn:hover {
+    background: #D4AF37;
+    color: #0b0705;
+}
+
+/* Veg/Non-Veg Indicators */
+.royal-diet-symbol {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 2px;
+}
+.royal-diet-symbol.veg {
+    border: 2px solid #2ecc71;
+}
+.royal-diet-symbol.veg::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #2ecc71;
+    border-radius: 50%;
+}
+.royal-diet-symbol.non-veg {
+    border: 2px solid #e74c3c;
+}
+.royal-diet-symbol.non-veg::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #e74c3c;
+    border-radius: 50%;
+}
+
+/* Hot Badge */
+.royal-badge-hot {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
+}
+
+/* --- ROYAL PRODUCT DETAIL STYLES --- */
+.royal-detail-layout {
+    display: flex;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .royal-detail-layout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+.royal-detail-image-section {
+    flex: 1;
+}
+
+.royal-detail-main-image {
+    width: 100%;
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #160f0a 0%, #0b0705 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.royal-detail-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.royal-detail-emoji {
+    font-size: 8rem;
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.6));
+}
+
+.royal-detail-thumbnails {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.royal-detail-thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: #111;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.royal-detail-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.royal-detail-thumbnail.active, .royal-detail-thumbnail:hover {
+    border-color: #D4AF37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.royal-detail-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.royal-detail-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #D4AF37;
+    margin-bottom: 1rem;
+}
+
+.royal-detail-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.royal-detail-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.royal-detail-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.royal-tag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.royal-tag {
+    background: rgba(212, 175, 55, 0.1);
+    color: #D4AF37;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    font-size: 0.9rem;
+}
+
+.royal-feature-list {
+    list-style: none;
+    padding: 0;
+    color: rgba(255,255,255,0.7);
+}
+
+.royal-feature-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.royal-feature-list li::before {
+    content: '✦';
+    color: #D4AF37;
+    font-size: 0.8rem;
+}
+
+.royal-price-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.royal-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.royal-btn-primary {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8921F 100%);
+    color: #0b0705;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+.royal-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+.royal-breadcrumb {
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.royal-breadcrumb a {
+    color: #D4AF37;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.royal-breadcrumb a:hover {
+    color: #fff;
+}
+
+.royal-breadcrumb-separator {
+    margin: 0 0.5rem;
+    color: rgba(255,255,255,0.3);
+}
+
+.royal-breadcrumb-current {
+    color: white;
+}
+
+/* --- MOBILE CATEGORY DROPDOWN --- */
+.mobile-category-dropdown {
+    display: none;
+}
+
+/* Custom Dropdown Trigger Button */
+.royal-dropdown-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.royal-dropdown-trigger {
+    width: 100%;
+    background: #160f0a;
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 0.9rem 1.2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.royal-dropdown-trigger:hover {
+    border-color: #D4AF37;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+}
+
+.royal-dropdown-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+.royal-dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+/* Custom Dropdown Menu */
+.royal-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: #160f0a;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    z-index: 999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    max-height: 280px;
+    overflow-y: auto;
+    animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.royal-dropdown-item {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+    color: rgba(255,255,255,0.7);
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.2s ease;
+}
+
+.royal-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.royal-dropdown-item:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: #D4AF37;
+}
+
+.royal-dropdown-item.active {
+    background: rgba(212, 175, 55, 0.15);
+    color: #D4AF37;
+    font-weight: bold;
+}
+
+/* Scrollbar styling for dropdown */
+.royal-dropdown-menu::-webkit-scrollbar {
+    width: 4px;
+}
+.royal-dropdown-menu::-webkit-scrollbar-track {
+    background: #0b0705;
+}
+.royal-dropdown-menu::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.4);
+    border-radius: 4px;
+}
+
+/* --- MOBILE RESPONSIVE TWEAKS --- */
+@media (max-width: 768px) {
+    .royal-menu-wrapper {
+        padding-top: 100px;
+    }
+    
+    .desktop-categories {
+        display: none !important;
+    }
+
+    .mobile-category-dropdown {
+        display: block;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .royal-category-title {
+        font-size: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .royal-filters-container {
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .royal-filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .royal-product-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    /* Horizontal Product Card for Mobile */
+    .royal-product-card {
+        flex-direction: row;
+        height: auto;
+        align-items: center;
+        padding-right: 0.5rem;
+    }
+
+    .royal-product-img-wrapper {
+        width: 120px;
+        height: 120px;
+        min-width: 120px;
+        border-bottom: none;
+        border-right: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .royal-product-emoji {
+        font-size: 3rem;
+    }
+
+    .royal-product-info {
+        padding: 0.8rem;
+        justify-content: center;
+    }
+
+    .royal-product-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .royal-product-desc {
+        display: none; /* Hide description to keep it compact */
+    }
+
+    .royal-product-footer {
+        padding-top: 0.5rem;
+        margin-top: 0;
+        border-top: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+    }
+
+    .royal-product-price {
+        font-size: 1.1rem;
+    }
+    
+    .royal-product-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Adjust diet symbols for compact view */
+    .royal-diet-symbol {
+        top: 8px;
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        padding: 1px;
+    }
+    .royal-diet-symbol::after {
+        width: 6px;
+        height: 6px;
+    }
+    .royal-badge-hot {
+        top: 8px;
+        left: 8px;
+        padding: 2px 6px;
+        font-size: 0.6rem;
+    }
+    
+    .royal-detail-layout {
+        gap: 2rem;
+    }
+
+    .royal-detail-main-image {
+        height: 280px;
+        border-radius: 12px;
+    }
+
+    .royal-detail-thumbnail {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .royal-detail-title {
+        font-size: 2.2rem;
+    }
+    
+    .royal-detail-section-title {
+        font-size: 1.3rem;
+    }
+    
+    .royal-price {
+        font-size: 2rem;
+    }
+
+    .royal-search-wrapper {
+        margin: 0 1rem 1.5rem;
+        padding: 0.4rem 1rem;
+    }
+    
+    .royal-search-wrapper input {
+        font-size: 1rem;
+    }
+}

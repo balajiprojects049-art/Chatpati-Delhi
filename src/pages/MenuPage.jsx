@@ -10,8 +10,9 @@ function MenuPage() {
     const [loading, setLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
-    const [dietaryFilter, setDietaryFilter] = useState('all'); // 'all', 'veg', 'non-veg'
-    const [sizzlingFilter, setSizzlingFilter] = useState('all'); // 'all', 'veg', 'non-veg' for sizzling section
+    const [dietaryFilter, setDietaryFilter] = useState('all');
+    const [sizzlingFilter, setSizzlingFilter] = useState('all');
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     useEffect(() => {
         const fetchMenuItems = async () => {
@@ -59,69 +60,98 @@ function MenuPage() {
     });
 
     return (
-        <div className="menu-page">
-
-            <section className="section menu-section">
-                <div className="container">
-                    <div className="section-title">
-                        <h2>Our Delicious Menu</h2>
-                        <p className="section-description">
-                            Explore our wide variety of authentic Delhi street food and traditional dishes
-                        </p>
+        <div className="royal-menu-wrapper">
+            <div className="container">
+                <div className="royal-title-container">
+                    <span className="royal-subtitle">A Culinary Journey</span>
+                    <h2 className="royal-title">Our Royal Menu</h2>
+                    <div className="royal-title-divider">
+                        <span>✦</span>
                     </div>
+                </div>
 
-                    {/* Search Bar */}
-                    <div className="search-container">
-                        <div className="search-wrapper">
-                            <span className="search-icon">🔍</span>
-                            <input
-                                type="text"
-                                className="search-input"
-                                placeholder="Search for dishes (e.g. Samosa, Biryani)..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                            />
-                            {searchQuery && (
-                                <button className="clear-search" onClick={() => setSearchQuery('')}>✕</button>
-                            )}
-                        </div>
-                    </div>
+                {/* Search Bar */}
+                <div className="royal-search-wrapper">
+                    <input
+                        type="text"
+                        placeholder="Search for dishes (e.g. Samosa, Biryani)..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    {searchQuery && (
+                        <button onClick={() => setSearchQuery('')} style={{background: 'none', border: 'none', color: '#D4AF37', cursor: 'pointer', fontSize: '1.2rem'}}>✕</button>
+                    )}
+                </div>
 
-                    {/* Dietary Filters */}
-                    <div className="dietary-filters">
+                {/* Dietary Filters */}
+                <div className="royal-filters-container">
+                    <button
+                        className={`royal-filter-btn ${dietaryFilter === 'all' ? 'active' : ''}`}
+                        onClick={() => setDietaryFilter('all')}
+                    >
+                        All
+                    </button>
+                    <button
+                        className={`royal-filter-btn ${dietaryFilter === 'veg' ? 'active' : ''}`}
+                        onClick={() => setDietaryFilter('veg')}
+                    >
+                        <span style={{color: '#2ecc71'}}>●</span> Veg
+                    </button>
+                    <button
+                        className={`royal-filter-btn ${dietaryFilter === 'non-veg' ? 'active' : ''}`}
+                        onClick={() => setDietaryFilter('non-veg')}
+                    >
+                        <span style={{color: '#e74c3c'}}>▲</span> Non-Veg
+                    </button>
+                </div>
+
+                {/* Category Filters - Desktop */}
+                <div className="royal-filters-container desktop-categories" style={{ gap: '0.8rem', marginBottom: '4rem' }}>
+                    {categories.map((cat) => (
                         <button
-                            className={`dietary-btn ${dietaryFilter === 'all' ? 'active' : ''}`}
-                            onClick={() => setDietaryFilter('all')}
+                            key={cat.id}
+                            className={`royal-filter-btn ${selectedCategory === cat.id ? 'active' : ''}`}
+                            onClick={() => setSelectedCategory(cat.id)}
                         >
-                            All
+                            <span>{cat.icon}</span>
+                            {cat.name}
                         </button>
-                        <button
-                            className={`dietary-btn veg ${dietaryFilter === 'veg' ? 'active' : ''}`}
-                            onClick={() => setDietaryFilter('veg')}
-                        >
-                            Veg
-                        </button>
-                        <button
-                            className={`dietary-btn non-veg ${dietaryFilter === 'non-veg' ? 'active' : ''}`}
-                            onClick={() => setDietaryFilter('non-veg')}
-                        >
-                            Non-Veg
-                        </button>
-                    </div>
+                    ))}
+                </div>
 
-                    {/* Category Filters */}
-                    <div className="category-filters">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat.id}
-                                className={`category-btn ${selectedCategory === cat.id ? 'active' : ''}`}
-                                onClick={() => setSelectedCategory(cat.id)}
-                            >
-                                <span className="category-icon">{cat.icon}</span>
-                                {cat.name}
-                            </button>
-                        ))}
+                {/* Category Filters - Mobile Custom Dropdown */}
+                <div className="mobile-category-dropdown">
+                    <div className="royal-dropdown-wrapper">
+                        <button
+                            className="royal-dropdown-trigger"
+                            onClick={() => setDropdownOpen(!dropdownOpen)}
+                        >
+                            <span>
+                                {categories.find(c => c.id === selectedCategory)?.icon} &nbsp;
+                                {categories.find(c => c.id === selectedCategory)?.name || 'All'}
+                            </span>
+                            <span className={`royal-dropdown-arrow ${dropdownOpen ? 'open' : ''}`}>▼</span>
+                        </button>
+
+                        {dropdownOpen && (
+                            <div className="royal-dropdown-menu">
+                                {categories.map((cat) => (
+                                    <button
+                                        key={cat.id}
+                                        className={`royal-dropdown-item ${selectedCategory === cat.id ? 'active' : ''}`}
+                                        onClick={() => {
+                                            setSelectedCategory(cat.id);
+                                            setDropdownOpen(false);
+                                        }}
+                                    >
+                                        <span>{cat.icon}</span>
+                                        {cat.name}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
+                </div>
 
                     {/* Products Grouped by Category */}
                     <div>
@@ -142,104 +172,64 @@ function MenuPage() {
                             if (categoryItems.length === 0 && sizzlingFilter === 'all') return null;
 
                             return (
-                                <div key={categorySlug} className="category-section" style={{ marginBottom: '3rem' }}>
+                                <div key={categorySlug} className="category-section" style={{ marginBottom: '4rem' }}>
                                     <div style={{
                                         display: 'flex',
-                                        justifyContent: 'space-between',
+                                        flexDirection: 'column',
+                                        justifyContent: 'center',
                                         alignItems: 'center',
-                                        borderBottom: '2px solid #eee',
-                                        paddingBottom: '0.5rem',
-                                        marginBottom: '1.5rem'
+                                        marginBottom: '2rem',
+                                        gap: '1rem'
                                     }}>
-                                        <h3 className="category-title" style={{
-                                            fontSize: '1.8rem',
-                                            color: '#8B1538',
-                                            marginBottom: 0,
-                                            textTransform: 'capitalize'
-                                        }}>
+                                        <h3 className="royal-category-title" style={{ margin: 0 }}>
                                             {categoryName}
                                         </h3>
 
                                         {/* Local Filter for Sizzling Section */}
                                         {categorySlug === 'sizzling' && (
-                                            <div className="sizzling-filter" style={{ display: 'flex', gap: '10px' }}>
+                                            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                                 <button
                                                     onClick={() => setSizzlingFilter('all')}
-                                                    style={{
-                                                        padding: '5px 15px',
-                                                        borderRadius: '20px',
-                                                        border: '1px solid #ddd',
-                                                        background: sizzlingFilter === 'all' ? '#333' : 'white',
-                                                        color: sizzlingFilter === 'all' ? 'white' : '#333',
-                                                        cursor: 'pointer',
-                                                        fontSize: '0.85rem'
-                                                    }}
+                                                    className={`royal-filter-btn ${sizzlingFilter === 'all' ? 'active' : ''}`}
+                                                    style={{ padding: '0.4rem 1rem', fontSize: '0.8rem' }}
                                                 >All</button>
                                                 <button
                                                     onClick={() => setSizzlingFilter('veg')}
-                                                    style={{
-                                                        padding: '5px 15px',
-                                                        borderRadius: '20px',
-                                                        border: '1px solid #2ecc71',
-                                                        background: sizzlingFilter === 'veg' ? '#2ecc71' : 'white',
-                                                        color: sizzlingFilter === 'veg' ? 'white' : '#2ecc71',
-                                                        cursor: 'pointer',
-                                                        fontSize: '0.85rem'
-                                                    }}
+                                                    className={`royal-filter-btn ${sizzlingFilter === 'veg' ? 'active' : ''}`}
+                                                    style={{ padding: '0.4rem 1rem', fontSize: '0.8rem', border: sizzlingFilter === 'veg' ? '1px solid #2ecc71' : '' }}
                                                 >Veg</button>
                                                 <button
                                                     onClick={() => setSizzlingFilter('non-veg')}
-                                                    style={{
-                                                        padding: '5px 15px',
-                                                        borderRadius: '20px',
-                                                        border: '1px solid #e74c3c',
-                                                        background: sizzlingFilter === 'non-veg' ? '#e74c3c' : 'white',
-                                                        color: sizzlingFilter === 'non-veg' ? 'white' : '#e74c3c',
-                                                        cursor: 'pointer',
-                                                        fontSize: '0.85rem'
-                                                    }}
+                                                    className={`royal-filter-btn ${sizzlingFilter === 'non-veg' ? 'active' : ''}`}
+                                                    style={{ padding: '0.4rem 1rem', fontSize: '0.8rem', border: sizzlingFilter === 'non-veg' ? '1px solid #e74c3c' : '' }}
                                                 >Non-Veg</button>
                                             </div>
                                         )}
                                     </div>
 
-                                    <div className="product-grid">
+                                    <div className="royal-product-grid">
                                         {categoryItems.map((item) => (
-                                            <div key={item.id} className="product-card">
-                                                {item.hot && <span className="badge-hot">Hot</span>}
-                                                <div className={isVeg(item) ? "veg-symbol" : "non-veg-symbol"}></div>
-                                                <Link to={`/product/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                                    <div className="product-image">
-                                                        {item.image.startsWith('/') || item.image.startsWith('http') ? (
-                                                            <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                                        ) : (
-                                                            <span className="product-emoji">{item.image}</span>
-                                                        )}
+                                            <div key={item.id} className="royal-product-card">
+                                                {item.hot && <span className="royal-badge-hot">Hot</span>}
+                                                <div className={`royal-diet-symbol ${isVeg(item) ? "veg" : "non-veg"}`}></div>
+                                                
+                                                <div className="royal-product-img-wrapper">
+                                                    {item.image.startsWith('/') || item.image.startsWith('http') ? (
+                                                        <img src={item.image} alt={item.name} />
+                                                    ) : (
+                                                        <span className="royal-product-emoji">{item.image}</span>
+                                                    )}
+                                                </div>
+                                                
+                                                <div className="royal-product-info">
+                                                    <h3 className="royal-product-title">{item.name}</h3>
+                                                    <p className="royal-product-desc" dangerouslySetInnerHTML={{ __html: item.description }}></p>
+                                                    <div className="royal-product-footer">
+                                                        <span className="royal-product-price">{item.price}</span>
+                                                        <Link to={`/product/${item.id}`} className="royal-product-btn">
+                                                            View Details
+                                                        </Link>
                                                     </div>
-                                                    <div className="product-info">
-                                                        <h3 className="product-name">{item.name}</h3>
-                                                        <p className="product-description" dangerouslySetInnerHTML={{ __html: item.description }}></p>
-                                                        <div className="product-footer">
-                                                            <span className="product-price">{item.price}</span>
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                                <div className="product-actions" style={{ padding: '0 1rem 1rem' }}>
-                                                    <Link
-                                                        to={`/product/${item.id}`}
-                                                        className="btn btn-primary"
-                                                        style={{
-                                                            width: '100%',
-                                                            padding: '0.6rem',
-                                                            display: 'block',
-                                                            textAlign: 'center',
-                                                            textDecoration: 'none',
-                                                            borderRadius: '8px',
-                                                            transition: 'all 0.3s ease'
-                                                        }}
-                                                    >
-                                                        View Details
-                                                    </Link>
                                                 </div>
                                             </div>
                                         ))}
@@ -249,7 +239,6 @@ function MenuPage() {
                         })}
                     </div>
                 </div>
-            </section>
         </div>
     );
 }
