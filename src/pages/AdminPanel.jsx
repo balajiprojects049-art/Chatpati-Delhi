@@ -39,7 +39,7 @@ const AdminPanel = () => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/menu');
+      const res = await fetch('/api/menu');
       if (res.ok) {
         const data = await res.json();
         setItems(data);
@@ -66,7 +66,7 @@ const AdminPanel = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       try {
-        await fetch(`http://localhost:5000/api/menu/${id}`, { method: 'DELETE' });
+        await fetch(`/api/menu/${id}`, { method: 'DELETE' });
         showNotification('Item deleted successfully');
         fetchItems();
       } catch (err) {
@@ -79,8 +79,8 @@ const AdminPanel = () => {
     e.preventDefault();
     const method = editingId ? 'PUT' : 'POST';
     const url = editingId 
-      ? `http://localhost:5000/api/menu/${editingId}` 
-      : 'http://localhost:5000/api/menu';
+      ? `/api/menu/${editingId}` 
+      : '/api/menu';
     
     try {
       const res = await fetch(url, {
@@ -110,7 +110,7 @@ const AdminPanel = () => {
 
     try {
       showNotification('Uploading image...', 'info');
-      const res = await fetch('http://localhost:5000/api/upload', {
+      const res = await fetch('/api/upload', {
         method: 'POST',
         body: formDataUpload
       });
