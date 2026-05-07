@@ -143,67 +143,91 @@ const AdminPanel = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="login-container" style={{ backgroundImage: "url('/images/admin-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="login-overlay"></div>
-        <div className="login-box">
-          <div className="login-brand">
-            <div className="logo-large">CPD</div>
-            <h2>Chatpati Delhi</h2>
-            <span className="brand-tagline">Authentic Flavors, Royal Management</span>
-          </div>
-          
-          <div className="login-header">
-            <h3>Admin Dashboard</h3>
-            <p>Access your culinary control center</p>
-          </div>
-
-          <form className="login-form" onSubmit={(e) => {
-            e.preventDefault();
-            if (formData.username === 'admin@chatpatidelhi.com' && formData.password === 'Chatpati@2026') {
-              setIsAuthenticated(true);
-            } else {
-              showNotification('Invalid credentials provided', 'error');
-            }
-          }}>
-            <div className="form-group">
-              <label>Administrator Email</label>
-              <div className="input-with-icon">
-                <span className="input-icon">📧</span>
-                <input 
-                  type="text" 
-                  placeholder="admin@chatpatidelhi.com" 
-                  value={formData.username}
-                  onChange={(e) => setFormData({...formData, username: e.target.value})} 
-                  required
-                />
+      <div className="login-split-container">
+        {/* Left Side: Branding */}
+        <div className="login-left-panel">
+          <div className="panel-content">
+            <div className="logo-huge">CPD</div>
+            <h1>Chatpati Delhi</h1>
+            <div className="divider-gold"></div>
+            <h3>Master Culinary Control</h3>
+            <p>Welcome to the Royal Management Suite. Manage your menu, track statistics, and maintain the authentic flavors of Delhi from one central dashboard.</p>
+            
+            <div className="feature-list">
+              <div className="feature-item">
+                <span className="feature-icon">✨</span>
+                <span>Real-time Menu Updates</span>
+              </div>
+              <div className="feature-item">
+                <span className="feature-icon">📊</span>
+                <span>Product Statistics</span>
+              </div>
+              <div className="feature-item">
+                <span className="feature-icon">🛡️</span>
+                <span>Secure Access Control</span>
               </div>
             </div>
-            <div className="form-group">
-              <label>Security Password</label>
-              <div className="input-with-icon">
-                <span className="input-icon">🔒</span>
-                <input 
-                  type="password" 
-                  placeholder="••••••••••••" 
-                  value={formData.password}
-                  onChange={(e) => setFormData({...formData, password: e.target.value})} 
-                  required
-                />
-              </div>
-            </div>
-            <button type="submit" className="login-btn">
-              <span>Sign In to Dashboard</span>
-              <span className="btn-arrow">→</span>
-            </button>
-          </form>
+          </div>
+          <div className="panel-footer">
+            <p>© 2026 Chatpati Delhi Hospitality Group | Version 2.0</p>
+          </div>
+        </div>
 
-          <div className="login-footer">
-            <p>© 2026 Chatpati Delhi Hospitality Group</p>
-            <div className="footer-links">
-              <span>Security Policy</span>
-              <span className="dot">•</span>
-              <span>Support</span>
+        {/* Right Side: Login Form */}
+        <div className="login-right-panel">
+          <div className="login-box-clean">
+            <div className="login-header-clean">
+              <h2>Administrator Login</h2>
+              <p>Please enter your credentials to continue</p>
             </div>
+
+            <form className="login-form-clean" onSubmit={(e) => {
+              e.preventDefault();
+              if (formData.username === 'admin@chatpatidelhi.com' && formData.password === 'Chatpati@2026') {
+                setIsAuthenticated(true);
+              } else {
+                showNotification('Invalid credentials provided', 'error');
+              }
+            }}>
+              <div className="form-group">
+                <label>Email Address</label>
+                <div className="input-wrapper">
+                  <span className="input-icon">📧</span>
+                  <input 
+                    type="text" 
+                    placeholder="admin@chatpatidelhi.com" 
+                    value={formData.username}
+                    onChange={(e) => setFormData({...formData, username: e.target.value})} 
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <div className="input-wrapper">
+                  <span className="input-icon">🔒</span>
+                  <input 
+                    type="password" 
+                    placeholder="••••••••••••" 
+                    value={formData.password}
+                    onChange={(e) => setFormData({...formData, password: e.target.value})} 
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div className="form-options">
+                <label className="checkbox-label">
+                  <input type="checkbox" /> Remember me
+                </label>
+                <span className="forgot-pass">Forgot Password?</span>
+              </div>
+
+              <button type="submit" className="login-btn-premium">
+                <span>Sign In to Dashboard</span>
+                <span className="btn-arrow">→</span>
+              </button>
+            </form>
           </div>
         </div>
       </div>
