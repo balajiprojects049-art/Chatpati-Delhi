@@ -14,7 +14,8 @@
 
 .admin-dashboard {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background-color: var(--admin-bg);
   font-family: 'Inter', sans-serif;
   color: var(--admin-text);
@@ -27,8 +28,7 @@
   color: white;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 0;
+  flex-shrink: 0;
   height: 100vh;
 }
 
@@ -101,6 +101,7 @@
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  height: 100vh;
 }
 
 .content-header {
