@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addToCart } from './utils/cart';
 import { menuItems } from './data/menuData';
@@ -1275,6 +1275,7 @@ const richProductData = [
 
 function ProductDetail() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [allMenuItems, setAllMenuItems] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -1355,6 +1356,18 @@ function ProductDetail() {
         <div className="royal-menu-wrapper">
 
             <div className="container">
+                {/* Back Button */}
+                <button 
+                    onClick={() => navigate(-1)} 
+                    className="royal-back-btn"
+                >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Back to Menu
+                </button>
+
                 {/* Breadcrumb */}
                 <nav className="royal-breadcrumb">
                     <Link to="/">Home</Link>
