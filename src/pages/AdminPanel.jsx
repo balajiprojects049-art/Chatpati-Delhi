@@ -248,11 +248,11 @@ const AdminPanel = () => {
           <h3>Admin Panel</h3>
         </div>
         <nav className="sidebar-nav">
-          <button className="nav-item active">ðŸ“¦ Menu Items</button>
-          <button className="nav-item">ðŸ“Š Statistics</button>
-          <button className="nav-item">âš™ï¸ Settings</button>
+          <button className="nav-item active">Menu Items</button>
+          <button className="nav-item">Statistics</button>
+          <button className="nav-item">Settings</button>
           <div className="sidebar-divider"></div>
-          <button className="nav-item logout" onClick={() => setIsAuthenticated(false)}>ðŸšª Logout</button>
+          <button className="nav-item logout" onClick={() => setIsAuthenticated(false)}>Logout</button>
         </nav>
       </aside>
 
@@ -271,21 +271,21 @@ const AdminPanel = () => {
 
         <section className="stats-row">
           <div className="stat-card">
-            <div className="stat-icon">ðŸ±</div>
+            <div className="stat-icon">Dishes</div>
             <div className="stat-info">
               <span className="stat-label">Total Dishes</span>
               <span className="stat-value">{items.length}</span>
             </div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon veg">ðŸŒ¿</div>
+            <div className="stat-icon veg">Veg</div>
             <div className="stat-info">
               <span className="stat-label">Vegetarian</span>
               <span className="stat-value">{items.filter(i => i.veg).length}</span>
             </div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon hot">ðŸ”¥</div>
+            <div className="stat-icon hot">Hot</div>
             <div className="stat-info">
               <span className="stat-label">Featured</span>
               <span className="stat-value">{items.filter(i => i.hot).length}</span>
@@ -295,7 +295,7 @@ const AdminPanel = () => {
 
         <section className="management-controls">
           <div className="search-bar">
-            <span className="search-icon">ðŸ”</span>
+            <span className="search-icon">Search</span>
             <input 
               type="text" 
               placeholder="Search by name or category..." 
@@ -336,7 +336,7 @@ const AdminPanel = () => {
                     <td>
                       <div className="item-cell">
                         <div className="item-preview">
-                          {(item.image && (item.image.startsWith('/') || item.image.startsWith('http'))) ? <img src={item.image} alt="" /> : <span>{item.image || 'ðŸ¥˜'}</span>}
+                          {(item.image && (item.image.startsWith('/') || item.image.startsWith('http'))) ? <img src={item.image} alt="" /> : <span>{item.image || 'Img'}</span>}
                         </div>
                         <div className="item-text">
                           <strong>{item.name}</strong>
@@ -353,8 +353,8 @@ const AdminPanel = () => {
                       </div>
                     </td>
                     <td className="actions-cell">
-                      <button className="btn-icon edit" title="Edit" onClick={() => handleEdit(item)}>âœï¸</button>
-                      <button className="btn-icon delete" title="Delete" onClick={() => handleDeleteClick(item.id)}>ðŸ—‘ï¸</button>
+                      <button className="btn-icon edit" title="Edit" onClick={() => handleEdit(item)}>Edit</button>
+                      <button className="btn-icon delete" title="Delete" onClick={() => handleDeleteClick(item.id)}>Del</button>
                     </td>
                   </tr>
                 ))}
@@ -374,7 +374,7 @@ const AdminPanel = () => {
           <div className="modal-container">
             <div className="modal-header">
               <h2>{editingId ? 'Edit Menu Item' : 'Add New Menu Item'}</h2>
-              <button className="close-modal" onClick={() => setShowModal(false)}>âœ•</button>
+              <button className="close-modal" onClick={() => setShowModal(false)}>Close</button>
             </div>
             <form onSubmit={handleSubmit} className="modal-form">
               <div className="form-grid">
@@ -413,11 +413,11 @@ const AdminPanel = () => {
                     <input 
                       type="text" 
                       value={formData.image} 
-                      placeholder="/images/dish.png or ðŸ¥˜"
+                      placeholder="/images/dish.png"
                       onChange={(e) => setFormData({...formData, image: e.target.value})} 
                     />
                     <div className="file-input-wrapper">
-                      <div className="file-input-btn">ðŸ“‚ Upload</div>
+                      <div className="file-input-btn">Upload File</div>
                       <input type="file" accept="image/*" onChange={handleFileUpload} />
                     </div>
                   </div>
@@ -463,10 +463,10 @@ const AdminPanel = () => {
           <div className="modal-container confirm-modal">
             <div className="modal-header">
               <h2>Confirm Deletion</h2>
-              <button className="close-modal" onClick={() => setShowConfirmModal(false)}>âœ•</button>
+              <button className="close-modal" onClick={() => setShowConfirmModal(false)}>Close</button>
             </div>
             <div className="modal-body" style={{ padding: '2rem', textAlign: 'center' }}>
-              <div className="confirm-icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>âš ï¸</div>
+              <div className="confirm-icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Warning!</div>
               <p>Are you sure you want to delete this item? This action cannot be undone.</p>
             </div>
             <div className="modal-footer" style={{ justifyContent: 'center', gap: '1rem' }}>
