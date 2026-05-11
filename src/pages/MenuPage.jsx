@@ -37,7 +37,9 @@ function MenuPage() {
     }, []);
 
     const isVeg = (item) => {
-        if (item.veg !== undefined) return item.veg;
+        if (item.veg !== undefined && item.veg !== null) {
+            return item.veg === true || item.veg === 'true' || item.veg === 1 || item.veg === '1';
+        }
         // Infer from name if not explicitly defined
         const nonVegKeywords = ['chicken', 'goat', 'lamb', 'fish', 'egg', 'keema', 'mutton', 'prawn', 'non veg', 'non-veg'];
         const lowerName = item.name.toLowerCase();
