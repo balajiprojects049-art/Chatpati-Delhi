@@ -81,8 +81,14 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   res.json({ imageUrl: `/uploads/${req.file.filename}` });
 });
 
-app.post('/api/menu', upload.none(), async (req, res) => {
-  const { name, price, category, image, hot, description, veg } = req.body;
+app.post('/api/menu', upload.single('imageFile'), async (req, res) => {
+  let { name, price, category, image, hot, description, veg } = req.body;
+  
+  // If a physical file was uploaded, use its path instead of the text field
+  if (req.file) {
+    image = `/uploads/${req.file.filename}`;
+  }
+
   try {
     const result = await pool.query(
       'INSERT INTO menu_items (name, price, category, image, hot, description, veg) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
@@ -91,13 +97,19 @@ app.post('/api/menu', upload.none(), async (req, res) => {
     res.json(result.rows[0]);
   } catch (err) {
     console.error('Insert error:', err.message);
-    res.status(500).json({ error: 'Save failed' });
+    res.status(500).json({ error: 'Save failed: ' + err.message });
   }
 });
 
-app.put('/api/menu/:id', upload.none(), async (req, res) => {
+app.put('/api/menu/:id', upload.single('imageFile'), async (req, res) => {
   const { id } = req.params;
-  const { name, price, category, image, hot, description, veg } = req.body;
+  let { name, price, category, image, hot, description, veg } = req.body;
+
+  // If a physical file was uploaded, use its path instead of the text field
+  if (req.file) {
+    image = `/uploads/${req.file.filename}`;
+  }
+
   try {
     const result = await pool.query(
       'UPDATE menu_items SET name = $1, price = $2, category = $3, image = $4, hot = $5, description = $6, veg = $7 WHERE id = $8 RETURNING *',
@@ -109,7 +121,7 @@ app.put('/api/menu/:id', upload.none(), async (req, res) => {
     res.json(result.rows[0]);
   } catch (err) {
     console.error('Update error:', err.message);
-    res.status(500).json({ error: 'Update failed' });
+    res.status(500).json({ error: 'Update failed: ' + err.message });
   }
 });
 
