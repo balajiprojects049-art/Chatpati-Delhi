@@ -40,6 +40,24 @@ const pressArticles = [
     },
 ];
 
+const pressImages = [
+    {
+        src: '/images/press/press_1.jpg',
+        alt: 'New Jersey Digest Article',
+        caption: 'New Jersey Digest: Chatpati Delhi named one of America\'s best restaurants by NYT'
+    },
+    {
+        src: '/images/press/press_2.jpg',
+        alt: 'My Central Jersey Article',
+        caption: 'My Central Jersey: Somerset County restaurant named one of the best in America'
+    },
+    {
+        src: '/images/press/press_3.jpg',
+        alt: 'Yahoo News Article',
+        caption: 'Yahoo News Features Chatpati Delhi\'s National Recognition'
+    }
+];
+
 function PressPage() {
     return (
         <div className="royal-menu-wrapper">
@@ -81,8 +99,30 @@ function PressPage() {
                     </div>
                 </div>
 
-                {/* Press Cards Grid */}
+                {/* Press Article Screenshots */}
                 <div className="royal-title-container" style={{ margin: '5rem 0 3rem' }}>
+                    <span className="royal-subtitle">In The News</span>
+                    <h2 className="royal-title" style={{ fontSize: '2.5rem' }}>Media Features</h2>
+                    <div className="royal-title-divider"><span>✦</span></div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+                    {pressImages.map((img, i) => (
+                        <div key={i} className="royal-press-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                            <img 
+                                src={img.src} 
+                                alt={img.alt} 
+                                style={{ width: '100%', objectFit: 'contain', borderBottom: '1px solid rgba(212,175,55,0.2)' }} 
+                            />
+                            <div style={{ padding: '1.5rem', textAlign: 'center', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <p style={{ margin: 0, color: 'var(--accent-gold)', fontSize: '0.95rem', fontWeight: 'bold' }}>{img.caption}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Press Cards Grid */}
+                <div className="royal-title-container" style={{ margin: '3rem 0 3rem' }}>
                     <span className="royal-subtitle">Nationally Recognized</span>
                     <h2 className="royal-title" style={{ fontSize: '2.5rem' }}>Further Coverage</h2>
                     <div className="royal-title-divider"><span>✦</span></div>

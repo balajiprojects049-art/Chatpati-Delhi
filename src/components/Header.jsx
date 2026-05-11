@@ -56,6 +56,7 @@ function Header() {
                             <li><NavLink to="/menu" onClick={() => setMobileOpen(false)}>Menu</NavLink></li>
                             <li><NavLink to="/about" onClick={() => setMobileOpen(false)}>About</NavLink></li>
                             <li><NavLink to="/articles" onClick={() => setMobileOpen(false)}>Articles</NavLink></li>
+                            <li><NavLink to="/certificates" onClick={() => setMobileOpen(false)}>Certificates</NavLink></li>
                             <li className="dropdown-container">
                                 <NavLink to="/catering" onClick={() => setMobileOpen(false)}>
                                     Caterings <span className="arrow-icon">▼</span>
