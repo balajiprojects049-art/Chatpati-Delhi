@@ -130,23 +130,18 @@ const AdminPanel = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    const formDataUpload = new FormData();
-    formDataUpload.append('image', file);
+    showNotification('Processing image...', 'info');
 
-    try {
-      showNotification('Uploading image...', 'info');
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: formDataUpload
-      });
-      const data = await res.json();
-      if (data.imageUrl) {
-        setFormData({ ...formData, image: data.imageUrl });
-        showNotification('Image uploaded successfully!');
-      }
-    } catch (err) {
-      showNotification('Image upload failed', 'error');
-    }
+    // Convert file to Base64 to bypass missing /api/upload endpoint on static/serverless hosts
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFormData({ ...formData, image: reader.result });
+      showNotification('Image uploaded successfully!');
+    };
+    reader.onerror = () => {
+      showNotification('Failed to read image file', 'error');
+    };
+    reader.readAsDataURL(file);
   };
 
   const filteredItems = items.filter(item => {
