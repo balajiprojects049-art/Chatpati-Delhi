@@ -16,9 +16,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
 app.use(cors());
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use('/uploads', express.static(join(__dirname, 'public/uploads')));
 
 // Configure Multer
@@ -29,7 +29,10 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + '-' + file.originalname);
   }
 });
-const upload = multer({ storage: storage });
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 50 * 1024 * 1024 } // 50MB limit for files
+});
 
 // Database Pool
 const pool = new Pool({
@@ -75,12 +78,12 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   res.json({ imageUrl: `/uploads/${req.file.filename}` });
 });
 
-app.post('/api/menu', async (req, res) => {
+app.post('/api/menu', upload.none(), async (req, res) => {
   const { name, price, category, image, hot, description, veg } = req.body;
   try {
     const result = await pool.query(
       'INSERT INTO menu_items (name, price, category, image, hot, description, veg) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [name, price, category, image, hot || false, description || '', veg !== undefined ? veg : true]
+      [name, price, category, image, hot === 'true' || hot === true, description || '', veg === 'true' || veg === true || veg === undefined]
     );
     res.json(result.rows[0]);
   } catch (err) {
@@ -89,13 +92,13 @@ app.post('/api/menu', async (req, res) => {
   }
 });
 
-app.put('/api/menu/:id', async (req, res) => {
+app.put('/api/menu/:id', upload.none(), async (req, res) => {
   const { id } = req.params;
   const { name, price, category, image, hot, description, veg } = req.body;
   try {
     const result = await pool.query(
       'UPDATE menu_items SET name = $1, price = $2, category = $3, image = $4, hot = $5, description = $6, veg = $7 WHERE id = $8 RETURNING *',
-      [name, price, category, image, hot || false, description || '', veg !== undefined ? veg : true, id]
+      [name, price, category, image, hot === 'true' || hot === true, description || '', veg === 'true' || veg === true || veg === undefined, id]
     );
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Not found' });

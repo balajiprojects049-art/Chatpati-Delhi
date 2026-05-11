@@ -108,10 +108,17 @@ const AdminPanel = () => {
       : '/api/menu';
     
     try {
+      showNotification('Saving changes...', 'info');
+      
+      // Use FormData to bypass JSON size limits
+      const submitData = new FormData();
+      Object.keys(formData).forEach(key => {
+        submitData.append(key, formData[key]);
+      });
+
       const res = await fetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: submitData
       });
       
       if (res.ok) {
@@ -120,9 +127,12 @@ const AdminPanel = () => {
         showNotification(editingId ? 'Item updated successfully' : 'New item added successfully');
         setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, description: '', veg: true, username: '', password: '' });
         fetchItems();
+      } else {
+        const errData = await res.json();
+        showNotification(errData.error || 'Error saving item', 'error');
       }
     } catch (err) {
-      showNotification('Error saving item', 'error');
+      showNotification('Connection error', 'error');
     }
   };
 
