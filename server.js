@@ -31,7 +31,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ 
   storage: storage,
-  limits: { fileSize: 50 * 1024 * 1024 } // 50MB limit for files
+  limits: { 
+    fileSize: 50 * 1024 * 1024, // 50MB for actual file uploads
+    fieldSize: 50 * 1024 * 1024  // 50MB for text fields (crucial for Base64 strings)
+  }
 });
 
 // Database Pool
