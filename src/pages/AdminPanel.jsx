@@ -70,6 +70,20 @@ const AdminPanel = () => {
     }
   };
 
+  const renderItemImage = (img) => {
+    if (!img) return <span>🥘</span>;
+    const sImg = String(img).trim();
+    if (sImg.startsWith('/') || sImg.startsWith('http') || sImg.startsWith('data:')) {
+      return (
+        <>
+          <img src={sImg} alt="" onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
+          <span style={{ display: 'none' }}>🥘</span>
+        </>
+      );
+    }
+    return <span>{img}</span>;
+  };
+
   const handleEdit = (item) => {
     setEditingId(item.id);
     setFormData({
@@ -373,7 +387,7 @@ const AdminPanel = () => {
                     <td>
                       <div className="item-cell">
                         <div className="item-preview">
-                          {(item.image && (item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:'))) ? <img src={item.image} alt="" /> : <span>{item.image || '🥘'}</span>}
+                          {renderItemImage(item.image)}
                         </div>
                         <div className="item-text">
                           <strong>{item.name}</strong>
@@ -458,6 +472,15 @@ const AdminPanel = () => {
                       <input type="file" accept="image/*" onChange={handleFileUpload} />
                     </div>
                   </div>
+                  {formData.image && (
+                    <div className="form-image-preview" style={{ marginTop: '10px', width: '80px', height: '80px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyCenter: 'center', background: '#f9f9f9' }}>
+                      {(formData.image.startsWith('/') || formData.image.startsWith('http') || formData.image.startsWith('data:')) ? (
+                        <img src={formData.image} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      ) : (
+                        <span style={{ fontSize: '2rem' }}>{formData.image}</span>
+                      )}
+                    </div>
+                  )}
                 </div>
                 <div className="form-group full">
                   <label>Description</label>
