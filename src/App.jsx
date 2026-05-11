@@ -203,10 +203,10 @@ function App() {
                             <div key={item.id} className="product-card">
                                 {item.hot && <span className="badge-hot">Hot</span>}
                                 <div className="product-image">
-                                    {typeof item.image === 'string' && (item.image.startsWith('/') || item.image.startsWith('http')) ? (
+                                    {typeof item.image === 'string' && (item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:')) ? (
                                         <img src={item.image} alt={item.name} />
                                     ) : (
-                                        <span className="product-emoji">{item.image}</span>
+                                        <span className="product-emoji">{item.image || '🥘'}</span>
                                     )}
                                 </div>
                                 <div className="product-info">
@@ -405,7 +405,11 @@ function App() {
 
                         <div className="modal-body">
                             <div className="modal-image">
-                                <span className="modal-emoji">{selectedProduct.image}</span>
+                                {typeof selectedProduct.image === 'string' && (selectedProduct.image.startsWith('/') || selectedProduct.image.startsWith('http') || selectedProduct.image.startsWith('data:')) ? (
+                                    <img src={selectedProduct.image} alt={selectedProduct.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                ) : (
+                                    <span className="modal-emoji">{selectedProduct.image || '🥘'}</span>
+                                )}
                             </div>
 
                             <div className="modal-details">

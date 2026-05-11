@@ -218,7 +218,7 @@ function MenuPage() {
                                                 <div className={`royal-diet-symbol ${isVeg(item) ? "veg" : "non-veg"}`}></div>
                                                 
                                                 <div className="royal-product-img-wrapper">
-                                                    {item.image && (item.image.startsWith('/') || item.image.startsWith('http')) ? (
+                                                    {item.image && (item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:')) ? (
                                                         <img src={item.image} alt={item.name} />
                                                     ) : (
                                                         <span className="royal-product-emoji">{item.image || '🥘'}</span>

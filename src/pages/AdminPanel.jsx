@@ -373,7 +373,7 @@ const AdminPanel = () => {
                     <td>
                       <div className="item-cell">
                         <div className="item-preview">
-                          {(item.image && (item.image.startsWith('/') || item.image.startsWith('http'))) ? <img src={item.image} alt="" /> : <span>{item.image || '🥘'}</span>}
+                          {(item.image && (item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:'))) ? <img src={item.image} alt="" /> : <span>{item.image || '🥘'}</span>}
                         </div>
                         <div className="item-text">
                           <strong>{item.name}</strong>
