@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
 import { addToCart } from './utils/cart'
+import { menuItems as localMenuItems } from './data/menuData'
 
 function App() {
     const [scrolled, setScrolled] = useState(false);
@@ -74,15 +75,17 @@ function App() {
     useEffect(() => {
         const fetchMenuItems = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/menu');
+                const response = await fetch('/api/menu');
                 if (response.ok) {
                     const data = await response.json();
                     setMenuItems(data);
                 } else {
-                    console.error('Failed to fetch menu items');
+                    console.warn('API error, using local menu data');
+                    setMenuItems(localMenuItems);
                 }
             } catch (error) {
-                console.error('Error fetching menu items:', error);
+                console.warn('Backend not running, using local menu data:', error.message);
+                setMenuItems(localMenuItems);
             }
         };
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { categories } from '../data/menuData';
+import { categories, menuItems as localMenuItems } from '../data/menuData';
 import '../index.css';
 import '../dietary.css';
 
@@ -22,10 +22,12 @@ function MenuPage() {
                     const data = await response.json();
                     setMenuItems(data);
                 } else {
-                    console.error('Failed to fetch menu items');
+                    console.warn('API returned error, using local data');
+                    setMenuItems(localMenuItems);
                 }
             } catch (error) {
-                console.error('Error fetching menu items:', error);
+                console.warn('Backend not running, using local menu data:', error.message);
+                setMenuItems(localMenuItems);
             } finally {
                 setLoading(false);
             }
@@ -47,7 +49,7 @@ function MenuPage() {
     const filteredItems = menuItems.filter(item => {
         const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
         const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.description.toLowerCase().includes(searchQuery.toLowerCase());
+            (item.description || '').toLowerCase().includes(searchQuery.toLowerCase());
 
         let matchesDietary = true;
         if (dietaryFilter === 'veg') {
@@ -214,10 +216,10 @@ function MenuPage() {
                                                 <div className={`royal-diet-symbol ${isVeg(item) ? "veg" : "non-veg"}`}></div>
                                                 
                                                 <div className="royal-product-img-wrapper">
-                                                    {item.image.startsWith('/') || item.image.startsWith('http') ? (
+                                                    {item.image && (item.image.startsWith('/') || item.image.startsWith('http')) ? (
                                                         <img src={item.image} alt={item.name} />
                                                     ) : (
-                                                        <span className="royal-product-emoji">{item.image}</span>
+                                                        <span className="royal-product-emoji">{item.image || '🥘'}</span>
                                                     )}
                                                 </div>
                                                 

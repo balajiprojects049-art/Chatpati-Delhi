@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "node server.js",
+    "dev:full": "start cmd /k node server.js && vite",
     "build": "vite build",
     "preview": "vite preview"
   },

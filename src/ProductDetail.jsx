@@ -1282,16 +1282,16 @@ function ProductDetail() {
     useEffect(() => {
         const fetchMenuItems = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/menu');
+                const response = await fetch('/api/menu');
                 if (response.ok) {
                     const data = await response.json();
                     setAllMenuItems(data);
                 } else {
-                    console.error('Failed to fetch menu items, using local data');
+                    console.warn('API returned error, using local data');
                     setAllMenuItems(menuItems);
                 }
             } catch (error) {
-                console.error('Error fetching menu items, using local data:', error);
+                console.warn('Backend not running, using local menu data:', error.message);
                 setAllMenuItems(menuItems);
             } finally {
                 setLoading(false);
@@ -1313,8 +1313,13 @@ function ProductDetail() {
         return <div style={{ padding: '150px 20px', textAlign: 'center', fontSize: '1.2rem', color: '#8B1538' }}>Loading product details...</div>;
     }
 
-    const basicProduct = allMenuItems.find(item => item.id === parseInt(id));
-    const richInfo = richProductData.find(item => item.id === parseInt(id));
+    // Use loose equality (==) to handle string vs number IDs returned from the API/DB
+    const numericId = parseInt(id);
+    const basicProduct = allMenuItems.find(item => Number(item.id) === numericId);
+    const richInfo = richProductData.find(item => item.id === numericId);
+
+    // Strip HTML tags from a string (for safe fallback descriptions)
+    const stripHtml = (str) => str ? str.replace(/<[^>]*>/g, '') : '';
 
     // Merge data, defaulting to basic info if rich info is missing
     const product = basicProduct ? {
@@ -1325,7 +1330,7 @@ function ProductDetail() {
         features: richInfo?.features || ['✓ Authentic Taste', '✓ Fresh Ingredients', '✓ Served Hot'],
         ingredients: richInfo?.ingredients || [],
         prepTime: richInfo?.prepTime || '15 mins',
-        fullDescription: richInfo?.fullDescription || basicProduct.description
+        fullDescription: richInfo?.fullDescription || stripHtml(basicProduct.description)
     } : null;
 
 
@@ -1348,9 +1353,10 @@ function ProductDetail() {
         .slice(0, 4);
 
     // Product images (for demo, using emoji variations or single image)
-    const productImages = product.image.startsWith('/')
-        ? [product.image, product.image, product.image]
-        : [product.image, '🥘', '🍽️'];
+    const imageVal = product.image || '🥘';
+    const productImages = (typeof imageVal === 'string' && (imageVal.startsWith('/') || imageVal.startsWith('http')))
+        ? [imageVal, imageVal, imageVal]
+        : [imageVal, '🥘', '🍽️'];
 
     return (
         <div className="royal-menu-wrapper">

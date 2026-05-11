@@ -33,8 +33,7 @@ const upload = multer({ storage: storage });
 // Database Pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
-  connectionTimeoutMillis: 5000 // 5 seconds timeout
+  ssl: { rejectUnauthorized: false }
 });
 
 const JSON_DB_PATH = join(__dirname, 'menu_items.json');
@@ -61,17 +60,11 @@ const writeJsonDb = async (data) => {
 app.get('/api/menu', async (req, res) => {
   console.log('GET /api/menu requested');
   try {
-    // We'll prioritize JSON for now because the DB is having connectivity issues
-    // This ensures the admin panel and website are ALWAYS fast and populated
-    const localData = await readJsonDb();
-    console.log(`Returning ${localData.length} items from local JSON`);
-    res.json(localData);
-
-    // Try to sync with DB in background (don't await)
-    pool.query('SELECT * FROM menu_items').catch(err => {
-      console.warn('Background DB check failed:', err.message);
-    });
+    const result = await pool.query('SELECT * FROM menu_items ORDER BY id ASC');
+    console.log(`Returning ${result.rows.length} items from Postgres Database`);
+    res.json(result.rows);
   } catch (err) {
+    console.error('Database Error:', err.message);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -82,44 +75,33 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 });
 
 app.post('/api/menu', async (req, res) => {
-  const newItem = { ...req.body, id: Date.now() };
+  const { name, price, category, image, hot, description, veg } = req.body;
   try {
-    const localData = await readJsonDb();
-    localData.push(newItem);
-    await writeJsonDb(localData);
-    res.json(newItem);
-
-    // Try background DB insert
-    const { name, price, category, image, hot, description, veg } = req.body;
-    pool.query(
-      'INSERT INTO menu_items (name, price, category, image, hot, description, veg) VALUES ($1, $2, $3, $4, $5, $6, $7)',
-      [name, price, category, image, hot, description, veg]
-    ).catch(() => {});
+    const result = await pool.query(
+      'INSERT INTO menu_items (name, price, category, image, hot, description, veg) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      [name, price, category, image, hot || false, description || '', veg !== undefined ? veg : true]
+    );
+    res.json(result.rows[0]);
   } catch (err) {
+    console.error('Insert error:', err.message);
     res.status(500).json({ error: 'Save failed' });
   }
 });
 
 app.put('/api/menu/:id', async (req, res) => {
   const { id } = req.params;
+  const { name, price, category, image, hot, description, veg } = req.body;
   try {
-    let localData = await readJsonDb();
-    const index = localData.findIndex(i => i.id == id);
-    if (index !== -1) {
-      localData[index] = { ...localData[index], ...req.body };
-      await writeJsonDb(localData);
-      res.json(localData[index]);
-    } else {
-      res.status(404).json({ error: 'Not found' });
+    const result = await pool.query(
+      'UPDATE menu_items SET name = $1, price = $2, category = $3, image = $4, hot = $5, description = $6, veg = $7 WHERE id = $8 RETURNING *',
+      [name, price, category, image, hot || false, description || '', veg !== undefined ? veg : true, id]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Not found' });
     }
-
-    // Try background DB update
-    const { name, price, category, image, hot, description, veg } = req.body;
-    pool.query(
-      'UPDATE menu_items SET name = $1, price = $2, category = $3, image = $4, hot = $5, description = $6, veg = $7 WHERE id = $8',
-      [name, price, category, image, hot, description, veg, id]
-    ).catch(() => {});
+    res.json(result.rows[0]);
   } catch (err) {
+    console.error('Update error:', err.message);
     res.status(500).json({ error: 'Update failed' });
   }
 });
@@ -127,14 +109,13 @@ app.put('/api/menu/:id', async (req, res) => {
 app.delete('/api/menu/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    let localData = await readJsonDb();
-    localData = localData.filter(i => i.id != id);
-    await writeJsonDb(localData);
+    const result = await pool.query('DELETE FROM menu_items WHERE id = $1 RETURNING *', [id]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Not found' });
+    }
     res.json({ message: 'Deleted' });
-
-    // Try background DB delete
-    pool.query('DELETE FROM menu_items WHERE id = $1', [id]).catch(() => {});
   } catch (err) {
+    console.error('Delete error:', err.message);
     res.status(500).json({ error: 'Delete failed' });
   }
 });
