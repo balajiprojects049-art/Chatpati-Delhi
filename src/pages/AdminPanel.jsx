@@ -37,6 +37,18 @@ const AdminPanel = () => {
     }
   }, [isAuthenticated]);
 
+  const isVeg = (item) => {
+    if (item.veg !== undefined && item.veg !== null && item.veg !== '') {
+      return item.veg === true || item.veg === 'true' || item.veg === 1 || item.veg === '1';
+    }
+    const nonVegKeywords = ['chicken', 'goat', 'lamb', 'fish', 'egg', 'keema', 'mutton', 'prawn', 'non veg', 'non-veg'];
+    const lowerName = item.name ? item.name.toLowerCase() : '';
+    const lowerDesc = item.description ? item.description.toLowerCase() : '';
+    return !nonVegKeywords.some(keyword => lowerName.includes(keyword) || lowerDesc.includes(keyword));
+  };
+
+  const isHot = (item) => item.hot === true || item.hot === 'true' || item.hot === 1 || item.hot === '1';
+
   const fetchItems = async () => {
     setLoading(true);
     try {
@@ -281,14 +293,14 @@ const AdminPanel = () => {
             <div className="stat-icon veg">🌿</div>
             <div className="stat-info">
               <span className="stat-label">Vegetarian</span>
-              <span className="stat-value">{items.filter(i => i.veg === true || i.veg === 'true' || i.veg === 1 || i.veg === '1').length}</span>
+              <span className="stat-value">{items.filter(isVeg).length}</span>
             </div>
           </div>
           <div className="stat-card">
             <div className="stat-icon hot">🔥</div>
             <div className="stat-info">
               <span className="stat-label">Featured</span>
-              <span className="stat-value">{items.filter(i => i.hot === true || i.hot === 'true' || i.hot === 1 || i.hot === '1').length}</span>
+              <span className="stat-value">{items.filter(isHot).length}</span>
             </div>
           </div>
         </section>
@@ -348,8 +360,8 @@ const AdminPanel = () => {
                     <td className="item-price">{item.price}</td>
                     <td>
                       <div className="status-tags">
-                        {(item.veg === true || item.veg === 'true' || item.veg === 1 || item.veg === '1') && <span className="tag-veg">Veg</span>}
-                        {(item.hot === true || item.hot === 'true' || item.hot === 1 || item.hot === '1') && <span className="tag-hot">Hot</span>}
+                        {isVeg(item) && <span className="tag-veg">Veg</span>}
+                        {isHot(item) && <span className="tag-hot">Hot</span>}
                       </div>
                     </td>
                     <td className="actions-cell">
