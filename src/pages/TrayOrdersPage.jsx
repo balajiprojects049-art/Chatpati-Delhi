@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import WhatsAppEnquiryForm from '../components/WhatsAppEnquiryForm';
 import '../index.css';
 
 const TrayOrdersPage = () => {
@@ -9,14 +10,14 @@ const TrayOrdersPage = () => {
         {
             id: 'small',
             name: 'Small Tray',
-            capacity: '12 to 15 Peoples',
+            capacity: '15 to 18 Peoples',
             description: 'Perfect for intimate family gatherings and small office lunches.',
             icon: '🍱'
         },
         {
             id: 'large',
             name: 'Large Tray',
-            capacity: '18 to 25 Peoples',
+            capacity: '30 to 35 Peoples',
             description: 'Ideal for parties, celebrations, and corporate events.',
             icon: '🥘'
         }
@@ -24,38 +25,51 @@ const TrayOrdersPage = () => {
 
     const menuOptions = [
         {
-            category: 'Signature Thalis',
+            category: 'Delhi Chaat Specials',
             items: [
-                { name: 'C.P.D Veg Thali', description: 'Assorted seasonal vegetables, dal, rice, and bread.', image: "/images/Thali's/C.P.D Veg Thali.png" },
-                { name: 'Non-Veg Thali', description: 'Traditional chicken curry, seasonal veg, dal, and rice.', image: "/images/C.D.P Chicken Thali.png" }
+                { name: 'Bhara Samosa (2 Pcs)', description: 'Crispy pastry shells stuffed with spiced potatoes and peas.', image: '/images/bhara-samosa.png' },
+                { name: 'Delhi Ki Mashoor Aloo Tikki', description: 'Crispy potato patties topped with yogurt and tangy chutneys.', image: '/images/chats/Dahi%20Aloo%20Tikki.png' },
+                { name: 'Golgappe', description: 'Soft lentil dumplings soaked in thick sweet yogurt.', image: '/images/chats/Golgappe.png' }
             ]
         },
         {
-            category: 'Main Course Specialties',
+            category: 'Mumbai Street Local',
             items: [
-                { name: 'Butter Chicken', description: 'Tender chicken pieces in a rich, creamy tomato gravy.', image: '/images/Tadka Marke/Butter Chicken.png' },
-                { name: 'Paneer Makhanwala', description: 'Cubes of cottage cheese in a velvety butter sauce.', image: '/images/Tadka Marke/Paneer Makhanwala.png' }
+                { name: 'Vada Pav (2 Pcs)', description: 'The iconic Mumbai spicy potato burger.', image: '/images/Mumbai%20Local/Karjat%20Vada%20Pav.png' },
+                { name: 'Pav Bhaji', description: 'Spicy mashed vegetable curry served with buttery buns.', image: '/images/Mumbai%20Local/Cheese%20Pav%20Bhaji%20(Amul).png' },
+                { name: 'Kutchi Dabeli (2 Pcs)', description: 'Spiced potato mixture in buns with pomegranate and peanuts.', image: '/images/Mumbai%20Local/Kacchi%20Dabeli.png' }
             ]
         },
         {
-            category: 'Biryani Excellence',
+            category: 'Signature Rolls & Wraps',
             items: [
-                { name: 'Purani Delhi Chicken Biryani', description: 'Aromatic basmati rice cooked with succulent chicken and secret spices.', image: '/images/Biriyani/Purani Delhi Chicken Biryani.png' },
-                { name: 'Tarkari Biryani (Veg)', description: 'Fragrant rice layered with garden fresh vegetables.', image: '/images/Biriyani/Tarkari Biryani (Veg).png' }
+                { name: 'Paneer Tikka Roll', description: 'Grilled paneer cubes wrapped in a soft roomali roti.', image: '/images/Rolls/Tawa%20Paneer%20Roll.png' },
+                { name: 'Chicken Keema Roll', description: 'Spicy minced chicken wrapped in a fresh paratha.', image: '/images/Rolls/Chicken%20Keema%20Roll.png' },
+                { name: 'Double Egg Roll', description: 'Freshly made paratha layered with two eggs and onions.', image: '/images/Rolls/Double%20Eggroll%20Roll.png' }
+            ]
+        },
+        {
+            category: 'Tandoor & Sizzlers',
+            items: [
+                { name: 'Tandoori Chicken (Half)', description: 'Classic tandoor-grilled chicken marinated in yogurt and spices.', image: '/images/sizzling/Sutli%20Chicken.png' },
+                { name: 'Paneer Tikka Sizzler', description: 'Grilled paneer served on a sizzling platter with veggies.', image: '/images/Bhatti%20Paneer%20Sizzler.png' },
+                { name: 'Chicken Seekh Kebab', description: 'Flavorful minced chicken skewers grilled to perfection.', image: '/images/sizzling/Mix%20Chicken%20Tikka%20Sizzler.png' }
+            ]
+        },
+        {
+            category: 'Main Course & Biryani',
+            items: [
+                { name: 'Dal Makhani', description: 'Slow-cooked black lentils in a creamy, buttery gravy.', image: '/images/Tadka%20Marke/Daal%20Makhanwala.png' },
+                { name: 'Purani Delhi Chicken Biryani', description: 'Aromatic basmati rice cooked with succulent chicken.', image: '/images/Biriyani/Purani%20Delhi%20Chicken%20Biryani.png' },
+                { name: 'Pindi Chole', description: 'Spicy chickpeas cooked in authentic Punjabi style.', image: '/images/Tadka%20Marke/Pindi%20Chole.png' }
             ]
         },
         {
             category: 'Sweet Endings',
             items: [
                 { name: 'Rasmalai', description: 'Soft cheese patties soaked in thickened, sweetened milk.', image: '/images/Sweets/Rasmalai.png' },
-                { name: 'Gajar Ka Halwa', description: 'Traditional slow-cooked carrot pudding with dry fruits.', image: '/images/Sweets/Gajar ka Halwa.png' }
-            ]
-        },
-        {
-            category: 'Refreshing Drinks',
-            items: [
-                { name: 'Aam Ki Lassi', description: 'Premium mango yogurt smoothie.', image: '/images/Drinks/Aam Ki Lassi.jpg' },
-                { name: 'Jal Jeera Soda', description: 'Tangy and spiced traditional cumin refresher.', image: '/images/Jal Jeera Soda.jpg' }
+                { name: 'Gajar Ka Halwa', description: 'Traditional slow-cooked carrot pudding with dry fruits.', image: '/images/Sweets/Gajar%20ka%20Halwa.png' },
+                { name: 'Gulab Jamun (2 Pcs)', description: 'Golden milk-solid dumplings in rose-scented syrup.', image: '/images/Sweets/Gulab%20Jamun.png' }
             ]
         }
     ];
@@ -128,10 +142,12 @@ const TrayOrdersPage = () => {
                         </div>
                     ))}
 
-                    <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: '1.2rem 3rem' }}>
-                            Inquire for Tray Pricing
-                        </Link>
+                    <div style={{ marginTop: '5rem', background: 'white', padding: '4rem 2rem', borderRadius: '30px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}>
+                        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                            <span className="section-subtitle">Get a Custom Quote</span>
+                            <h2 style={{ color: 'var(--primary-maroon)' }}>Tray Order Enquiry</h2>
+                        </div>
+                        <WhatsAppEnquiryForm type="Tray Order Enquiry" />
                     </div>
                 </div>
             </section>

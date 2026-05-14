@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import WhatsAppEnquiryForm from '../components/WhatsAppEnquiryForm';
 import '../index.css';
 
 const LiveStationsPage = () => {
@@ -83,11 +84,11 @@ const LiveStationsPage = () => {
                 <div className="container">
                     <h2>Ready to Wow Your Guests?</h2>
                     <p style={{ maxWidth: '800px', margin: '1.5rem auto 3rem', fontSize: '1.2rem', opacity: '0.9' }}>
-                        Our live stations are highly customizable. Contact us to design a unique street food experience for your next event.
+                        Our live stations are highly customizable. Fill in the details below to design a unique street food experience.
                     </p>
-                    <Link to="/contact" className="btn btn-secondary" style={{ border: '2px solid white' }}>
-                        Enquire Now
-                    </Link>
+                    <div style={{ marginTop: '4rem', background: 'rgba(255,255,255,0.05)', padding: '4rem 2rem', borderRadius: '30px', border: '1px solid rgba(212,175,55,0.2)', textAlign: 'left' }}>
+                        <WhatsAppEnquiryForm type="Live Station Booking" dark={true} />
+                    </div>
                 </div>
             </section>
         </div>
