@@ -23,6 +23,7 @@ const AdminPanel = () => {
     cold: false,
     description: '',
     veg: true,
+    variants: [],
     username: '',
     password: ''
   });
@@ -135,7 +136,7 @@ const AdminPanel = () => {
         setShowModal(false);
         setEditingId(null);
         showNotification(editingId ? 'Item updated successfully' : 'New item added successfully');
-        setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, cold: false, description: '', veg: true, username: '', password: '' });
+        setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, cold: false, description: '', veg: true, variants: [], username: '', password: '' });
         fetchItems();
       } else {
         const errData = await res.json();
@@ -316,7 +317,7 @@ const AdminPanel = () => {
           </div>
           <button className="add-item-btn" onClick={() => {
             setEditingId(null);
-            setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, cold: false, description: '', veg: true, username: '', password: '' });
+            setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, cold: false, description: '', veg: true, variants: [], username: '', password: '' });
             setShowModal(true);
           }}>+ New Item</button>
         </header>
@@ -517,6 +518,44 @@ const AdminPanel = () => {
                       onClick={() => setFormData({ ...formData, cold: !formData.cold })}
                     >❄️ Cold</button>
                   </div>
+                </div>
+                <div className="form-group full">
+                  <label style={{ marginBottom: '0.6rem', display: 'block', fontWeight: 600, fontSize: '0.85rem', color: '#555' }}>Pricing Variants (Optional)</label>
+                  {formData.variants && formData.variants.map((variant, index) => (
+                    <div key={index} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                      <input 
+                        type="text" 
+                        placeholder="e.g. 6 pcs" 
+                        value={variant.name}
+                        onChange={(e) => {
+                          const newVariants = [...formData.variants];
+                          newVariants[index].name = e.target.value;
+                          setFormData({ ...formData, variants: newVariants });
+                        }}
+                      />
+                      <input 
+                        type="text" 
+                        placeholder="e.g. $8.95" 
+                        value={variant.price}
+                        onChange={(e) => {
+                          const newVariants = [...formData.variants];
+                          newVariants[index].price = e.target.value;
+                          setFormData({ ...formData, variants: newVariants });
+                        }}
+                      />
+                      <button type="button" onClick={() => {
+                        const newVariants = formData.variants.filter((_, i) => i !== index);
+                        setFormData({ ...formData, variants: newVariants });
+                      }} style={{ background: '#ff4d4d', color: 'white', border: 'none', borderRadius: '8px', padding: '0 15px', cursor: 'pointer' }}>✕</button>
+                    </div>
+                  ))}
+                  <button 
+                    type="button" 
+                    onClick={() => setFormData({ ...formData, variants: [...(formData.variants || []), { name: '', price: '' }] })}
+                    style={{ background: '#eee', border: '1px dashed #ccc', padding: '8px 15px', borderRadius: '8px', cursor: 'pointer', fontSize: '0.85rem', width: 'fit-content' }}
+                  >
+                    + Add Variant
+                  </button>
                 </div>
               </div>
               <div className="modal-footer">
