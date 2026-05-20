@@ -239,7 +239,10 @@ function MenuPage() {
                                 <div className="royal-product-grid">
                                     {categoryItems.map((item) => (
                                         <div key={item.id} className="royal-product-card">
-                                            {item.hot && <span className="royal-badge-hot">Hot</span>}
+                                            <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
+                                                {item.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Hot</span>}
+                                                {(item.cold === true || item.cold === 'true' || item.cold === 1) && <span className="royal-badge-cold" style={{position: 'relative', top: 0, left: 0}}>Cold</span>}
+                                            </div>
                                             <div className={`royal-diet-symbol ${isVeg(item) ? "veg" : "non-veg"}`}></div>
                                             
                                             <div className="royal-product-img-wrapper">

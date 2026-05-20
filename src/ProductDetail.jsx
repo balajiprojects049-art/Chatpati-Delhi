@@ -1395,7 +1395,10 @@ function ProductDetail() {
                             ) : (
                                 <span className="royal-detail-emoji">{productImages[selectedImage] || '🥘'}</span>
                             )}
-                            {product.hot && <span className="royal-badge-hot">Spicy</span>}
+                            <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
+                                {product.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Spicy</span>}
+                                {(product.cold === true || product.cold === 'true' || product.cold === 1) && <span className="royal-badge-cold" style={{position: 'relative', top: 0, left: 0}}>Cold</span>}
+                            </div>
                         </div>
 
                         {/* Functional Thumbnails */}
