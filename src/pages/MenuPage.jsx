@@ -6,7 +6,7 @@ import '../dietary.css';
 
 
 function MenuPage() {
-    const [menuItems, setMenuItems] = useState([]);
+    const [menuItems, setMenuItems] = useState(localMenuItems);
     const [loading, setLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');

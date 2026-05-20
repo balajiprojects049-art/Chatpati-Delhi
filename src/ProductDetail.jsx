@@ -1276,7 +1276,7 @@ export const richProductData = [
 function ProductDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [allMenuItems, setAllMenuItems] = useState([]);
+    const [allMenuItems, setAllMenuItems] = useState(menuItems);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
