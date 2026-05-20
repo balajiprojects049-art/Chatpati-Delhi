@@ -20,6 +20,7 @@ const AdminPanel = () => {
     category: 'chaat',
     image: '',
     hot: false,
+    cold: false,
     description: '',
     veg: true,
     username: '',
@@ -134,7 +135,7 @@ const AdminPanel = () => {
         setShowModal(false);
         setEditingId(null);
         showNotification(editingId ? 'Item updated successfully' : 'New item added successfully');
-        setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, description: '', veg: true, username: '', password: '' });
+        setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, cold: false, description: '', veg: true, username: '', password: '' });
         fetchItems();
       } else {
         const errData = await res.json();
@@ -315,7 +316,7 @@ const AdminPanel = () => {
           </div>
           <button className="add-item-btn" onClick={() => {
             setEditingId(null);
-            setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, description: '', veg: true, username: '', password: '' });
+            setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, cold: false, description: '', veg: true, username: '', password: '' });
             setShowModal(true);
           }}>+ New Item</button>
         </header>
@@ -398,10 +399,11 @@ const AdminPanel = () => {
                     <td><span className={`badge-cat ${item.category}`}>{item.category}</span></td>
                     <td className="item-price">{item.price}</td>
                     <td>
-                      <div className="status-tags">
-                        {isVeg(item) && <span className="tag-veg">Veg</span>}
-                        {isHot(item) && <span className="tag-hot">Hot</span>}
-                      </div>
+                       <div className="status-tags">
+                          {isVeg(item) ? <span className="tag-veg">🌿 Veg</span> : <span className="tag-nonveg">🍖 Non-Veg</span>}
+                          {isHot(item) && <span className="tag-hot">🔥 Hot</span>}
+                          {(item.cold === true || item.cold === 'true' || item.cold === 1) && <span className="tag-cold">❄️ Cold</span>}
+                        </div>
                     </td>
                     <td className="actions-cell">
                       <button className="btn-icon edit" title="Edit" onClick={() => handleEdit(item)}>✏️</button>
@@ -491,23 +493,30 @@ const AdminPanel = () => {
                     onChange={(e) => setFormData({...formData, description: e.target.value})}
                   ></textarea>
                 </div>
-                <div className="form-group-row">
-                  <label className="checkbox-item">
-                    <input 
-                      type="checkbox" 
-                      checked={formData.veg} 
-                      onChange={(e) => setFormData({...formData, veg: e.target.checked})} 
-                    />
-                    <span>Vegetarian</span>
-                  </label>
-                  <label className="checkbox-item">
-                    <input 
-                      type="checkbox" 
-                      checked={formData.hot} 
-                      onChange={(e) => setFormData({...formData, hot: e.target.checked})} 
-                    />
-                    <span>Spicy / Hot</span>
-                  </label>
+                <div className="form-group full">
+                  <label style={{ marginBottom: '0.6rem', display: 'block', fontWeight: 600, fontSize: '0.85rem', color: '#555' }}>Variations</label>
+                  <div className="variation-tags">
+                    <button
+                      type="button"
+                      className={`var-tag veg ${formData.veg ? 'active' : ''}`}
+                      onClick={() => setFormData({ ...formData, veg: true })}
+                    >🌿 Veg</button>
+                    <button
+                      type="button"
+                      className={`var-tag nonveg ${!formData.veg ? 'active' : ''}`}
+                      onClick={() => setFormData({ ...formData, veg: false })}
+                    >🍖 Non-Veg</button>
+                    <button
+                      type="button"
+                      className={`var-tag hot ${formData.hot ? 'active' : ''}`}
+                      onClick={() => setFormData({ ...formData, hot: !formData.hot })}
+                    >🔥 Hot</button>
+                    <button
+                      type="button"
+                      className={`var-tag cold ${formData.cold ? 'active' : ''}`}
+                      onClick={() => setFormData({ ...formData, cold: !formData.cold })}
+                    >❄️ Cold</button>
+                  </div>
                 </div>
               </div>
               <div className="modal-footer">
