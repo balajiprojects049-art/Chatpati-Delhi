@@ -1112,6 +1112,23 @@
         width: auto;
         padding: 12px 34px;
     }
+
+/* Prevent phone/email from breaking awkwardly */
+.royal-visit-info .nowrap {
+    white-space: nowrap;
+}
+
+/* Ensure the Get Directions button text stays on one line when possible */
+.royal-visit-info .royal-btn {
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .royal-visit-info .royal-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
 }
 
 .visit-block {
