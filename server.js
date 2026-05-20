@@ -94,11 +94,17 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 });
 
 app.post('/api/menu', async (req, res) => {
-  const { name, price, category, image, hot, description, veg } = req.body;
+  const { name, price, category, image, hot, cold, description, veg } = req.body;
   try {
     const result = await pool.query(
-      'INSERT INTO menu_items (name, price, category, image, hot, description, veg) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [name, price, category, image, hot === 'true' || hot === true, description || '', veg === 'true' || veg === true || veg === undefined]
+      'INSERT INTO menu_items (name, price, category, image, hot, cold, description, veg) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+      [
+        name, price, category, image,
+        hot === 'true' || hot === true,
+        cold === 'true' || cold === true,
+        description || '',
+        veg === 'true' || veg === true || veg === undefined
+      ]
     );
     res.json(result.rows[0]);
   } catch (err) {
@@ -109,11 +115,18 @@ app.post('/api/menu', async (req, res) => {
 
 app.put('/api/menu/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, price, category, image, hot, description, veg } = req.body;
+  const { name, price, category, image, hot, cold, description, veg } = req.body;
   try {
     const result = await pool.query(
-      'UPDATE menu_items SET name = $1, price = $2, category = $3, image = $4, hot = $5, description = $6, veg = $7 WHERE id = $8 RETURNING *',
-      [name, price, category, image, hot === 'true' || hot === true, description || '', veg === 'true' || veg === true || veg === undefined, id]
+      'UPDATE menu_items SET name=$1, price=$2, category=$3, image=$4, hot=$5, cold=$6, description=$7, veg=$8 WHERE id=$9 RETURNING *',
+      [
+        name, price, category, image,
+        hot === 'true' || hot === true,
+        cold === 'true' || cold === true,
+        description || '',
+        veg === 'true' || veg === true || veg === undefined,
+        id
+      ]
     );
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Not found' });
